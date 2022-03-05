@@ -4,8 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//import database 
+var mongoose = require('mongoose');
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var config=require('./config/config.json');
 
 var app = express();
 
@@ -37,5 +42,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+  //mongo config 
+  const connect = mongoose.connect(
+  config.mongo.uri,
+  {
+    useNewUrlParser: 
+    true,
+    useUnifiedTopology: true
+  } ,
+  () => console.log("connected !!!!!!!!")
+
+  );
 
 module.exports = app;
