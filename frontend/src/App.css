@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(241,183,240,1) 77%, rgba(0,212,255,1) 100%);
 }
 
 .App-logo {
@@ -24,8 +26,15 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
+}
+img{
+  border-radius: 10%;
+}
+.mask{
+  border-radius: 10%;
 }
 
 @keyframes App-logo-spin {
