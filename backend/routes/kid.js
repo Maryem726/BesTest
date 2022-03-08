@@ -20,7 +20,6 @@ new kid({ lastname: req.body.lastname,
     email:req.body.email, 
     createdAt:Date.now(),
     address:req.body.address, 
-    score:req.body.score,
     birthday:req.body.birthday, 
     level:req.body.level
 }).save(function(err, msg)

@@ -15,6 +15,9 @@ var usersRouter = require('./routes/users');
 var teacherRouter= require('./routes/teacherRequest');
 var parentRouter= require('./routes/parentRequest');
 var kidRouter= require('./routes/kid');
+var feedbackRouter= require('./routes/feedback');
+var claimRouter= require('./routes/claim');
+
 
 var config=require('./config/config.json');
 
@@ -38,6 +41,8 @@ app.use('/admin', adminRouter);
 app.use('/teacherR', teacherRouter);
 app.use('/parentR', parentRouter);
 app.use('/kid', kidRouter);
+app.use('/claim', claimRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
