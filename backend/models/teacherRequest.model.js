@@ -1,9 +1,8 @@
-import mongoose from 'mongoose'
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var parent = new parent({
-    id:String,
+var teacherRequest = new Schema({
     lastname: String,
     firstname: String,
     password: String,
@@ -11,8 +10,10 @@ var parent = new parent({
     email: String,
     createdAt: Date,
     address: String,
+    speciality: String,
+    birthday: Date,
     rib: Number
 });
 
 
-module.exports= mongoose.model('parents',parent);
+module.exports= mongoose.model('teacherRequest',teacherRequest);

@@ -1,9 +1,8 @@
-import mongoose from 'mongoose'
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
 var teacher = new Schema({
-    id:String,
     lastname: String,
     firstname: String,
     password: String,
@@ -12,7 +11,7 @@ var teacher = new Schema({
     createdAt: Date,
     address: String,
     speciality: String,
-    birthday: String,
+    birthday: Date,
     rib: Number
 });
 

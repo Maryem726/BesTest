@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var admin = new Schema({
-    id:String,
-    matricule:String
-   
+    password: String,
+    matricule: String,
+    email: String,
+    createdAt: Date   
 });
 
 module.exports= mongoose.model('admin',admin);
