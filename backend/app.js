@@ -19,6 +19,7 @@ var feedbackRouter= require('./routes/feedback');
 var claimRouter= require('./routes/claim');
 
 
+
 var config=require('./config/config.json');
 
 var app = express();
@@ -42,6 +43,7 @@ app.use('/teacherR', teacherRouter);
 app.use('/parentR', parentRouter);
 app.use('/kid', kidRouter);
 app.use('/claim', claimRouter);
+
 
 
 // catch 404 and forward to error handler
