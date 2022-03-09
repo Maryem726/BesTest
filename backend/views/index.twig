@@ -1,10 +1,43 @@
 
 <h1> la liste des admins </h1>
-{% for admin in listAdmin %}
+<table class="table table-striped">
 
-<h3>{{admin.matricule}}</h3>
-<a href="/admin/delete?id=<%= admin.id %>" onClick="return confirm('Are u sure?')"> Supprimer </a>
+<thead>
+        <tr>
+            <th>Matricule</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Creation Date</th>
+            <th></th>
+        </tr>
+    </thead>
 
 
-<a href="/admin/update">modifier</a>
-{% endfor %}
+    <tbody>
+    {% for admin in listAdmin %}
+     <tr>
+            <td>{{admin.matricule}}</td>
+            <td>{{admin.email}}</td>
+            <td>{{admin.password}}</td>
+            <td>{{admin.createdAt}}</td>
+            <td>
+            <a href="/admin/update/{{admin._id}}">modifier</a>
+            <a href="/admin/delete/{{admin._id}}" onclick="return confirm('Are you sure to delete this admin ?');">supprimer</a>           
+             </td>
+        </tr>
+
+ {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    
+     
