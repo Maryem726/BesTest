@@ -2,6 +2,8 @@
 <h1> la liste des admins </h1>
 <table class="table table-striped">
 
+
+
 <thead>
         <tr>
             <th>Matricule</th>
@@ -14,6 +16,11 @@
 
 
     <tbody>
+
+<form action="/logout?_method=DELETE" method="POST">
+  <button type="submit">Log Out</button>
+</form>
+
     {% for admin in listAdmin %}
      <tr>
             <td>{{admin.matricule}}</td>
