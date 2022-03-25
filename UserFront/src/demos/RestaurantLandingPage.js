@@ -10,12 +10,15 @@ import TabGrid from "components/cards/TabCardGrid.js";
 import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
 import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
-
+import { components } from "ComponentRenderer.js";
 import chefIconImageSrc from "images/chef-icon.svg";
 import celebrationIconImageSrc from "images/celebration-icon.svg";
 import shopIconImageSrc from "images/shop-icon.svg";
 
-export default () => {
+export default ({
+  ListExams = components.innerPages.ListExams
+}) => {
+
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
   const HighlightedTextInverse = tw.span`bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`;
@@ -74,7 +77,7 @@ export default () => {
 
       <MainFeature2
         subheading={<Subheading>Hello</Subheading>}
-        heading={<>We'll be presenting to you <HighlightedText>our exames</HighlightedText></>}
+        heading={<>We'll be presenting to you <HighlightedText>our exams</HighlightedText></>}
         description={
           <Description>
            Don't Stress...Do your Best!
@@ -85,7 +88,7 @@ export default () => {
         }
         statistics={[
           {
-            key: "exames",
+            key: "exams",
             value: "100+",
           },
           {
@@ -98,7 +101,7 @@ export default () => {
           }
         ]}
         primaryButtonText="show"
-        primaryButtonUrl="https://order.now.com"
+        primaryButtonUrl={ListExams.url}
         imageInsideDiv={false}
         imageSrc="https://cdn1.vectorstock.com/i/thumb-large/13/80/happy-cute-little-student-boy-raising-his-hand-vector-38521380.jpg"
         imageCss={Object.assign(tw`bg-cover`, imageCss)}

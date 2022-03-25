@@ -1,9 +1,7 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
-import axios from 'axios';
 import { css } from "styled-components/macro"; //eslint-disable-line
-import DataFetching from "components/DataFetching";
 import { useState } from "react";
 
 /*
