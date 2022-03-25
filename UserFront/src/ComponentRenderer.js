@@ -34,6 +34,13 @@ import EnglishExercicePage from "pages/EnglishExercice.js";
 import MathematicExercicePage from "pages/MathematicExercice.js";
 import ScienceExercicePage from "pages/ScienceExercice.js";
 import SocialExercicePage from "pages/SocialExercice.js";
+import ListExams from"exams/ListExams.js";
+import arabicExams from"exams/arabicExams.js";
+import mathExams from"exams/mathExams.js";
+import frenchExams from"exams/frenchExams.js";
+import englishExams from"exams/englishExams.js";
+import scienceofearthExam from"exams/scienceofearthExam.js";
+import socialExams from"exams/socialExams.js";
 
 
 
@@ -208,7 +215,42 @@ export const components = {
       component: SocialExercicePage,
       url: `/components/innerPages/SocialExercicePage`,
       imageSrc: PrivacyPolicyPageImageSrc,
-    }
+    },
+    ListExams: {
+      component: ListExams,
+      url: `/components/innerPages/ListExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    arabicExams: {
+      component: arabicExams,
+      url: `/components/innerPages/arabicExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    mathExams: {
+      component: mathExams,
+      url: `/components/innerPages/mathExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    frenchExams: {
+      component: frenchExams,
+      url: `/components/innerPages/frenchExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    englishExams: {
+      component: englishExams,
+      url: `/components/innerPages/englishExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    scienceofearthExam: {
+      component: scienceofearthExam,
+      url: `/components/innerPages/scienceofearthExam`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    socialExams: {
+      component: socialExams,
+      url: `/components/innerPages/socialExams`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
   },
 
   blocks: {
