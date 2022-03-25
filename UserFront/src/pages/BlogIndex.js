@@ -47,17 +47,17 @@ const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
 export default ({
-  headingText = "Exercices",
+  headingText = "Blog Posts",
   posts = [
     {
       imageSrc:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsx5oNB8Efn9H7b7NJluWn-Zj2yMjAC7xbUw&usqp=CAU",
-      category: "Hello",
-     
-      title: "Success",
+        "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+      category: "Travel Tips",
+      date: "April 21, 2020",
+      title: "Safely Travel in Foreign Countries",
       description:
-        "is the sum of small efforts, repeated day in and day out.",
-      //url: "https://timerse.com",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      url: "https://timerse.com",
       featured: true
     },
     getPlaceholderPost(),
@@ -121,9 +121,11 @@ export default ({
 
 const getPlaceholderPost = () => ({
   imageSrc:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQwqbLHbPDQAO-ZmpRaUWgtjA47A6tbO1i7Q&usqp=CAU",
-  category: "exercice",
+    "https://images.unsplash.com/photo-1418854982207-12f710b74003?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+  category: "Travel Guide",
   date: "April 19, 2020",
-  title: "exercice",
+  title: "Visit the beautiful Alps in Switzerland",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   url: "https://reddit.com"
 });

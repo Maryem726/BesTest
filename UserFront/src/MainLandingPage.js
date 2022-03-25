@@ -174,6 +174,9 @@ export default ({
             <SectionDescription>
               Take a look at some of our main features mentionned above and see for yourself how it will be presented, each one in its designated section !
             </SectionDescription>
+
+
+
             <PreviewCards>
               {Object.entries(landingPages).map(([pageName, page], index) => (
                 <PreviewCardContainer key={index}>
@@ -187,6 +190,9 @@ export default ({
                     </PreviewCardImageContainer>
                     <PreviewButton>Our Ressources</PreviewButton>
                   </PreviewCard>
+
+
+
                 </PreviewCardContainer>
               ))}
             </PreviewCards>

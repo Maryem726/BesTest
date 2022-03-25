@@ -19,7 +19,7 @@ const TabControl = styled.div`
   &:hover {
     ${tw`bg-gray-300 text-gray-700`}
   }
-  ${props => props.active && tw`bg-primary-500! text-gray-100!`}
+  ${props => props.active && tw` hidden bg-primary-500! text-gray-100!`}
   }
 `;
 
@@ -30,13 +30,13 @@ const CardImageContainer = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
   ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
 `;
-/*const CardRatingContainer = tw.div`leading-none absolute inline-flex bg-gray-100 bottom-0 left-0 ml-4 mb-4 rounded-full px-5 py-2 items-end`;
+const CardRatingContainer = tw.div`leading-none absolute inline-flex bg-gray-100 bottom-0 left-0 ml-4 mb-4 rounded-full px-5 py-2 items-end`;
 const CardRating = styled.div`
   ${tw`mr-1 text-sm font-bold flex items-end`}
   svg {
     ${tw`w-4 h-4 fill-current text-orange-400 mr-1`}
   }
-`;*/
+`;
 
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
@@ -61,22 +61,22 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 export default ({
   heading = "Checkout the Menu",
   tabs = {
-    Show: [
-      {
+  
+      Show: [{
         imageSrc:
         "https://alifarabic.com/wp-content/uploads/2020/10/grammar-2.png",
         title: "Arabic",
         content: "Arabic Lessons",
         
-        url: "#"
+        url: `/components/innerPages/LessonsPage`,
       },
       {
         imageSrc:
         "https://cdn.vectorstock.com/i/1000x1000/84/67/young-female-teacher-on-math-lesson-at-blackboard-vector-16658467.webp",
         title: "Mathematics",
-        content: "CMathematics Lessons",
-        
-        url: "#"
+        content: "Mathematics Lessons",
+
+        url: "/components/innerPages/MathLessonsPage"
       },
       {
         imageSrc:
@@ -84,7 +84,7 @@ export default ({
         title: "French",
         content: "French Lessons",
         
-        url: "#"
+        url: "/components/innerPages/FrenchLessonsPage",
       },
       {
         imageSrc:
@@ -92,7 +92,7 @@ export default ({
         title: "English",
         content: "English Lessons",
        
-        url: "#"
+        url: "/components/innerPages/EnglishPage"
       },
       {
         imageSrc:
@@ -100,7 +100,7 @@ export default ({
         title: "Sciences of life and earth",
         content: "Sciences of life and earth Lessons",
         
-        url: "#"
+        url: "/components/innerPages/SciencesPage"
       },
       {
         imageSrc:
@@ -108,10 +108,10 @@ export default ({
         title: "Socials Sciences",
         content: "Socials Sciences Lessons",
        
-        url: "#"
-      },
+        url:  "/components/innerPages/SocialLessonsPage"
+      }
    
-    ],
+      ],
     
   }
 }) => {
@@ -160,7 +160,13 @@ export default ({
               <CardContainer key={index}>
                 <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
                   <CardImageContainer imageSrc={card.imageSrc}>
-                   
+                    <CardRatingContainer>
+                      <CardRating>
+                        <StarIcon />
+                        {card.rating}
+                      </CardRating>
+                      <CardReview>({card.reviews})</CardReview>
+                    </CardRatingContainer>
                     <CardHoverOverlay
                       variants={{
                         hover: {

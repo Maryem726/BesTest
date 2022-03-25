@@ -14,7 +14,7 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import logoImageSrc from "images/logo-light.svg";
 import serverIllustrationImageSrc from "images/server-illustration-2.svg";
 
-const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 bg-primary-900 text-gray-100`;
+const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 `;
 const Header = tw(HeaderBase)`max-w-none -mt-8 py-8 -mx-8 px-8`;
 const NavLink = tw(NavLinkBase)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`;
 const LogoLink = tw(LogoLinkBase)`text-gray-100 hocus:text-gray-300`;
@@ -33,7 +33,6 @@ const Image = tw.img`w-144 ml-auto`
 export default ({
   heading = "High Performant Servers tailored to your needs",
   description = "Our cloud provisions the best servers, with fast SSD, powerful Xeon Processors, whenever you need it. Oh, and we have 99.9% SLA",
-  
   primaryButtonUrl = "#",
   imageSrc = serverIllustrationImageSrc,
 }) => {
@@ -61,7 +60,6 @@ export default ({
               <TextColumn>
                 <Heading>{heading}</Heading>
                 <Description>{description}</Description>
-                
               </TextColumn>
               <IllustrationColumn>
                 <Image src={imageSrc} />

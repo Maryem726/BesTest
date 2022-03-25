@@ -39,7 +39,7 @@ const CardImage = styled.div(props => [
 const CardText = tw.div`mt-4`;
 
 const CardHeader = tw.div`flex justify-between items-center`;
-const CardCompany = tw.div`text-primary-500 font-bold text-lg`;
+const CardCompany = tw.div`text-indigo-500 font-bold text-lg`;
 const CardType = tw.div`font-semibold text-sm text-gray-600`;
 
 const CardTitle = tw.h5`text-xl mt-4 font-bold`;
@@ -57,35 +57,32 @@ const CardMetaFeature = styled.div`
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({
-  subheading = "Our Portfolio",
+  subheading = "",
   headingHtmlComponent = (
     <>
-      We've done some <span tw="text-primary-500">amazing projects.</span>
+                  We have some <span tw="text-indigo-600">Extra offers</span> for you
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
-  linkText = "View all Projects",
-  cardLinkText = "Read Case Study",
+  description = "Apprendre une langue c'est le fait de la pratiquer, c'est pour cela que BesTest vous propose plusieurs exercices dans la langues française, n'oubliez pas de les vérifier ",
+  linkText = "View all exercices" ,
   textOnLeft = false
 }) => {
   const cards = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Tesla Inc.",
-      type: "Ad Campaign",
-      title: "Personalized Ad Campaign using Google AdWords",
+        "https://thumbs.dreamstime.com/b/petit-%C3%A9l%C3%A8ve-%C3%A0-un-livre-de-lecture-bureau-dans-le-vecteur-salle-classe-noir-afro-am%C3%A9ricain-illustration-d-isolement-127897907.jpg",
+      company: "Serie exercices 1.",
+      type: "Lecture",
+      title: "",
       durationText: "90 Days Campaign",
-      locationText: "New York"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1573165231977-3f0e27806045?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Nestle",
-      type: "SEO Marketing",
-      title: "Ranking #1 for keywords like Chocolate, Snack",
+        "https://thumbs.dreamstime.com/b/cartoon-african-american-girl-studying-home-computer-books-window-background-school-writing-homework-online-178921554.jpg",
+      company: "Serie exercices 2",
+      type: "Production écrit",
+      title: "",
       durationText: "180 Day Campaign",
-      locationText: "Palo Alto"
     }
   ];
   return (
@@ -97,8 +94,8 @@ export default ({
               <Subheading>{subheading}</Subheading>
               <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
               <HeadingDescription>{description}</HeadingDescription>
-              <PrimaryLink>
-                {linkText} <ArrowRightIcon />
+              <PrimaryLink tw="text-indigo-600 hocus:border-indigo-500 hocus:text-indigo-800"> 
+                {linkText } <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
@@ -117,10 +114,8 @@ export default ({
                       <TimeIcon /> {card.durationText}
                     </CardMetaFeature>
                     <CardMetaFeature>
-                      <LocationIcon /> {card.locationText}
                     </CardMetaFeature>
                   </CardMeta>
-                  <CardAction>{cardLinkText}</CardAction>
                 </CardText>
               </Card>
             </CardColumn>

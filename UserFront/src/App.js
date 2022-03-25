@@ -1,7 +1,10 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
+import axios from 'axios';
 import { css } from "styled-components/macro"; //eslint-disable-line
+import DataFetching from "components/DataFetching";
+import { useState } from "react";
 
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of
@@ -106,13 +109,56 @@ import MainLandingPage from "MainLandingPage.js";
 import ThankYouPage from "ThankYouPage.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { render } from "@testing-library/react";
 
-export default function App() {
+/*
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={apiResponse:""};
+  }
+
+callAPI(){
+fetch("http://localhost:3001/lesson/listL")
+.then(res => res.text())
+.then(res => this.setState({apiResponse: res}));
+}
+
+componentWillMount(){
+  this.callAPI();
+}
+
+render(){
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
+  
+*/
+  export default function App() {
+/*
+    const [ description, setDescription ] = useState("")
 
+	async function postName(e) {
+		e.preventDefault()
+		try {
+			await axios.post("http://localhost:3001/feedback", {
+				description
+			})
+		} catch (error) {
+			console.error(error)
+		}
+	}
+  
+    */
   return (
+    /*
+<div className="App">
+			<form onSubmit={postName}>
+				<input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+				<button type="submit">Send description</button>
+			</form>
+		</div>
+    */
     <Router>
       <Switch>
         <Route path="/components/:type/:subtype/:name">
@@ -129,9 +175,10 @@ export default function App() {
         </Route>
       </Switch>
     </Router>
-  );
-}
 
+  )
+
+}
 // export default EventLandingPage;
 // export default HotelTravelLandingPage;
 // export default AgencyLandingPage;

@@ -39,7 +39,7 @@ const CardImage = styled.div(props => [
 const CardText = tw.div`mt-4`;
 
 const CardHeader = tw.div`flex justify-between items-center`;
-const CardCompany = tw.div`text-primary-500 font-bold text-lg`;
+const CardCompany = tw.div`text-indigo-500 font-bold text-lg`;
 const CardType = tw.div`font-semibold text-sm text-gray-600`;
 
 const CardTitle = tw.h5`text-xl mt-4 font-bold`;
@@ -57,35 +57,24 @@ const CardMetaFeature = styled.div`
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({
-  subheading = "Our Portfolio",
+  subheading = "",
   headingHtmlComponent = (
     <>
-      We've done some <span tw="text-primary-500">amazing projects.</span>
+                  We have some <span tw="text-orange-200">Extra offers</span> for you
     </>
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
-  linkText = "View all Projects",
-  cardLinkText = "Read Case Study",
+  linkText = "View all exercices" ,
   textOnLeft = false
 }) => {
   const cards = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Tesla Inc.",
-      type: "Ad Campaign",
-      title: "Personalized Ad Campaign using Google AdWords",
+        "https://media.baamboozle.com/uploads/images/256113/1617029003_507795_gif-url.gif",
+      company: "Serie exercices 1.",
+      type: "Lecture",
+      title: "",
       durationText: "90 Days Campaign",
-      locationText: "New York"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1573165231977-3f0e27806045?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Nestle",
-      type: "SEO Marketing",
-      title: "Ranking #1 for keywords like Chocolate, Snack",
-      durationText: "180 Day Campaign",
-      locationText: "Palo Alto"
     }
   ];
   return (
@@ -96,9 +85,9 @@ export default ({
             <HeadingInfoContainer>
               <Subheading>{subheading}</Subheading>
               <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
-              <HeadingDescription>{description}</HeadingDescription>
-              <PrimaryLink>
-                {linkText} <ArrowRightIcon />
+              <HeadingDescription  tw="text-blue-900 hocus:border-orange-100 "> {description}</HeadingDescription>
+              <PrimaryLink tw="text-orange-100 hocus:border-orange-100 hocus:text-blue-900"> 
+                {linkText } <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
@@ -117,10 +106,8 @@ export default ({
                       <TimeIcon /> {card.durationText}
                     </CardMetaFeature>
                     <CardMetaFeature>
-                      <LocationIcon /> {card.locationText}
                     </CardMetaFeature>
                   </CardMeta>
-                  <CardAction>{cardLinkText}</CardAction>
                 </CardText>
               </Card>
             </CardColumn>
