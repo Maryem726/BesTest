@@ -10,6 +10,7 @@ import { ReactComponent as StarIcon } from "images/star-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 
+
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
@@ -60,7 +61,7 @@ export default ({
         imageSrc:
         "https://alifarabic.com/wp-content/uploads/2020/10/grammar-2.png",
         title: "Arabic",
-        content: "Arabic Exercices",
+        content: "تمارين اللغة العربية",
         
         url: "/components/innerPages/ArabicExercicePage"
       },
@@ -68,41 +69,41 @@ export default ({
         imageSrc:
         "https://cdn.vectorstock.com/i/1000x1000/84/67/young-female-teacher-on-math-lesson-at-blackboard-vector-16658467.webp",
         title: "Mathematics",
-        content: "Mathematics Exercices",
+        content: "تمارين الرياضيات",
         
-        url: "#"
+        url: "/components/innerPages/MathematicExercicePage"
       },
       {
         imageSrc:
         "https://i1.sndcdn.com/avatars-jQRLmEC0rcnp2F7A-zw1hrw-t240x240.jpg",
         title: "French",
-        content: "French Exercices",
+        content: "Exercices de Français",
         
-        url: "#"
+        url: "/components/innerPages/FrenchExercicePage"
       },
       {
         imageSrc:
         "https://image.shutterstock.com/image-vector/english-lesson-school-cartoon-people-260nw-700550083.jpg",
         title: "English",
-        content: "English Exercices",
+        content: "English exercises",
        
-        url: "#"
+        url: "/components/innerPages/EnglishExercicePage"
       },
       {
         imageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKer2JTReDe_bZzNZTULxTIX4xUt4p9sG-H0wU46S_dbEuS9WofbZaEuhGxS1Uzive-w&usqp=CAU",
         title: "Sciences of life and earth",
-        content: "Sciences of life and earth Exercices",
+        content: "تمارين الايقاظ العلمي",
         
-        url: "#"
+        url: "/components/innerPages/ScienceExercicePage"
       },
       {
         imageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNseOJvooBYlq_lOyDKOtQxwahdZT0Xfeq3A&usqp=CAU",
         title: "Socials Sciences",
-        content: "Socials Sciences Exercices",
+        content: "تمارين المواد الاجتماعية",
        
-        url: "#"
+        url: "/components/innerPages/SocialExercicePage"
       },
    
     ],
@@ -118,10 +119,12 @@ export default ({
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
   return (
+    
     <Container tw="bg-gradient-to-b from-indigo-100 via-white to-purple-500 -mx-8 -mt-8 pt-8 px-8">
       <ContentWithPaddingXl>
         <HeaderRow>
           <Header>{heading}</Header>
+      
           <TabsControl>
             {Object.keys(tabs).map((tabName, index) => (
               <TabControl key={index} active={activeTab === tabName} onClick={() => setActiveTab(tabName)}>

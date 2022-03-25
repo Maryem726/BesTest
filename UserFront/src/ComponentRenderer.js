@@ -29,6 +29,13 @@ import TermsOfServicePage from "pages/TermsOfService.js";
 import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 import HomeExercicePage from "pages/HomeExercice.js";
 import ArabicExercicePage from"pages/ArabicExercice.js";
+import FrenchExercicePage from "pages/FrenchExercice.js";
+import EnglishExercicePage from "pages/EnglishExercice.js";
+import MathematicExercicePage from "pages/MathematicExercice.js";
+import ScienceExercicePage from "pages/ScienceExercice.js";
+import SocialExercicePage from "pages/SocialExercice.js";
+
+
 
 import LoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import SignupPageImageSrc from "images/demo/SignupPage.jpeg";
@@ -175,6 +182,31 @@ export const components = {
     ArabicExercicePage: {
       component: ArabicExercicePage,
       url: `/components/innerPages/ArabicExercicePage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    FrenchExercicePage: {
+      component: FrenchExercicePage,
+      url: `/components/innerPages/FrenchExercicePage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    EnglishExercicePage: {
+      component: EnglishExercicePage,
+      url: `/components/innerPages/EnglishExercicePage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    MathematicExercicePage: {
+      component: MathematicExercicePage,
+      url: `/components/innerPages/MathematicExercicePage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    ScienceExercicePage: {
+      component: ScienceExercicePage,
+      url: `/components/innerPages/ScienceExercicePage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    SocialExercicePage: {
+      component: SocialExercicePage,
+      url: `/components/innerPages/SocialExercicePage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     }
   },

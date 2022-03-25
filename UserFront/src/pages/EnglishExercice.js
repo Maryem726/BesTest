@@ -8,31 +8,31 @@ import Header from "components/headers/light.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
-import Hero from "components/hero/TwoColumnWithPrimaryBackgroundArabic";
+import Hero from "components/hero/TwoColumnWithPrimaryBackgroundEnglish";
 
 const HeadingRow = tw.div`flex`;
-const Heading = tw(SectionHeading)`text-gray-900`;
+const Heading = tw(SectionHeading)`bg-gradient-to-b from-gray-400  to-gray-600`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
 
 const PostContainer = styled.div`
-  ${tw`mt-6 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12`}
-  ${props =>
-    props.featured &&
-    css`
-      ${tw`w-full!`}
-      ${Post} {
-        ${tw`rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0 `}
-      }
-      ${Image} {
-        ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
-      }
-      ${Info} {
-        ${tw`sm:-mr-4 sm:pl-8 sm:flex-1 sm:rounded-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0`}
-      }
-      ${Description} {
-        ${tw`text-sm mt-3 leading-loose text-gray-600 font-medium`}
-      }
-    `}
+${tw`mt-6 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12`}
+${props =>
+  props.featured &&
+  css`
+    ${tw`w-full!`}
+    ${Post} {
+      ${tw`rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0 `}
+    }
+    ${Image} {
+      ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
+    }
+    ${Info} {
+      ${tw`sm:-mr-4 sm:pl-8 sm:flex-1 sm:rounded-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0`}
+    }
+    ${Description} {
+      ${tw`text-sm mt-3 leading-loose text-gray-600 font-medium`}
+    }
+  `}
 `;
 const Post = tw.div`cursor-pointer flex flex-col bg-gray-100 bg-opacity-0 rounded-lg`;
 const Image = styled.div`
@@ -72,7 +72,7 @@ export default ({
     getPlaceholderPost(),
   ]
 }) => {
-  const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
+  const HighlightedText = tw.span`bg-gradient-to-b from-orange-200  to-orange-600 text-gray-100 px-4 transform -skew-x-12 inline-block`;
   const [visible, setVisible] = useState(8);
   const onLoadMoreClick = () => {
     setVisible(v => v + 6);
@@ -82,15 +82,18 @@ export default ({
   return (
     <AnimationRevealPage>
 
-     <Hero
-        heading={<> <HighlightedText>تمارين اللغة العربية </HighlightedText></>}
+    
+      
+      <Container tw="bg-gradient-to-b from-white  via-orange-300 to-orange-500 relative -mx-8 -mt-8 pt-8 px-8">
+      <Header  />
+
+      <Hero
+        heading={<> <HighlightedText>English exercises</HighlightedText></>}
         
-        description="تمارين متنوعة تغطي كامل البرنامج الدراسي لدعم المكتسبات"
-        imageSrc="https://onlinearabiccourses.net/wp-content/uploads/2021/03/33333-1.png"
+        description="a variety of exercises and tasks for consolidation and reinforcement "
+        imageSrc="https://math-center.org/_nuxt/img/fishing-on-a-cloud.825cb6e.svg"
         
         />
-      
-      <Container tw="bg-gradient-to-b from-primary-900  to-white -mx-8 -mt-8 pt-8 px-8">
         <ContentWithPaddingXl>
           <HeadingRow>
             <Heading>{headingText}</Heading>
@@ -116,16 +119,17 @@ export default ({
             </ButtonContainer>
           )}
         </ContentWithPaddingXl>
+        <Footer />
       </Container>
-      <Footer />
+      
     </AnimationRevealPage>
   );
 };
 
 const getPlaceholderPost = () => ({
-  imageSrc:"https://play-lh.googleusercontent.com/g21CtlUpXEWNijsbrNox8iI-AUbCPyjWXUXSrFmAySYKxYKnRrUUD0O2faCD6zcEBNU7=w412-h220-rw",
-   title: "تمرين ",
-  category: "",
+  imageSrc:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPpYMWcDQcwrsnMqz627gAAUlx-vYmN52PA&usqp=CAU",
+   category: "exercice",
   date: "April 19, 2020",
+  title: "exercice",
   url: ""
 });

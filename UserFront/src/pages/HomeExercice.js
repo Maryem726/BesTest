@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import { Container, Content2Xl, ContentWithVerticalPadding } from "components/misc/Layouts";
 
 
+
 export default () => {
    
     const Subheading = tw.span`tracking-wider text-sm font-medium`;
@@ -12,10 +13,21 @@ export default () => {
     const Description = tw.span`inline-block mt-8`;
     const imageCss = tw`rounded-4xl`;
     return (
+
+     
+      
 <TabCardGridExercice
+
+
 heading={
   <>
     Checkout our <HighlightedText>Exercices</HighlightedText>
+    
   </>
+  
 }
-/>);}
+
+/>
+
+
+);}
