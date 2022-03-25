@@ -18,7 +18,12 @@ import RestaurantLandingPageImageSrc from "images/demo/RestaurantLandingPage.jpe
 import ServiceLandingPageImageSrc from "images/demo/ServiceLandingPage.jpeg";
 import HostingCloudLandingPageImageSrc from "images/demo/HostingCloudLandingPage.jpeg";
 
-
+import SocialLessonsPage from "pages/SocialLessons.js";
+import SciencesPage from "pages/Sciences.js"
+import EnglishPage from "pages/English.js";
+import LessonsPage from "pages/Lessons.js";
+import FrenchLessonsPage from "pages/FrenchLessons.js"
+import MathLessonsPage from "pages/MathLessons.js"
 import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
 import PricingPage from "pages/Pricing.js";
@@ -42,8 +47,6 @@ import englishExams from"exams/englishExams.js";
 import scienceofearthExam from"exams/scienceofearthExam.js";
 import socialExams from"exams/socialExams.js";
 
-
-
 import LoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import SignupPageImageSrc from "images/demo/SignupPage.jpeg";
 import PricingPageImageSrc from "images/demo/PricingPage.jpeg";
@@ -52,7 +55,6 @@ import ContactUsPageImageSrc from "images/demo/ContactUsPage.jpeg";
 import BlogIndexPageImageSrc from "images/demo/BlogIndexPage.jpeg";
 import TermsOfServicePageImageSrc from "images/demo/TermsOfServicePage.jpeg";
 import PrivacyPolicyPageImageSrc from "images/demo/PrivacyPolicyPage.jpeg";
-
 
 import BackgroundAsImageHero from "components/hero/BackgroundAsImage.js";
 import IllustrationAndVideoHero from "components/hero/TwoColumnWithVideo.js";
@@ -134,11 +136,10 @@ export const components = {
       imageSrc: SaaSProductLandingPageImageSrc,
       url: "/components/landingPages/SaaSProductLandingPage",
     },
-   
-   
   },
 
   innerPages: {
+    
     LoginPage: {
       component: LoginPage,
       imageSrc: LoginPageImageSrc,
@@ -176,6 +177,7 @@ export const components = {
       url: `/components/innerPages/TermsOfServicePage`,
       imageSrc: TermsOfServicePageImageSrc,
     },
+    
     PrivacyPolicyPage: {
       component: PrivacyPolicyPage,
       url: `/components/innerPages/PrivacyPolicyPage`,
@@ -209,6 +211,10 @@ export const components = {
     ScienceExercicePage: {
       component: ScienceExercicePage,
       url: `/components/innerPages/ScienceExercicePage`,
+    },
+    LessonsPage: {
+      component: LessonsPage,
+      url: `/components/innerPages/LessonsPage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
     SocialExercicePage: {
@@ -234,24 +240,50 @@ export const components = {
     frenchExams: {
       component: frenchExams,
       url: `/components/innerPages/frenchExams`,
-      imageSrc: PrivacyPolicyPageImageSrc,
     },
-    englishExams: {
-      component: englishExams,
-      url: `/components/innerPages/englishExams`,
+    FrenchLessonsPage: {
+      component: FrenchLessonsPage,
+      url: `/components/innerPages/FrenchLessonsPage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
     scienceofearthExam: {
       component: scienceofearthExam,
       url: `/components/innerPages/scienceofearthExam`,
+    },
+    englishExams: {
+      component: englishExams,
+      url: `/components/innerPages/englishExams`,
+    },
+    MathLessonsPage: {
+      component: MathLessonsPage,
+      url: `/components/innerPages/MathLessonsPage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    },
+    scienceofearthExam: {
+      component: scienceofearthExam,
+      url: `/components/innerPages/scienceofearthExam`,
+    },
+    EnglishPage: {
+      component: EnglishPage,
+      url: `/components/innerPages/EnglishPage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
     socialExams: {
       component: socialExams,
       url: `/components/innerPages/socialExams`,
+    },
+    SciencesPage: {
+      component: SciencesPage,
+      url: `/components/innerPages/SciencesPage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
+    SocialLessonsPage: {
+      component: SocialLessonsPage,
+      url: `/components/innerPages/SocialLessonsPage`,
+      imageSrc: PrivacyPolicyPageImageSrc,
+    }
   },
+  
 
   blocks: {
     /* Hero: {
