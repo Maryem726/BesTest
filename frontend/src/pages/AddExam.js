@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import Axios from "axios";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import {css} from "styled-components/macro"; //eslint-disable-line
-import illustration from "images/logoBestest.png";
 import logo from "images/logoBestest.png";
+import illustration from "images/logoBestest.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { components } from "ComponentRenderer";
 import {
@@ -49,17 +50,44 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
-export default ({
+export default function AddExam ({
   
   logoLinkUrl = "/",
-  illustrationImageSrc = illustration,
   headingText = "Wish to add  a new exam ?",
   submitButtonText = "Add exam",
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   ParentsigninUrl = components.innerPages.AddLessonPage,
 
-}) => (
+})  { 
+const [title, setTitle] = useState("");
+const [level, setLevel] = useState("4eme");
+const [subject, setSubject] = useState("gtgtr");
+const [price, setPrice] = useState(0);
+const [description, setDescription] = useState("gtgtr");
+
+const [images,setimages]=useState("")
+const onChangeFile=e=>{
+  setimages(e.target.files[0]);
+}
+  const Add = () =>{
+    const formData=new FormData();
+        formData.append("type",images);
+        formData.append("subject",subject);
+        formData.append("level",level);       
+
+        formData.append("title",title);
+        formData.append("price",price);
+        formData.append("description",description);
+
+
+       
+
+
+Axios.post("http://localhost:3001/examen", formData);
+
+};
+return (
   <AnimationRevealPage>
     <Container >
       <Content>
@@ -70,12 +98,19 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-                <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to add a new exam ! </p><br/>
-              <Form>
-              <Input type="text" placeholder="Title" />
-              <Input type="text" placeholder="Description" />
+              
+                <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to submit your request for a new exam ! </p><br/>
+              <Form onSubmit={Add} enctype="multipart/form-data">
+              <Input type="text" placeholder="Title" onChange={(event)=>{
+                setTitle(event.target.value);
+               }}
+               />
+              <Input type="text" placeholder="Description" onChange={(event)=>{
+                setDescription(event.target.value);
+               }} />
+              
                 
-                <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
+                {/* <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
                 <ComboboxInput tw="w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
                 placeholder="Level"
                 />
@@ -125,10 +160,48 @@ export default ({
           </ComboboxOption>
         </ComboboxList>
       </ComboboxPopover>
-    </Combobox>     
+    </Combobox>      */}
+
+            <div className="u-s-m-b-30">
+                  <select tw="  text-gray-500  w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='level'value={level}           onChange={(event)=>{
+                       setLevel(event.target.value);
+                       }}
+                        id="level">
+                       <option tw="text-gray-200">Level</option>
+                       <option value="3 class">3 class</option>
+                       <option value="4 class">4 class</option>
+                       <option value="5 class">5 class</option>
+                       <option value="6 class">6 class</option>
+
+
+                  </select>
+          
+            </div>
     
-    <Input type="number" placeholder="Price" />
-    <Input type="file" placeholder="Type" />
+            <div className="u-s-m-b-30">
+                  <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='subject'value={subject}           onChange={(event)=>{
+                  setSubject(event.target.value);
+                 }} id="subject">
+                    <option tw="text-gray-200">Subject</option>
+                    <option value="Mathematique">📙Mathematique</option>
+                   <option value="Arabic">📘 Arabic</option>
+                   <option value="French">📗 French</option>
+                   <option value="English">📒 English</option>
+                   <option value="Social science">📔 Social science</option>
+                   <option value="Sciences of life and earth">📙 Sciences of life and earth</option>
+
+
+
+                    </select>
+                    
+            </div>
+
+    <Input type="number" placeholder="Price" onChange={(event)=>{
+                setPrice(event.target.value);
+               }}
+               />
+    <Input type="file" placeholder="file" onChange={(e) =>onChangeFile(e)} name='type'
+     />
 
                 <SubmitButton type="submit">
                   <SubmitButtonIcon className="icon" />
@@ -148,4 +221,4 @@ export default ({
       </Content>
     </Container>
   </AnimationRevealPage>
-);
+)}
