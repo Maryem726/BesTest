@@ -2,6 +2,7 @@ import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import "./App.css"
 
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of

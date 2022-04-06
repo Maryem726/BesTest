@@ -70,7 +70,8 @@ const [images,setimages]=useState("")
 const onChangeFile=e=>{
   setimages(e.target.files[0]);
 }
-  const Add = () =>{
+  const Add = (e) =>{
+    e.preventDefault();
     const formData=new FormData();
         formData.append("type",images);
         formData.append("subject",subject);
@@ -80,12 +81,14 @@ const onChangeFile=e=>{
         formData.append("price",price);
         formData.append("description",description);
 
-
-       
-
+        setSubject("")
+        setLevel("")
+        setTitle("")
+        setPrice("")
+        setDescription("")
 
 Axios.post("http://localhost:3001/examen", formData);
-
+       alert("Exam added successfully")
 };
 return (
   <AnimationRevealPage>
@@ -100,7 +103,7 @@ return (
             <FormContainer>
               
                 <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to submit your request for a new exam ! </p><br/>
-              <Form onSubmit={Add} enctype="multipart/form-data">
+              <Form  onSubmit={(e) => Add(e)}  enctype="multipart/form-data">
               <Input type="text" placeholder="Title" onChange={(event)=>{
                 setTitle(event.target.value);
                }}
