@@ -54,9 +54,9 @@ export default ({
      <span tw="text-indigo-900">We have more extra offers </span> <span tw="text-pink-600">Extra offers</span> <span tw="text-indigo-900">for you</span><wbr />
     </>
   ),
-  linkText = "View all exercices" ,
+  linkText = "View all exams" ,
   description = "نقدم لكم أيضا العديد من التمارين التي ستساعدك على فهم الدروس بطريقة أسهل و أسرع، لا تنسى مراجعتهم ",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/components/innerPages/socialExams",
   
   imageContainerCss = null,
   imageDecoratorBlob = false,

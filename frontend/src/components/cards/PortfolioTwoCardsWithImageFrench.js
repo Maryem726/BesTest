@@ -65,6 +65,7 @@ export default ({
   ),
   description = "Apprendre une langue c'est le fait de la pratiquer, c'est pour cela que BesTest vous propose plusieurs exercices dans la langues française, n'oubliez pas de les vérifier ",
   linkText = "View all exercices" ,
+  ressources = "/components/innerPages/frenchExams",
   textOnLeft = false
 }) => {
   const cards = [
@@ -94,7 +95,7 @@ export default ({
               <Subheading>{subheading}</Subheading>
               <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
               <HeadingDescription>{description}</HeadingDescription>
-              <PrimaryLink tw="text-indigo-600 hocus:border-indigo-500 hocus:text-indigo-800"> 
+              <PrimaryLink href={ressources} tw="text-indigo-600 hocus:border-indigo-500 hocus:text-indigo-800"> 
                 {linkText } <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>

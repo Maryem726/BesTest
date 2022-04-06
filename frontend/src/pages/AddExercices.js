@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -17,7 +17,7 @@ import {
   } from "@reach/combobox";
   import "@reach/combobox/styles.css";
 
-
+  import Axios from "axios";
 
 const Container = tw(ContainerBase)`min-h-screen bg-gradient-to-b from-green-500 to-green-100 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -52,7 +52,7 @@ const IllustrationImage = styled.div`
 
 
 
-export default ({
+export default function AddExercices({
   logoLinkUrl = "/",
   
   headingText = "Wish to add a new exercise ?",
@@ -61,7 +61,81 @@ export default ({
   forgotPasswordUrl = "#",
   ParentsigninUrl = components.innerPages.ParentLoginPage,
 
-}) => (
+}){ 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  
+  const [level, setLevel] = useState("");
+  const [subject, setSubject] = useState("");
+  const [price, setPrice] = useState(0);
+  const [images,setimages]=useState("")
+  const onChangeFile=e=>{
+    setimages(e.target.files[0]);
+  }
+  const [lesson, setLessons]=useState(null);
+  
+  const [list, setList]=useState("");
+
+
+  const getlessonsbyMat =async(name) =>{
+  try{
+
+    const result = await Axios.get(`http://localhost:3001/lesson/findlessonName/${name}`)
+    setLessons(result.data) //return list lesson de matiére donnée en paramétre
+    console.log(result.data)
+  }
+  catch(error){
+  console.log(error)
+  }
+  }
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: response} = await  Axios.get("/lesson/listL")
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  const [filter, setFilter] = useState([]);
+
+useEffect(()=>{
+const filtered = lesson?.filter(l=>{
+  l.subject=subject
+})
+setFilter(filtered);
+}, [subject]);
+
+
+
+  const Add = () =>{
+    const formData=new FormData();
+        formData.append("title",title);
+        formData.append("subject",subject)
+        formData.append("level",level)
+        formData.append("price",price)
+        formData.append("description",description)
+        formData.append("type",images)
+        formData.append("lesson", lesson)
+
+       
+
+
+Axios.post("http://localhost:3001/exercice/addExercice", formData);
+
+
+
+  };
+  return(
   <AnimationRevealPage>
     <Container>
       <Content>
@@ -74,65 +148,86 @@ export default ({
           <FormContainer>
           <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to add a new exercise !</p>  
           <br/>
-          <Form>
-              <Input type="text" placeholder="Title" />
-              <Input type="text" placeholder="Description" />
+          <Form onSubmit={Add} enctype="multipart/form-data">              
+          <Input type="text" placeholder="Title" 
+          onChange={(event)=>{
+            setTitle(event.target.value);
+           }}
+           />
+              <Input type="text" placeholder="Description"  
+              onChange={(event)=>{
+                setDescription(event.target.value);
+               }}
+               />
               
+              <div className="u-s-m-b-30">
+                  <select tw="  text-gray-500  w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='level'value={level}           onChange={(event)=>{
+                  setLevel(event.target.value);
+                 }} id="level">
+                    <option tw="text-gray-200">Level</option>
+                   <option value="3 class">3 class</option>
+                   <option value="4 class">4 class</option>
+                   <option value="5 class">5 class</option>
+                   <option value="6 class">6 class</option>
 
-                <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
-                <ComboboxInput tw="w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
-                placeholder="Level"
+
+                    </select></div>
+
+
+                   <div className="u-s-m-b-30">
+                  <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
+                  className="select-box select-box--primary-style u-w-100" name='subject'value={subject}           
+                  onChange={(event)=>{
+
+                  setSubject(event.target.value)
+                  getlessonsbyMat(event.target.value);
+                 }} id="subject">
+                    <option tw="text-gray-200">Subject</option>
+                    <option value="mathematique">📙mathematique</option>
+                   <option value="Arabic">📘 arabic</option>
+                   <option value="French">📗 french</option>
+                   <option value="English">📒 english</option>
+                   <option value="Social science">📔 social science</option>
+                   <option value="Sciences of life and earth">📙 sciences of life and earth</option>
+
+                    </select>
+                    </div>
+
+
+{/* 
+                    <div className="u-s-m-b-30">
+                  <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
+                  className="select-box select-box--primary-style u-w-100" name='subject'value={lesson}           
+                  onChange={(event)=>{
+                    setLessons(event.target.value)
+                  getlessonsbyMat(event.target.value);
+                 }} id="lesson">
+                       <option value="getlessonsbyMat()">Lesson</option>
+  
+                    </select>
+                    </div> */}
+
+                    <div className="u-s-m-b-30">
+                    <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
+                    className="select-box select-box--primary-style u-w-100" 
+onChange={(e) => { setLessons(e.target.value) }} >
+                        <option className="option-placeholder" value="" selected disabled hidden>lesson</option>
+                        {filter?.map((lesson) => {
+
+                          return <option className="option-choice" value={lesson?.id}>{lesson?.title}</option>
+                        })}
+                      </select>
+       </div>
+
+                <Input type="number" placeholder="price" 
+                onChange={(event)=>{
+                  setPrice(event.target.value);
+                 }}
+                 />
+
+                <Input type="file" placeholder="Type" 
+                onChange={(e) =>onChangeFile(e)} name='type'
                 />
-      <ComboboxPopover>
-        <ComboboxList>
-          <ComboboxOption value="3 Class">
-           <ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="4 Class">
-           <ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="5 Class">
-          <ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="6 Class">
-        <ComboboxOptionText />
-          </ComboboxOption>
-          
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>  
-     
-    <Combobox tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
-                <ComboboxInput tw="w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
-                placeholder="Subject"
-                />
-      <ComboboxPopover>
-        <ComboboxList>
-          <ComboboxOption value="Mathematique">
-          📙 <ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="Arabic">
-          📘 <ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="French">
-          📗<ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="English">
-          📒<ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="Social science">
-          📔<ComboboxOptionText />
-          </ComboboxOption>
-          <ComboboxOption value="Sciences of life and earth">
-          📙<ComboboxOptionText />
-          </ComboboxOption>
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>
-                
-               
-                <Input type="number" placeholder="price" />
-                <Input type="file" placeholder="Type" />
                 
                 <SubmitButton type="submit">
                   <SubmitButtonIcon className="icon" />
@@ -154,4 +249,4 @@ export default ({
       </Content>
     </Container>
   </AnimationRevealPage>
-);
+)}

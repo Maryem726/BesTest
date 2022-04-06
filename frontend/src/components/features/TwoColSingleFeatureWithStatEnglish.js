@@ -54,9 +54,9 @@ export default ({
       We have more extra offers for you<wbr />
     </>
   ),
-  linkText = "View all exercices" ,
+  linkText = "View all exams" ,
   description = "BesTest offers many different english exercices proposed for these lessons, go check them and you won't regret it !  ",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/components/innerPages/englishExams",
   
   imageContainerCss = null,
   imageDecoratorBlob = false,

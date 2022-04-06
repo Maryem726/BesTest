@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import tw from "twin.macro";
@@ -11,7 +11,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
-
+import Axios from"axios";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
@@ -28,18 +28,18 @@ const PrevButton = tw(ControlButton)``;
 const NextButton = tw(ControlButton)``;
 
 const CardSlider = styled(Slider)`
-  ${tw`mt-16`}
+  ${tw`mt-16 `}
   .slick-track { 
     ${tw`flex`}
   }
   .slick-slide {
-    ${tw`h-auto flex justify-center mb-1`}
+    ${tw`h-auto flex-auto justify-center mb-1 `}
   }
 `;
-const Card = tw.div`h-full flex! flex-col sm:border max-w-sm sm:rounded-tl-4xl sm:rounded-br-5xl relative focus:outline-none`;
+const Card = tw.div`w-full h-56 sm:h-64 sm:w-96 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl sm:rounded-br-4xl  focus:outline-none`;
 const CardImage = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
-  tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`
+  tw`w-full h-10 sm:h-11/12 sm:w-96 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-6xl`
 ]);
 
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
@@ -66,9 +66,46 @@ const IconContainer = styled.div`
 `;
 const Text = tw.div`ml-10 text-sm font-semibold text-gray-800`;
 
-const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-6xl py-3 sm:py-4`;
-export default ()=> {
+const PrimaryButton = tw(PrimaryButtonBase)`sm:w-96 mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-6xl py-3 sm:py-4`;
+const PrimaryButton1 = tw.button`sm:w-96 bg-transparent text-gray-900 hocus:text-gray-700 mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-6xl py-3 sm:py-4`;
+
+export default function ArabicLessons({
+}){
+
+
+  const getEx =async(name) =>{
+    try{
   
+      const result = await Axios.get(`http://localhost:3001/lesson/findlessonName/${name}`)
+      setLessons(result.data) //return list lesson de matiére donnée en paramétre
+      console.log(result.data)
+    }
+    catch(error){
+    console.log(error)
+    }
+    }
+
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: response} = await  Axios.get("/lesson/listL")
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+
+
+
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
     arrows: false,
@@ -139,7 +176,8 @@ export default ()=> {
    * To see what attributes are configurable of each object inside this array see the example above for "Starters".
    */
   
-  return (
+  return ( <div> {loading && <div>Loading</div>}
+  {!loading && (
     <Content>
       <HeadingWithControl>
         <Heading></Heading>
@@ -149,9 +187,10 @@ export default ()=> {
         </Controls>
       </HeadingWithControl>
       <CardSlider ref={setSliderRef} {...sliderSettings}>
-        {cards.map((card, index) => (
-          <Card key={index}>
-            <CardImage imageSrc={card.imageSrc} />
+        {data.slice(0).map((card, index) => (
+          <Card key={index} featured={card.subject}>
+            <CardImage  imageSrc=
+       "https://alifarabic.com/wp-content/uploads/2020/10/Learn-to-Speak-Arabic-1060x596.png" />
             <TextInfo>
               <TitleReviewContainer>
                 <Title>{card.title}</Title>
@@ -168,9 +207,10 @@ export default ()=> {
               <Description>{card.description}</Description>
             </TextInfo>
             <PrimaryButton>إنطلق</PrimaryButton>
+            <PrimaryButton1  url= "/components/innerPages/ArabicExercicePage">تمارين</PrimaryButton1>
           </Card>
+          
         ))}
       </CardSlider>
     </Content>
-);
-};
+  )}</div>);};

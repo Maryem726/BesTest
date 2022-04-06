@@ -54,9 +54,9 @@ export default ({
       We have more extra offers for you<wbr />
     </>
   ),
-  linkText = "View all exercices" ,
+  linkText = "View all exams" ,
   description = "نقدم لكم أيضا العديد من التمارين التي ستساعدك على فهم الدروس بطريقة أسهل و أسرع، لا تنسى مراجعتهم ",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/components/innerPages/arabicExams",
   
   imageContainerCss = null,
   imageDecoratorBlob = false,
