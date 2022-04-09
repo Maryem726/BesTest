@@ -3,19 +3,8 @@ import { useParams } from 'react-router-dom';
 import AnimationRevealPage from "helpers/AnimationRevealPage.js"
 
 import EventLandingPage from "demos/EventLandingPage.js";
-import ArabicLandingPage from "demos/ArabicLandingPage.js";
-import MathematicsLandingPage from "demos/MathematicsLandingPage.js";
-import FrenchLandingPage from "demos/FrenchLandingPage.js";
-import EnglishLandingPage from "demos/EnglishLandingPage.js";
-import SciencesOfLifeAndEarthLandingPage from "demos/SciencesOfLifeAndEarthLandingPage.js";
-import SocialSciencesLandingPage from "demos/SocialSciencesLandingPage.js";
-import ComingSoonLandingPage from 'demos/ComingSoon.js';
-import ComingSoon1LandingPage from 'demos/ComingSoon.js';
-
-
-
+import HotelTravelLandingPage from "demos/HotelTravelLandingPage.js";
 import AgencyLandingPage from "demos/AgencyLandingPage.js";
-import ParentLandingPage from "demos/ParentLandingPage.js";
 import SaaSProductLandingPage from "demos/SaaSProductLandingPage.js";
 import RestaurantLandingPage from "demos/RestaurantLandingPage.js";
 import ServiceLandingPage from "demos/ServiceLandingPage.js";
@@ -25,28 +14,13 @@ import EventLandingPageImageSrc from "images/demo/EventLandingPage.jpeg";
 import HotelTravelLandingPageImageSrc from "images/demo/HotelTravelLandingPage.jpeg";
 import AgencyLandingPageImageSrc from "images/demo/AgencyLandingPage.jpeg";
 import SaaSProductLandingPageImageSrc from "images/demo/SaaSProductLandingPage.jpeg";
-
-import SocialLessonsPage from "pages/SocialLessons.js";
-import SciencesPage from "pages/Sciences.js"
-import EnglishPage from "pages/English.js";
-import LessonsPage from "pages/Lessons.js";
-import FrenchLessonsPage from "pages/FrenchLessons.js"
-import MathLessonsPage from "pages/MathLessons.js"
-import LoginPage from "pages/Login.js";
-import SignupPage from "pages/Signup.js";
-
-import RestaurantLandingPageImageSrc from "images/demo/RestaurantLandingPage.jpg";
+import RestaurantLandingPageImageSrc from "images/demo/RestaurantLandingPage.jpeg";
 import ServiceLandingPageImageSrc from "images/demo/ServiceLandingPage.jpeg";
 import HostingCloudLandingPageImageSrc from "images/demo/HostingCloudLandingPage.jpeg";
 
 
-import AdminLoginPage from "pages/AdminLogin.js";
-import TeacherLoginPage from "pages/TeacherLogin.js";
-import TeacherSignupPage from "pages/TeacherSignup.js";
-import ParentLoginPage from "pages/ParentLogin.js";
-import ParentSignupPage from "pages/ParentSignup.js";
-import KidLoginPage from "pages/KidLogin.js";
-import KidSignupPage from "pages/AddKid";
+import LoginPage from "pages/Login.js";
+import SignupPage from "pages/Signup.js";
 import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
@@ -60,28 +34,11 @@ import EnglishExercicePage from "pages/EnglishExercice.js";
 import MathematicExercicePage from "pages/MathematicExercice.js";
 import ScienceExercicePage from "pages/ScienceExercice.js";
 import SocialExercicePage from "pages/SocialExercice.js";
-import ListExams from"exams/ListExams.js";
-import arabicExams from"exams/ArabicExams.js";
-import mathExams from"exams/MathExams.js";
-import frenchExams from"exams/FrenchExams.js";
-import englishExams from"exams/EnglishExams.js";
-import scienceofearthExam from"exams/ScienceofearthExam.js";
-import socialExams from"exams/SocialExams.js";
-import addExamPage from"pages/AddExam.js";
-import addLessonPage from "pages/AddLesson.js";
-import addExercicePage from"pages/AddExercices.js";
-import ArabicLevelsPage from"demos/ArabicLevelsPage.js";
-import MathematicsLevelsPage from"demos/MathematicsLevelsPage.js";
-import FrenchLevelsPage from"demos/FrenchLevelsPage.js";
-import EnglishLevelsPage from"demos/EnglishLevelsPage.js";
-import SciencesOfLifeAndEarthLevelsPage from"demos/SciencesOfLifeAndEarthLevelsPage.js";
-import SocialSciencesLevelsPage from"demos/SocialSciencesLevelsPage.js";
+import addExercicePage from "pages/addExercice.js";
+
+
 
 import LoginPageImageSrc from "images/demo/LoginPage.jpeg";
-import ComingSoonImageSrc from"images/demo/ComingSoon.jpg";
-import ComingSoon1ImageSrc from"images/demo/ComingSoon.jpg";
-import AdminLoginPageImageSrc from "images/demo/LoginPage.jpeg";
-import TeacherLoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import SignupPageImageSrc from "images/demo/SignupPage.jpeg";
 import PricingPageImageSrc from "images/demo/PricingPage.jpeg";
 import AboutUsPageImageSrc from "images/demo/AboutUsPage.jpeg";
@@ -90,11 +47,12 @@ import BlogIndexPageImageSrc from "images/demo/BlogIndexPage.jpeg";
 import TermsOfServicePageImageSrc from "images/demo/TermsOfServicePage.jpeg";
 import PrivacyPolicyPageImageSrc from "images/demo/PrivacyPolicyPage.jpeg";
 
+
 import BackgroundAsImageHero from "components/hero/BackgroundAsImage.js";
 import IllustrationAndVideoHero from "components/hero/TwoColumnWithVideo.js";
 import IllustrationAndInputHero from "components/hero/TwoColumnWithInput.js";
 import FeaturesAndTestimonialHero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
-import FullWidthWithImageHero from "components/hero/ArabicFullWidthWithImage.js";
+import FullWidthWithImageHero from "components/hero/FullWidthWithImage.js";
 import BackgroundAsImageWithCenteredContentHero from "components/hero/BackgroundAsImageWithCenteredContent.js";
 import IllustrationAndPrimaryBackgroundHero from "components/hero/TwoColumnWithPrimaryBackground.js";
 
@@ -115,7 +73,7 @@ import WithStatsAndImageFeatures from "components/features/TwoColSingleFeatureWi
 import WithStatsAndImage2Features from "components/features/TwoColSingleFeatureWithStats2.js";
 import VerticalWithAlternateImageAndTextFeatures from "components/features/VerticalWithAlternateImageAndText.js";
 
-import SliderCards from "components/cards/ArabicThreeColSlider.js";
+import SliderCards from "components/cards/ThreeColSlider.js";
 import TrendingCards from "components/cards/TwoTrendingPreviewCardsWithImage.js";
 import PortfolioCards from "components/cards/PortfolioTwoCardsWithImage.js";
 import TabGridCards from "components/cards/TabCardGrid.js";
@@ -160,125 +118,32 @@ export const components = {
       imageSrc: RestaurantLandingPageImageSrc,
       url: "/components/landingPages/RestaurantLandingPage",
     },
-    ComingSoonLandingPage: {
-      component: ComingSoonLandingPage,
-      imageSrc: ComingSoonImageSrc,
-      url: "/components/landingPages/ComingSoonLandingPage",
+    HotelTravelLandingPage: {
+      component: HotelTravelLandingPage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/landingPages/HotelTravelLandingPage",
     },
-    ComingSoon1LandingPage: {
-      component: ComingSoonLandingPage,
-      imageSrc: ComingSoon1ImageSrc,
-      url: "/components/landingPages/ComingSoonLandingPage",
+    SaaSProductLandingPage: {
+      component: SaaSProductLandingPage,
+      imageSrc: SaaSProductLandingPageImageSrc,
+      url: "/components/landingPages/SaaSProductLandingPage",
     },
-    
+   
+   
   },
 
   innerPages: {
-    SocialSciencesLevelsPage: {
-      component: SocialSciencesLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/SocialSciencesLevelsPage",
-    },
-    SciencesOfLifeAndEarthLevelsPage: {
-      component: SciencesOfLifeAndEarthLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/SciencesOfLifeAndEarthLevelsPage",
-    },
-    EnglishLevelsPage: {
-      component: EnglishLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/EnglishLevelsPage",
-    },
-    FrenchLevelsPage: {
-      component: FrenchLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/FrenchLevelsPage",
-    },
-    MathematicsLevelsPage: {
-      component: MathematicsLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/MathematicsLevelsPage",
-    },
-    ArabicLevelsPage: {
-      component: ArabicLevelsPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/ArabicLevelsPage",
-    },
-    ArabicLandingPage: {
-      component: ArabicLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/ArabicLandingPage",
-    },
-    MathematicsLandingPage: {
-      component: MathematicsLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/MathematicsLandingPage",
-    },
-    FrenchLandingPage: {
-      component: FrenchLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/FrenchLandingPage",
-    },
-    EnglishLandingPage: {
-      component: EnglishLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/EnglishLandingPage",
-    },
-    SciencesOfLifeAndEarthLandingPage: {
-      component: SciencesOfLifeAndEarthLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/SciencesOfLifeAndEarthLandingPage",
-    }, 
-    SocialSciencesLandingPage: {
-      component: SocialSciencesLandingPage,
-      imageSrc: HotelTravelLandingPageImageSrc,
-      url: "/components/innerPages/SocialSciencesLandingPage",
-    },  
     LoginPage: {
       component: LoginPage,
       imageSrc: LoginPageImageSrc,
-    },
-    AdminLoginPage: {
-      component: AdminLoginPage,
-      imageSrc: AdminLoginPageImageSrc,
       scrollAnimationDisabled: true,
-      url: "/components/innerPages/AdminLoginPage",
+      url: "/components/innerPages/LoginPage",
     },
     SignupPage: {
       component: SignupPage,
       url: `/components/innerPages/SignupPage`,
-    },
-    TeacherLoginPage: {
-      component: TeacherLoginPage,
-      imageSrc: TeacherLoginPageImageSrc,
-      scrollAnimationDisabled: true,
-      url: "/components/innerPages/TeacherLoginPage",
-    },
-    TeacherSignupPage: {
-      component: TeacherSignupPage,
-      url: `/components/innerPages/TeacherSignupPage`,
       imageSrc: SignupPageImageSrc,
       scrollAnimationDisabled: true,
-    },
-    ParentLoginPage: {
-      component: ParentLoginPage,
-      scrollAnimationDisabled: true,
-      url: "/components/innerPages/ParentLoginPage",
-    },
-    ParentSignupPage: {
-      component: ParentSignupPage,
-      url: `/components/innerPages/ParentSignupPage`,
-      scrollAnimationDisabled: true,
-    },
-    KidLoginPage: {
-      component: KidLoginPage,
-      scrollAnimationDisabled: true,
-      url: "/components/innerPages/KidLoginPage",
-    },
-    KidSignupPage: {
-      component: KidSignupPage,
-      scrollAnimationDisabled: true,
-      url: "/components/innerPages/KidSignupPage",
     },
     PricingPage: {
       component: PricingPage,
@@ -338,10 +203,6 @@ export const components = {
     ScienceExercicePage: {
       component: ScienceExercicePage,
       url: `/components/innerPages/ScienceExercicePage`,
-    },
-    LessonsPage: {
-      component: LessonsPage,
-      url: `/components/innerPages/LessonsPage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
     SocialExercicePage: {
@@ -349,79 +210,9 @@ export const components = {
       url: `/components/innerPages/SocialExercicePage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
-    ListExams: {
-      component: ListExams,
-      url: `/components/innerPages/ListExams`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    arabicExams: {
-      component: arabicExams,
-      url: `/components/innerPages/arabicExams`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    mathExams: {
-      component: mathExams,
-      url: `/components/innerPages/mathExams`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    frenchExams: {
-      component: frenchExams,
-      url: `/components/innerPages/frenchExams`,
-    },
-    FrenchLessonsPage: {
-      component: FrenchLessonsPage,
-      url: `/components/innerPages/FrenchLessonsPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    scienceofearthExam: {
-      component: scienceofearthExam,
-      url: `/components/innerPages/scienceofearthExam`,
-    },
-    englishExams: {
-      component: englishExams,
-      url: `/components/innerPages/englishExams`,
-    },
-    MathLessonsPage: {
-      component: MathLessonsPage,
-      url: `/components/innerPages/MathLessonsPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    scienceofearthExam: {
-      component: scienceofearthExam,
-      url: `/components/innerPages/scienceofearthExam`,
-    },
-    EnglishPage: {
-      component: EnglishPage,
-      url: `/components/innerPages/EnglishPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    socialExams: {
-      component: socialExams,
-      url: `/components/innerPages/socialExams`,
-    },
-    SciencesPage: {
-      component: SciencesPage,
-      url: `/components/innerPages/SciencesPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    SocialLessonsPage: {
-      component: SocialLessonsPage,
-      url: `/components/innerPages/SocialLessonsPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    AddLessonPage: {
-      component: addLessonPage,
-      url: `/components/innerPages/AddLessonPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    AddExamPage: {
-      component: addExamPage,
-      url: `/components/innerPages/AddExamPage`,
-      imageSrc: PrivacyPolicyPageImageSrc,
-    },
-    AddExercicePage: {
+    addExercicePage: {
       component: addExercicePage,
-      url: `/components/innerPages/AddExercicePage`,
+      url: `/components/innerPages/addExercicePage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     }
   },

@@ -33,7 +33,7 @@ const Image = tw.img`w-144 ml-auto`
 export default ({
   heading = "High Performant Servers tailored to your needs",
   description = "Our cloud provisions the best servers, with fast SSD, powerful Xeon Processors, whenever you need it. Oh, and we have 99.9% SLA",
-  primaryButtonText = "Start Your 15 Day Free Trial",
+  
   primaryButtonUrl = "#",
   imageSrc = serverIllustrationImageSrc,
 }) => {
@@ -61,7 +61,7 @@ export default ({
               <TextColumn>
                 <Heading>{heading}</Heading>
                 <Description>{description}</Description>
-                <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>
+                
               </TextColumn>
               <IllustrationColumn>
                 <Image src={imageSrc} />

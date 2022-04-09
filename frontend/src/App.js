@@ -2,7 +2,6 @@ import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import "./App.css"
 
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of
@@ -105,10 +104,9 @@ import "./App.css"
 import ComponentRenderer from "ComponentRenderer.js";
 import MainLandingPage from "MainLandingPage.js";
 import ThankYouPage from "ThankYouPage.js";
-import ParentLandingPage from "demos/ParentLandingPage";
-import TeacherLandingPage from "demos/TeacherLandingPage";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "store";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -116,6 +114,7 @@ export default function App() {
 
 
   return (
+  <Provider store={store}>
     <Router>
       <Switch>
         <Route path="/components/:type/:subtype/:name">
@@ -127,18 +126,12 @@ export default function App() {
         <Route path="/thank-you">
           <ThankYouPage />
         </Route>
-        <Route path="/ParentLandingPage">
-          <ParentLandingPage />
-        </Route>
-        <Route path="/TeacherLandingPage">
-          <TeacherLandingPage />
-        </Route>
         <Route path="/">
           <MainLandingPage />
         </Route>
-        
       </Switch>
     </Router>
+    </Provider>
   );
 }
 

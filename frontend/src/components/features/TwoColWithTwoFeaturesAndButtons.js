@@ -6,7 +6,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
-import TeamIllustrationSrc from "images/teachergif.gif";
+import TeamIllustrationSrc from "images/team-illustration-2.svg";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -49,11 +49,11 @@ export default ({
   subheading = "Our Expertise",
   heading = (
     <>
-      We have the most <span tw="text-primary-500">professional</span> teachers.
+      We have the most <span tw="text-primary-500">professional</span> marketing team.
     </>
   ),
-  description = "The teachers working with us are some of the finest in their domain of speciality, always active delivering better education for your kids and available for your feedback and discussions.",
-  primaryButtonText = "See Our Teachers",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  primaryButtonText = "See Our Portfolio",
   primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true
@@ -68,12 +68,12 @@ export default ({
     {
       Icon: BriefcaseIcon,
       title: "Professionalism",
-      description: "We have the best professional teachers across the globe just to work and collaborate with you."
+      description: "We have the best professional marketing people across the globe just to work with you."
     },
     {
       Icon: MoneyIcon,
       title: "Affordable",
-      description: "For our prices. We promise to offer you the best rate we can - at par with the domain standard."
+      description: "We promise to offer you the best rate we can - at par with the industry standard."
     }
   ];
 

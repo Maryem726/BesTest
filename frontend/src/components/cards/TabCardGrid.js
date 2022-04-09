@@ -30,13 +30,13 @@ const CardImageContainer = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
   ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
 `;
-const CardRatingContainer = tw.div`leading-none absolute inline-flex bg-gray-100 bottom-0 left-0 ml-4 mb-4 rounded-full px-5 py-2 items-end`;
+/*const CardRatingContainer = tw.div`leading-none absolute inline-flex bg-gray-100 bottom-0 left-0 ml-4 mb-4 rounded-full px-5 py-2 items-end`;
 const CardRating = styled.div`
   ${tw`mr-1 text-sm font-bold flex items-end`}
   svg {
     ${tw`w-4 h-4 fill-current text-orange-400 mr-1`}
   }
-`;
+`;*/
 
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
@@ -67,54 +67,48 @@ export default ({
         "https://alifarabic.com/wp-content/uploads/2020/10/grammar-2.png",
         title: "Arabic",
         content: "Arabic Lessons",
-        rating:"5",
-        reviews:"23",
-        url: `/components/innerPages/LessonsPage`
+        
+        url: "#"
       },
       {
         imageSrc:
         "https://cdn.vectorstock.com/i/1000x1000/84/67/young-female-teacher-on-math-lesson-at-blackboard-vector-16658467.webp",
         title: "Mathematics",
-        content: "Mathematics Lessons",
-        rating:"5",
-        reviews:"24",
-        url: "/components/innerPages/MathLessonsPage"
+        content: "CMathematics Lessons",
+        
+        url: "#"
       },
       {
         imageSrc:
         "https://i1.sndcdn.com/avatars-jQRLmEC0rcnp2F7A-zw1hrw-t240x240.jpg",
         title: "French",
         content: "French Lessons",
-        rating:"5",
-        reviews:"10",
-        url: "/components/innerPages/FrenchLessonsPage"
+        
+        url: "#"
       },
       {
         imageSrc:
         "https://image.shutterstock.com/image-vector/english-lesson-school-cartoon-people-260nw-700550083.jpg",
         title: "English",
         content: "English Lessons",
-        rating:"5",
-        reviews:"20",
-        url: "/components/innerPages/EnglishPage"
+       
+        url: "#"
       },
       {
         imageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKer2JTReDe_bZzNZTULxTIX4xUt4p9sG-H0wU46S_dbEuS9WofbZaEuhGxS1Uzive-w&usqp=CAU",
         title: "Sciences of life and earth",
         content: "Sciences of life and earth Lessons",
-        rating:"5",
-        reviews:"25",
-        url: "/components/innerPages/SciencesPage"
+        
+        url: "#"
       },
       {
         imageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNseOJvooBYlq_lOyDKOtQxwahdZT0Xfeq3A&usqp=CAU",
         title: "Socials Sciences",
         content: "Socials Sciences Lessons",
-        rating:"5",
-        reviews:"15",
-        url:  "/components/innerPages/SocialLessonsPage"
+       
+        url: "#"
       },
    
     ],
@@ -166,13 +160,7 @@ export default ({
               <CardContainer key={index}>
                 <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
                   <CardImageContainer imageSrc={card.imageSrc}>
-                    <CardRatingContainer>
-                      <CardRating>
-                        <StarIcon />
-                        {card.rating}
-                      </CardRating>
-                      <CardReview>({card.reviews})</CardReview>
-                    </CardRatingContainer>
+                   
                     <CardHoverOverlay
                       variants={{
                         hover: {

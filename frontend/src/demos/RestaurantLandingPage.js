@@ -10,19 +10,14 @@ import TabGrid from "components/cards/TabCardGrid.js";
 import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
 import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
-import { components } from "ComponentRenderer.js";
-import cutePic from "images/2.gif";
 
 import chefIconImageSrc from "images/chef-icon.svg";
 import celebrationIconImageSrc from "images/celebration-icon.svg";
 import shopIconImageSrc from "images/shop-icon.svg";
 
-export default ({
-  ListExams = components.innerPages.ListExams
-}) => {
+export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
-  const HighlightedText1 = tw.span`bg-teal-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
   const HighlightedTextInverse = tw.span`bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`;
   const Description = tw.span`inline-block mt-8`;
   const imageCss = tw`rounded-4xl`;
@@ -30,8 +25,8 @@ export default ({
     <AnimationRevealPage>
       <Hero
         heading={<> <HighlightedText>Ressources</HighlightedText></>}
-        description="Welcome to our main ressources page in which you will find the list of lessons, exercices and exams available categorized by level and the teacher who uploaded them"
-        imageSrc={cutePic}
+        description="welcome to our main ressources page in which you will find the list of lessons, exercices and exams available categorized by level and the teacher who uploaded them"
+        //imageSrc="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
         //imageCss={imageCss}
         //imageDecoratorBlob={true}
         
@@ -48,7 +43,7 @@ export default ({
       
       
      <MainFeature
-        subheading={<Subheading>Exercices</Subheading>}
+        subheading={<Subheading>Hello</Subheading>}
         heading={
           <>
             We'll be presenting to you
@@ -69,7 +64,7 @@ export default ({
         textOnLeft={false}
         primaryButtonText="show"
         imageSrc={
-          "https://cdn.dribbble.com/users/3876574/screenshots/14898267/media/14c4ca245568f052e0c33e43f6d0560a.gif"
+          "https://img.myloview.fr/images/cartoon-little-boy-studying-on-the-table-400-187835570.jpg"
         }
         imageCss={imageCss}
         imageDecoratorBlob={true}
@@ -78,9 +73,8 @@ export default ({
 
 
       <MainFeature2
-        subheading={<Subheading>Exams</Subheading>}
-        heading={<>We'll be presenting to you <HighlightedText1>our exams</HighlightedText1></>}
-        
+        subheading={<Subheading>Hello</Subheading>}
+        heading={<>We'll be presenting to you <HighlightedText>our exames</HighlightedText></>}
         description={
           <Description>
            Don't Stress...Do your Best!
@@ -88,28 +82,25 @@ export default ({
             <br />
             
           </Description>
-          
         }
         statistics={[
           {
-            key: "Exams",
+            key: "exames",
             value: "100+",
           },
           {
-            key: "Corrections",
+            key: "corrections",
             value: "100+"
           },
           {
-            key: "Teachers",
+            key: "teachers",
             value: "many"
           }
         ]}
         primaryButtonText="show"
-        primaryButtonUrl={ListExams.url}
+        primaryButtonUrl="https://order.now.com"
         imageInsideDiv={false}
-        imageSrc=" 
-        https://media.baamboozle.com/uploads/images/87315/1613495430_357609.gif
-        "
+        imageSrc="https://cdn1.vectorstock.com/i/thumb-large/13/80/happy-cute-little-student-boy-raising-his-hand-vector-38521380.jpg"
         imageCss={Object.assign(tw`bg-cover`, imageCss)}
         imageContainerCss={tw`md:w-1/2 h-auto`}
         imageDecoratorBlob={true}

@@ -36,9 +36,11 @@ export default () => {
             <LogoText>BesTest</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="/">Home</Link>
-            <Link href="/#aboutProject">The Project</Link>
-            <Link href="/#aboutTeam">Team</Link>
+            <Link href="#">Home</Link>
+            <Link href="#">About</Link>
+            <Link href="#">Contact Us</Link>
+            <Link href="#">Blog</Link>
+            <Link href="#">Reviews</Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

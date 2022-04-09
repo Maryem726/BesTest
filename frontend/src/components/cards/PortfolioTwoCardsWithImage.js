@@ -8,8 +8,6 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
-import { components } from "ComponentRenderer.js";
-
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -62,34 +60,33 @@ export default ({
   subheading = "Our Portfolio",
   headingHtmlComponent = (
     <>
-      We offer some <span tw="text-primary-500">amazing ressources.</span>
+      We've done some <span tw="text-primary-500">amazing projects.</span>
     </>
   ),
-  description = "Starting for basic lessons reaching high quality exams. We have it all, check our ressources section to see all our available ressources and acquire them for your kid.",
-  linkText = "View all Ressources",
-  cardLinkText = "Read More",
-  textOnLeft = false,
-  ressources = components.landingPages.RestaurantLandingPage,
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
+  linkText = "View all Projects",
+  cardLinkText = "Read Case Study",
+  textOnLeft = false
 }) => {
   const cards = [
     {
       imageSrc:
-        "https://alifarabic.com/wp-content/uploads/2020/10/grammar-2.png",
-      company: "Arabic ",
-      type: "Lessons",
-      title: "Basic and advanced lessons in the Arabic subject",
-      durationText: "10 Hours Lessons",
-      /*locationText: "New York"*/
+        "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+      company: "Tesla Inc.",
+      type: "Ad Campaign",
+      title: "Personalized Ad Campaign using Google AdWords",
+      durationText: "90 Days Campaign",
+      locationText: "New York"
     },
     {
       imageSrc:
-        "https://i1.sndcdn.com/avatars-jQRLmEC0rcnp2F7A-zw1hrw-t240x240.jpg",
-      company: "French",
-      type: "Lessons",
-      title: "Basic and advanced lessons in the French subject",
-      durationText: "20 Hours Lessons",
-      /*locationText: "Palo Alto"*/
-    },
+        "https://images.unsplash.com/photo-1573165231977-3f0e27806045?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+      company: "Nestle",
+      type: "SEO Marketing",
+      title: "Ranking #1 for keywords like Chocolate, Snack",
+      durationText: "180 Day Campaign",
+      locationText: "Palo Alto"
+    }
   ];
   return (
     <Container>
@@ -100,7 +97,7 @@ export default ({
               <Subheading>{subheading}</Subheading>
               <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
               <HeadingDescription>{description}</HeadingDescription>
-              <PrimaryLink href={ressources.url}>
+              <PrimaryLink>
                 {linkText} <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
@@ -114,12 +111,16 @@ export default ({
                     <CardCompany>{card.company}</CardCompany>
                     <CardType>{card.type}</CardType>
                   </CardHeader>
-                  <CardTitle>{card.title}</CardTitle> 
+                  <CardTitle>{card.title}</CardTitle>
                   <CardMeta>
                     <CardMetaFeature>
                       <TimeIcon /> {card.durationText}
                     </CardMetaFeature>
+                    <CardMetaFeature>
+                      <LocationIcon /> {card.locationText}
+                    </CardMetaFeature>
                   </CardMeta>
+                  <CardAction>{cardLinkText}</CardAction>
                 </CardText>
               </Card>
             </CardColumn>

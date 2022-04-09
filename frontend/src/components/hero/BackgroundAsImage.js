@@ -5,7 +5,6 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
-import { components } from "ComponentRenderer.js";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -28,8 +27,6 @@ const TwoColumn = tw.div`pt-24 pb-32 px-4 flex justify-between items-center flex
 const LeftColumn = tw.div`flex flex-col items-center lg:block`;
 const RightColumn = tw.div`w-full sm:w-5/6 lg:w-1/2 mt-16 lg:mt-0 lg:pl-8`;
 
-
-
 const Heading = styled.h1`
   ${tw`text-3xl text-center lg:text-left sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-100 leading-none`}
   span {
@@ -47,7 +44,7 @@ const SlantedBackground = styled.span`
 
 const Notification = tw.span`inline-block my-4 pl-3 py-1 text-gray-100 border-l-4 border-blue-500 font-medium text-sm`;
 
-const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gradient-to-b from-gray-100 to-primary-500 text-gray-100 font-bold rounded shadow transition duration-300 hocus:bg-gradient-to-t from-gray-100 to-primary-500 hocus:text-gray-100 focus:shadow-outline`;
+const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100 focus:shadow-outline`;
 
 const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   padding-bottom: 56.25% !important;
@@ -58,35 +55,28 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default ({
-  kidAdd = components.innerPages.KidSignupPage
-}) => {
+export default () => {
   const navLinks = [
-    <NavLinks>
-      <NavLink href="/">
-        Home
+    <NavLinks key={1}>
+      <NavLink href="#">
+        About
       </NavLink>
-      <NavLink href="components/landingPages/RestaurantLandingPage">
-        Ressources
+      <NavLink href="#">
+        Blog
       </NavLink>
-      <NavLink href="/#">
-        Statistics
+      <NavLink href="#">
+        Locations
       </NavLink>
-      <NavLink href="/#">
-        Teachers
+      <NavLink href="#">
+        Pricing
       </NavLink>
-      <NavLink href="/#">
-        Kids
-      </NavLink>
-      
     </NavLinks>,
-    <NavLinks>
-      <PrimaryLink href="/">
-        Log Out
+    <NavLinks key={2}>
+      <PrimaryLink href="/#">
+        Hire Us
       </PrimaryLink>
     </NavLinks>
   ];
-  
 
   return (
     <Container>
@@ -95,16 +85,13 @@ export default ({
         <StyledHeader links={navLinks} />
         <TwoColumn>
           <LeftColumn>
-            <Notification>We are doing our best to deliver to you the best experience for keeping an eye on your children's education.</Notification>
+            <Notification>We have now launched operations in Europe.</Notification>
             <Heading>
-              <span>Welcome to your, </span>
+              <span>Hire the best</span>
               <br />
-              <SlantedBackground>Parent Space</SlantedBackground>
-            </Heading><br/>
-            <Notification>What are you waiting for : &nbsp;</Notification>
-            <PrimaryLink href={kidAdd.url}>
-              Register your kid
-              </PrimaryLink>
+              <SlantedBackground>Marketing Team.</SlantedBackground>
+            </Heading>
+            <PrimaryAction>Read Customer Stories</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed

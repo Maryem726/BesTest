@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "../../images/logoBestest.png";
+import LogoImage from "../../images/logo.svg";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
@@ -41,10 +41,10 @@ export default () => {
         <WideColumn>
           <LogoContainer>
             <LogoImg src={LogoImage} />
-            <LogoText>BesTest</LogoText>
+            <LogoText>Treact Inc.</LogoText>
           </LogoContainer>
           <CompanyDescription>
-            BesTest is an online e-learning platform dedicated for teacher, kids and parents aswell.
+            Treact is an Internet Technology company providing design resources such as website templates and themes.
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
@@ -58,6 +58,57 @@ export default () => {
             </SocialLink>
           </SocialLinksContainer>
         </WideColumn>
+        <Column>
+          <ColumnHeading>Quick Links</ColumnHeading>
+          <LinkList>
+            <LinkListItem>
+              <Link href="#">Blog</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">FAQs</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Support</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">About Us</Link>
+            </LinkListItem>
+          </LinkList>
+        </Column>
+        <Column>
+          <ColumnHeading>Product</ColumnHeading>
+          <LinkList>
+            <LinkListItem>
+              <Link href="#">Log In</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Personal</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Business</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Team</Link>
+            </LinkListItem>
+          </LinkList>
+        </Column>
+        <Column>
+          <ColumnHeading>Legal</ColumnHeading>
+          <LinkList>
+            <LinkListItem>
+              <Link href="#">GDPR</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Privacy Policy</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Terms of Service</Link>
+            </LinkListItem>
+            <LinkListItem>
+              <Link href="#">Disclaimer</Link>
+            </LinkListItem>
+          </LinkList>
+        </Column>
       </FiveColumns>
     </Container>
   );

@@ -45,7 +45,7 @@ const Card = styled.div`
   }
 
   .description {
-    ${tw`mt-3 font-semibold text-gray-100 text-sm leading-loose`}
+    ${tw`mt-3 font-semibold text-secondary-100 text-sm leading-loose`}
   }
 `;
 
@@ -65,19 +65,14 @@ export default () => {
   const cards = [
     {
       imageSrc: ShieldIconImage,
-      title: "Secured Data",
-      description: "All the data presented to you is secured and garantees the best privacy measures."
+      title: "Ads Management",
+      description: "We create and manage ads that you need, from creation to deployment. Lorem ipsum donor sit amet consicou."
     },
-    { imageSrc: SupportIconImage, title: "Real Time Sessions",
-      description : "Real time video sessions are available to your kid once they are scheduled by teachers, you can also request a private video session for your kid." },
-    { imageSrc: CustomizeIconImage, title: "Easy Access",
-      description : "Our ressources and services are well presented and organized for you to always find what you are looking for easily." },
-    { imageSrc: ReliableIconImage, title: "Direct communication",
-      description: "You can always communicate directly with your kid's teachers by sending them feedback and discuss with them in real time aswell." },
-    { imageSrc: FastIconImage, title: "Light Speed",
-      description: "We are always working to maintain the stability of our platform and deliver the fully optimized experience for you and your kids." },
-    { imageSrc: SimpleIconImage, title: "Better opportunities",
-      description: "All of our ressrouces are rated by other users for you to have a better vision and base your decisions on a clear and honest formula." }
+    { imageSrc: SupportIconImage, title: "Video Marketing" },
+    { imageSrc: CustomizeIconImage, title: "Customer Relation" },
+    { imageSrc: ReliableIconImage, title: "Product Outreach" },
+    { imageSrc: FastIconImage, title: "PR Campaign" },
+    { imageSrc: SimpleIconImage, title: "Product Expansion" }
   ];
 
   return (

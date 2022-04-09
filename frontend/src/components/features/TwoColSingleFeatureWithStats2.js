@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import StatsIllustrationSrc from "images/statgif.gif";
+import StatsIllustrationSrc from "images/stats-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
 const Container = tw.div`relative`;
@@ -31,7 +31,7 @@ const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:t
 const Statistics = tw.div`flex flex-col items-center sm:block text-center md:text-left mt-4`;
 const Statistic = tw.div`text-left sm:inline-block sm:mr-12 last:mr-0 mt-4`;
 const Value = tw.div`font-bold text-lg sm:text-xl lg:text-2xl text-secondary-500 tracking-wide`;
-const Key = tw.div`font-medium text-teal-700`;
+const Key = tw.div`font-medium text-primary-700`;
 
 const PrimaryButton = tw(PrimaryButtonBase)`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 
@@ -43,11 +43,11 @@ export default ({
   subheading = "Our Track Record",
   heading = (
     <>
-      All the statistics that you need <wbr /> are <span tw="text-primary-500">in one place.</span>
+      We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>
     </>
   ),
-  description = "We offer you full and detailed reports of your kid's performance and results, teacher ratings and many more about our services in order to garantee a better and more efficient follow-up across all activities available in our site.",
-  primaryButtonText = "Read More",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
   imageSrc = StatsIllustrationSrc,
   imageCss = null,
@@ -62,16 +62,16 @@ export default ({
   //Change the statistics variable as you like, add or delete objects
   const defaultStatistics = [
     {
-      key: "Your kids",
-      value: "3"
+      key: "Clients",
+      value: "2282+"
     },
     {
-      key: "Teachers",
-      value: "5"
+      key: "Projects",
+      value: "3891+"
     },
     {
-      key: "Ressources",
-      value: "Many.."
+      key: "Awards",
+      value: "1000+"
     }
   ];
 

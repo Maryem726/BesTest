@@ -4,7 +4,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 
-import Header from "../headers/Ressourceslight.js";
+import Header from "../headers/light.js";
 
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
@@ -64,7 +64,7 @@ export default ({
   primaryButtonText="Get Started",
   primaryButtonUrl="#",
   watchVideoButtonText="Watch Video",
-  watchVideoYoutubeUrl="https://www.youtube.com/embed/WlWKru6KgWE",
+  watchVideoYoutubeUrl="https://www.youtube.com/embed/_GuOjXYl5ew",
   imageSrc=DesignIllustration,
   imageCss=null,
   imageDecoratorBlob = false,
