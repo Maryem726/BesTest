@@ -5,13 +5,13 @@ var Schema = mongoose.Schema;
 var teacherRequest = new Schema({
     lastname: String,
     firstname: String,
+    typeuser:String,
     password: String,
     matricule: String,
+    level:String,
     email: String,
-    createdAt: Date,
+    createdAt: {type:Date,default:new Date()},
     address: String,
-    speciality: String,
-    birthday: Date,
     rib: Number
 });
 

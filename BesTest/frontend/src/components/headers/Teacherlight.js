@@ -76,20 +76,14 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
     logout();
   }
   const defaultLinks = [
-    <NavLinks key={1}>
-      <NavLink href="/#">Classes</NavLink>
-      <NavLink href="/#">Statistics</NavLink>
-      <NavLink href="components/landingPages/RestaurantLandingPage">Ressources</NavLink>
-      <NavLink href="/#">Subjects</NavLink>
+    <NavLinks key={3}>
+      <NavLink href="/components/innerPages/StudentListPage">Students</NavLink>
+      <NavLink href="#stats">Statistics</NavLink>
+      <NavLink href="#ressources">Ressources</NavLink>
+      <NavLink href="#subjects">Subjects</NavLink>
       <NavLink href="/#">Catch-up Sessions</NavLink>
 
-          <a onClick={(e) => loggout(e)} href='/' className='linknav'>
-     
-            <span className='logout'>Logout</span>
-          </a>
-          <div id='indicator'></div>
-       
-      {/* <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/">Log Out</PrimaryLink> */}
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/">Log Out</PrimaryLink>
     </NavLinks>
   ];
 

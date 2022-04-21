@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
 import ParentSignup from "./ParentSignup";
 import { USER_LOADED } from "Actions/Types";
 import user from "../Reducers/auth";
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 const Container = tw(ContainerBase)`min-h-screen bg-gradient-to-b from-primary-100 to-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-5/12 p-6 sm:p-12`;
@@ -51,8 +53,8 @@ const IllustrationImage = styled.div`
   forgotPasswordUrl = "#",
   login, 
   isAuthenticated,
-  
 }) { 
+  let history = useHistory()
   const [fromData, setFormData] = useState({
     email: '',
     password: '',
@@ -62,8 +64,31 @@ const IllustrationImage = styled.div`
     setFormData({ ...fromData, [e.target.name]: e.target.value });
   const onsubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    // login(email, password);
+    loginFetch(email,password)
   };
+ 
+  const loginFetch = async(email,password) =>{
+try {
+  const result = await axios.post("/users/signin", { email, password });
+  console.log(result)
+  localStorage.setItem("user",JSON.stringify(result.data.user))
+  localStorage.setItem("token",result.data.token)
+  if(result.data.user.typeuser === "TEACHER"){
+    history.push("/TeacherLandingPage")
+  }
+  if(result.data.user.typeuser === "PARENT"){
+    history.push("/ParentLandingPage")
+  } 
+
+  if(result.data.user.typeuser === "STUDENT"){
+    history.push("/components/landingPages/RestaurantLandingPage")
+  } 
+  
+} catch (error) {
+  console.log(error) 
+}
+  }
 
   if (isAuthenticated && user!== null && user.typeuser=='Parent') 
   {

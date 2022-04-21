@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "back": "nodemon server",
+    "front": "cd frontend && npm start",
+    "dev": " concurrently \"set PORT=3006 && npm run front\" \"npm run back\""
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -22,14 +24,18 @@
     "gravatar": "^1.8.2",
     "http-errors": "~1.6.3",
     "http-server": "^14.1.0",
-    "jade": "~1.11.0",
+    "jade": "^1.9.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.3.0",
     "morgan": "~1.9.1",
     "multer": "^1.4.4",
-    "nodemon": "^1.19.4",
+    "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "twig": "^1.15.4"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0"
   }
 }

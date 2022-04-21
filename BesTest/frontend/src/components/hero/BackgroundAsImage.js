@@ -72,10 +72,10 @@ export default ({
       <NavLink href="/#">
         Statistics
       </NavLink>
-      <NavLink href="/#">
+      <NavLink href="/components/innerPages/ListOfTeachers">
         Teachers
       </NavLink>
-      <NavLink href="/#">
+      <NavLink href="/components/innerPages/listkids">
         Kids
       </NavLink>
       

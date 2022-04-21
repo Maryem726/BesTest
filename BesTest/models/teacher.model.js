@@ -6,11 +6,12 @@ var teacher = new Schema({
     lastname: String,
     firstname: String,
     password: String,
+    typeuser:String,
     matricule: String,
     email: String,
     createdAt: Date,
     address: String,
-    speciality: String,
+    level: String,
     birthday: Date,
     rib: Number,
     Exercices:[{

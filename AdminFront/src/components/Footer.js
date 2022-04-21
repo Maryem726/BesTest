@@ -10,9 +10,9 @@ export default function footer() {
                     className="text-light-blue-500 hover:text-light-blue-700"
                 >
                     Creative Tim
-                </a>
+                </a> 
             </p>
-
+{/*  */}
             <ul className="list-unstyled flex">
                 <li className="mr-6">
                     <a

@@ -97,9 +97,9 @@ router.get('/deleteL/:id', (req, res) => {
 var config = {
   headers: {'Access-Control-Allow-Origin': '*'}
 };
-router.get('/listL', async(request,res,config )=>{
-
-    const myList = await lessonModel.find().populate("Exercices");  
+router.get('/listL/:level', async(request,res,config )=>{
+    const {level} = request.params;
+    const myList = await lessonModel.find({level}).populate("Exercices");
   res.json(myList);
 })
 

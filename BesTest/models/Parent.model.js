@@ -6,6 +6,7 @@ var parent = new Schema({
     lastname: String,
     firstname: String,
     password: String,
+    typeuser:String,
     matricule: String,
     email: String,
     createdAt: Date,
@@ -13,7 +14,8 @@ var parent = new Schema({
     rib: Number,
     kids:[{
         type: Schema.Types.ObjectId,
-        ref:"kid"
+        ref:"kid",
+        default:null
     }],
 });
 

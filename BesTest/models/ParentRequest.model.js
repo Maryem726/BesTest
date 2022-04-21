@@ -5,10 +5,11 @@ var Schema = mongoose.Schema;
 var parentRequest = new Schema({
     lastname: String,
     firstname: String,
+    typeuser:String,
     password: String,
-    matricule: String,
+    level:String,
     email: String,
-    createdAt: Date,
+    createdAt: {type:Date,default:new Date()},
     address: String,
     rib: Number  
 });

@@ -23,7 +23,7 @@ export default () => {
   const HighlightedText = tw.span`text-primary-500`;
 
   return (
-    <AnimationRevealPage>
+    <AnimationRevealPage disabled>
         
       <Hero roundedHeaderButton={true} />
       <GetStarted1 id="classes" />

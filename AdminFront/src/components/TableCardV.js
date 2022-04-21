@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
@@ -8,9 +10,19 @@ import Team2 from 'assets/img/team-2-800x800.jpg';
 import Team3 from 'assets/img/team-3-800x800.jpg';
 import Team4 from 'assets/img/team-4-470x470.png';
 import Button from '@material-tailwind/react/Button';
+import { get_teachers_valider } from "JS/Actions/admin";
 
 
 export default function CardTable() {
+    const dispatch = useDispatch();
+  const errors = useSelector((state) => state.adminReducer.errors);
+  const TeacherValid = useSelector(
+    (state) => state.adminReducer.TeacherValid
+  );
+  useEffect(() => {
+   dispatch(get_teachers_valider())
+  }, [dispatch])
+  
     return (
         <Card>
             <CardHeader color="purple" contentPosition="left">
@@ -42,18 +54,40 @@ export default function CardTable() {
                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Matricule
                                 </th>
-                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Address
-                                </th>
-                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                                    Speciality
-                                </th>
-                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                </th> */}
+                                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     RIB
-                                </th>
+                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
+  
+                            {TeacherValid.length !==0 ?
+                            TeacherValid.map((el,i)=>
+                            <tr key={i}>
+                               <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                               {el.createdAt.substr(0, 10)}
+                                   </th> 
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.firstname}
+                                   </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.lastname}
+                                   </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.email}
+                                   </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       *****
+                                   </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.matricule}
+                                   </th>
+                            </tr>) : null}
+                        </tbody>
+                        {/* <tbody>
                             <tr>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     08-03-2022
@@ -125,7 +159,7 @@ export default function CardTable() {
                            
                        
                          
-                        </tbody>
+                        </tbody> */}
                     </table>
                 </div>
             </CardBody>

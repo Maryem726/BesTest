@@ -122,7 +122,7 @@ Axios.post("http://localhost:3001/lesson", formData);
                }}
                />
 
-                  <div className="u-s-m-b-30">
+                  {/* <div className="u-s-m-b-30">
                   <select tw="  text-gray-500  w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='level'value={level}           onChange={(event)=>{
                   setLevel(event.target.value);
                  }} id="level">
@@ -133,7 +133,7 @@ Axios.post("http://localhost:3001/lesson", formData);
                    <option value="6 class">6 class</option>
 
 
-                    </select></div>
+                    </select></div> */}
                 
                 {/* <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
                 <ComboboxInput tw="w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 

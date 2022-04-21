@@ -5,6 +5,10 @@ import TeacherLessonsPage from"demos/TeacherLessonsPage.js";
 import TeacherExercicesPage from"demos/TeacherExercicesPage.js";
 import TeacherExamsPage from"demos/TeacherExamsPage.js";
 
+import StudentListPage from"demos/StudentListForTeacher.js";
+
+import ListOfTeachers from"pages/ListOfTeachers.js";
+import listkids from"demos/listKids.js";
 import EventLandingPage from "demos/EventLandingPage.js";
 import ArabicLandingPage from "demos/ArabicLandingPage.js";
 import MathematicsLandingPage from "demos/MathematicsLandingPage.js";
@@ -441,6 +445,22 @@ export const components = {
           component: TeacherExamsPage,
           imageSrc: HotelTravelLandingPageImageSrc,
           url: "/components/innerPages/TeacherExamsPage",
+        },
+        ListOfTeachers: {
+          component: ListOfTeachers,
+          url: `/components/innerPages/ListOfTeachers`,
+          imageSrc: PrivacyPolicyPageImageSrc,
+        },
+        
+        listkids: {
+          component: listkids,
+          imageSrc: HotelTravelLandingPageImageSrc,
+          url: "/components/innerPages/listkids",
+        },
+        StudentListPage: {
+          component: StudentListPage,
+          imageSrc: HotelTravelLandingPageImageSrc,
+          url: "/components/innerPages/StudentListPage",
         },
   },
 

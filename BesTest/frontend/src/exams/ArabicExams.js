@@ -10,9 +10,9 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Hero from "components/hero/TwoColumnWithPrimaryBackgroundArabic";
-import { Document, Page,pdfjs } from 'react-pdf';
-const url = 
-"https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf"
+
+
+
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -78,14 +78,11 @@ function ArabicExams({
   ]
 }) 
 
-{ pdfjs.GlobalWorkerOptions.workerSrc = 
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
+{ 
+  const [Search, setSearch] = useState('');
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
   const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
   const [visible, setVisible] = useState(7);
   const onLoadMoreClick = () => {
@@ -120,25 +117,25 @@ function ArabicExams({
         imageSrc="https://onlinearabiccourses.net/wp-content/uploads/2021/03/33333-1.png"
         
         />
+        
       
         <ContentWithPaddingXl>
+        <div className="search-box" >
+              <label htmlFor="main-search" />
+              <input className="search-text"  type="text" onChange={(e)=>handleChange(e)} id="main-search" placeholder="Search" />
+              <button className="search-btn" type="submit" /></div>
           <HeadingRow>
             <Heading>{headingText}</Heading>
           </HeadingRow>
+          
           <Posts className="custompost">
-            {data.slice(0, visible).map((post, index) => (
+            {data.slice(0, visible).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((post, index) => (
               <PostContainer key={index} featured={post.subject}>
                 <Post className="group" as="a" >
-
-                 <td><a href={`assets/uploads/${post.type}`}download> <Image imageSrc= "https://xxicolloquiummodernlanguagesdepartment.files.wordpress.com/2017/11/1b20ff16113319-562a59211c973.gif" />
-                </a>  </td>
+                <td><a href={`assets/uploads/${post.type}`}download ><Image imageSrc= "https://xxicolloquiummodernlanguagesdepartment.files.wordpress.com/2017/11/1b20ff16113319-562a59211c973.gif" /></a></td>
                   <Info>
-                    <Category>{post.level}</Category>
-                    
-                    <div>
-                    
-                    </div>
-                    <CreationDate>{post.date}</CreationDate>
+                    <Category>{post.level}</Category>                 
+                    <CreationDate>{post.createdAt}</CreationDate>
                     <Title>{post.title}</Title>
                     { post.description && <Description>{post.description}</Description>}
                   </Info>

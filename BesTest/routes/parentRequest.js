@@ -2,39 +2,31 @@ var express = require('express');
 var router = express.Router();
 var parentR=require('../models/parentRequest.model');
 var parent=require('../models/parent.model');
-var kid=require('../models/kid.model');
+// var kid=require('../models/kid.model');
 var bodyParser = require('body-parser');  
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
+const bcrypt = require("bcrypt");
+const salt = bcrypt.genSaltSync(10);
 
 router.get('/', function(req, res, next) {
     res.render('parent');
   });
-
  
-/* Ajouter teacher. */
-router.post('/', (req, res,next) =>{
-        console.log(req.body);
-    new parentR({ lastname: req.body.lastname,
-        firstname:req.body.firstname,
-        password:req.body.password, 
-        matricule:req.body.matricule, 
-        email:req.body.email, 
-        createdAt:Date.now(),
-        address:req.body.address, 
-        rib:req.body.rib
-    }).save(function(err, msg)
-    {   
-        res.redirect('/parentR/listP');
-        console.log(msg);
-    })
-  
+/* Ajouter parent. */
+router.post('/AddParent', async(req, res,next) =>{
+    try {
+        console.log(req.body)
+        const newparent = new parentR({...req.body
+        })
+        // Hash password
+    const hashedpassword = bcrypt.hashSync(newparent.password, salt);
+    newparent.password = hashedpassword
+        await newparent.save()
+      res.send({msg:"Parent added"})
+    } catch (error) {
+        console.log(error)
+    }
 });
-
-
- 
-
-
 
 //afficher liste des parents
 router.get('/listPR', function(req, res){
@@ -65,4 +57,5 @@ router.get('/getkids/:id', (req, res) => {
     }).populate("kids");
     
       });
+
 module.exports = router;
