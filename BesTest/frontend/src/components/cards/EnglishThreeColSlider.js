@@ -63,7 +63,9 @@ const IconContainer = styled.div`
   }
 `;
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
-
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 export default () => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
@@ -94,16 +96,22 @@ export default () => {
       imageSrc: "https://thumbs.dreamstime.com/b/language-school-adult-kids-english-courses-class-146540582.jpg",
       title: "English Lessons",
       description: "Check the English Lessons available in the platform.",
+      url: "/components/innerPages/TeacherLessonsPage",
+
     },
     {
       imageSrc: "https://comps.gograph.com/anglaise-école-pour-children-apprendre-language-education-vecteur-illustration-gosses-dessin-griffonnage-style-image_gg118587949.jpg",
       title: "English Exams",
       description: "Check the English Exams available in the platform.",
+      url: "/components/innerPages/TeacherExamsPage",
+
     },
     {
       imageSrc: "https://cdn.w600.comps.canstockphoto.fr/class-école-cours-langue-anglaise-vecteur-eps_csp68985642.jpg",
       title: "English Exercices",
       description: "Check the English Exercices available in the platform.",
+      url: "/components/innerPages/TeacherExercicesPage",
+
     }
   ]
 
@@ -129,7 +137,7 @@ export default () => {
                 </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
-              <PrimaryButton>Check Now</PrimaryButton>
+              <Link href={card.url}>Check Now</Link>
             </Card>
           ))}
         </CardSlider>

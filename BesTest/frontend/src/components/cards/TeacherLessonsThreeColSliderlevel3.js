@@ -72,7 +72,7 @@ export default () => {
   const getEx =async(name) =>{
     try{
   
-      const result = await Axios.get(`http://localhost:3001/lesson/findlessonName/${name}`)
+      const result = await Axios.get(`http://localhost:3006/lesson/findlessonName/${name}`)
       setLessons(result.data) //return list lesson de matiére donnée en paramétre
       console.log(result.data)
     }

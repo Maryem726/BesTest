@@ -26,6 +26,9 @@ const ControlButton = styled(PrimaryButtonBase)`
 const PrevButton = tw(ControlButton)``;
 const NextButton = tw(ControlButton)``;
 
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`
 const CardSlider = styled(Slider)`
   ${tw`mt-16`}
   .slick-track { 
@@ -113,47 +116,51 @@ export default () => {
       imageSrc: "https://thumbs.dreamstime.com/z/childrens-colored-drawings-space-theme-science-emergence-life-earth-style-doodle-vector-ufo-s-planets-technique-135196925.jpg",
       title: "Sciences of Life and Earth Lessons",
       description: "Check the Sciences of Life and Earth Lessons available in the platform.",
+      url: "/components/innerPages/TeacherLessonsPage",
     },
     {
       imageSrc: "https://previews.123rf.com/images/svarog19801/svarog198011812/svarog19801181200061/114660263-dessins-d-enfants-de-couleur-vectorielle-sur-le-thème-de-l-espace-de-la-science-et-de-l-émergence-de.jpg",
       title: "Sciences of Life and Earth Exams",
       description: "Check the Sciences of Life and Earth Exams available in the platform.",
+      url: "/components/innerPages/TeacherExamsPage",
+
     },
     {
       imageSrc: "https://thumbs.dreamstime.com/z/childrens-colored-drawings-space-theme-science-emergence-life-earth-style-doodle-vector-ufo-s-planets-technique-135196941.jpg",
       title: "Sciences of Life and Earth Exercices",
       description: "Check the Sciences of Life and Earth Exercices available in the platform.",
+      url: "/components/innerPages/TeacherExercicesPage",
+
     }
   ]
 
   return (
     
     <Container>
-      <Content>
-        <HeadingWithControl>
-          <Heading>Sub-Sections</Heading>
-        </HeadingWithControl>
-        <CardSlider ref={setSliderRef} {...sliderSettings}>
-        {data.slice(0).map((card, index) => (
-          <Card key={index} featured={card.subject}>
-              <CardImage imageSrc={card.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title}</Title>
-                  <RatingsInfo>
-                    <StarIcon />
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  
-                </SecondaryInfoContainer>
-                <Description>{card.description}</Description>
-              </TextInfo>
-              <PrimaryButton>Check Now</PrimaryButton>
-            </Card>
-          ))}
-        </CardSlider>
-      </Content>
-    </Container>
-  );
+    <Content>
+      <HeadingWithControl>
+        <Heading>Sub-Sections</Heading>
+      </HeadingWithControl>
+      <CardSlider ref={setSliderRef} {...sliderSettings}>
+        {cards.map((card, index) => (
+          <Card key={index}>
+            <CardImage imageSrc={card.imageSrc} />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>{card.title}</Title>
+                <RatingsInfo>
+                  <StarIcon />
+                </RatingsInfo>
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                
+              </SecondaryInfoContainer>
+              <Description>{card.description}</Description>
+            </TextInfo>
+            <Link href={card.url}>Check Now</Link>            </Card>
+        ))}
+      </CardSlider>
+    </Content>
+  </Container>
+);
 };

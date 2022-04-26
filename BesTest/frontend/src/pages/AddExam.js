@@ -87,7 +87,7 @@ const onChangeFile=e=>{
         setPrice("")
         setDescription("")
 
-Axios.post("http://localhost:3001/examen", formData);
+Axios.post("http://localhost:3006/examen", formData);
        alert("Exam added successfully")
 };
 return (

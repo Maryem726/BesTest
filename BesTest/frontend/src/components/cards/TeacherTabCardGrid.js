@@ -63,7 +63,7 @@ export default ({
         title: "Arabic",
         content: "Check content available in the Arabic subject",
         
-        url: "/components/innerPages/ArabicLevelsPage"
+        url: "/components/innerPages/ArabicLandingPage"
       },
       {
         imageSrc:
@@ -71,7 +71,7 @@ export default ({
         title: "Mathematics",
         content: "Check content available in the mathematics subject",
         
-        url: "/components/innerPages/MathematicsLevelsPage"
+        url: "/components/innerPages/MathematicsLandingPage"
       },
       {
         imageSrc:
@@ -79,7 +79,7 @@ export default ({
         title: "French",
         content: "Check content available in the french subject",
         
-        url: "/components/innerPages/FrenchLevelsPage"
+        url: "/components/innerPages/FrenchLandingPage"
       },
       {
         imageSrc:
@@ -87,7 +87,7 @@ export default ({
         title: "English",
         content: "Check content available in the english subject",
        
-        url: "/components/innerPages/EnglishLevelsPage"
+        url: "/components/innerPages/EnglishLandingPage"
       },
       {
         imageSrc:
@@ -95,7 +95,7 @@ export default ({
         title: "Sciences of life and earth",
         content: "Check content available in the sciences of life and earth subject",
         
-        url: "/components/innerPages/SciencesOfLifeAndEarthLevelsPage"
+        url: "/components/innerPages/SciencesOfLifeAndEarthLandingPage"
       },
       {
         imageSrc:
@@ -103,7 +103,7 @@ export default ({
         title: "Social Sciences",
         content: "Check content available in the social sciences subject",
        
-        url: "/components/innerPages/SocialSciencesLevelsPage"
+        url: "/components/innerPages/SocialSciencesLandingPage"
       },
    
     ],

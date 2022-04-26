@@ -63,7 +63,9 @@ const IconContainer = styled.div`
   }
 `;
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
-
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 export default () => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
@@ -94,16 +96,22 @@ export default () => {
       imageSrc: "https://static.vecteezy.com/ti/vecteur-libre/t2/4251244-apprentissage-mathematiques-de-education-et-connaissance-fond-cartoon-vector-illustration-science-technologie-ingenierie-formule-ou-math-de-base-vectoriel.jpg",
       title: "Mathematics Lessons",
       description: "Check the Mathematics Lessons available in the platform.",
+      url: "/components/innerPages/TeacherLessonsPage",
+
     },
     {
       imageSrc: "https://img.freepik.com/free-vector/mathematics-concept-illustration_114360-6490.jpg",
       title: "Mathematics Exams",
       description: "Check the Mathematics Exams available in the platform.",
+      url: "/components/innerPages/TeacherExamsPage",
+
     },
     {
       imageSrc: "https://thumbs.dreamstime.com/b/mati%C3%A8re-d-enseignement-de-maths-%C3%A9tude-des-math%C3%A9matiques-id%C3%A9e-%C3%A9ducation-l-et-la-connaissance-illustration-plate-isolement-155126255.jpg",
       title: "Mathematics Exercices",
       description: "Check the Mathematics Exercices available in the platform.",
+      url: "/components/innerPages/TeacherExercicesPage",
+
     }
   ]
 
@@ -129,8 +137,7 @@ export default () => {
                 </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
-              <PrimaryButton>Check Now</PrimaryButton>
-            </Card>
+              <Link href={card.url}>Check Now</Link>            </Card>
           ))}
         </CardSlider>
       </Content>

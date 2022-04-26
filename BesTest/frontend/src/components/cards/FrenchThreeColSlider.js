@@ -39,7 +39,9 @@ const CardImage = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`
 ]);
-
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
 const TitleReviewContainer = tw.div`flex flex-col sm:flex-row sm:justify-between sm:items-center`;
 const Title = tw.h5`text-2xl font-bold`;
@@ -94,16 +96,20 @@ export default () => {
       imageSrc: "https://media.istockphoto.com/vectors/french-vector-id1329695738?k=20&m=1329695738&s=612x612&w=0&h=n3vPTONj3Fx5f8bhSq6-k3DK_2Jmum-H_R_x8EvhdW4=",
       title: "French Lessons",
       description: "Check the French Lessons available in the platform.",
+      url: "/components/innerPages/TeacherLessonsPage",
     },
     {
       imageSrc: "https://cdn9.ouedkniss.com/medias/announcements/images/M8yXwB/1fdrxlgjeivU8VW32PUEzncCZld42c8LIMlCGhkq.jpg",
       title: "French Exams",
       description: "Check the French Exams available in the platform.",
+      url: "/components/innerPages/TeacherExamsPage",
     },
     {
       imageSrc: "https://media.istockphoto.com/vectors/french-vector-id1054778952?k=20&m=1054778952&s=612x612&w=0&h=sf5vHRi2zH-A_ZSxrJcRYbs8MMdL47H2heKx25EG4ps=",
       title: "French Exercices",
       description: "Check the French Exercices available in the platform.",
+      url: "/components/innerPages/TeacherExercicesPage",
+
     }
   ]
 
@@ -129,7 +135,7 @@ export default () => {
                 </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
-              <PrimaryButton>Check Now</PrimaryButton>
+              <Link href={card.url}>Check Now</Link>
             </Card>
           ))}
         </CardSlider>

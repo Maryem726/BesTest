@@ -64,7 +64,9 @@ const IconContainer = styled.div`
   }
 `;
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
-
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 export default () => {
 
@@ -113,47 +115,48 @@ export default () => {
       imageSrc: "https://media.istockphoto.com/vectors/earth-day-man-save-green-planet-environment-people-of-world-water-vector-id1127279984?b=1&k=20&m=1127279984&s=612x612&w=0&h=yrW9SSNrQaofEPMiYI5Upum-2Pf5ovS91agYJ0z8Ct0=",
       title: "Social Sciences Lessons",
       description: "Check the Social Sciences Lessons available in the platform.",
+      url: "/components/innerPages/TeacherLessonsPage",
+
     },
     {
       imageSrc: "https://img.freepik.com/free-vector/social-science-isometric-concept_1995-361.jpg",
       title: "Social Sciences Exams",
       description: "Check the Social Sciences Exams available in the platform.",
+      url: "/components/innerPages/TeacherExamsPage",
+
     },
     {
       imageSrc: "https://www.siliconchips-services.com/wp-content/uploads/2020/05/business-people-looking-book_52683-28612.jpg",
       title: "Social Sciences Exercices",
       description: "Check the Social Sciences Exercices available in the platform.",
+      url: "/components/innerPages/TeacherExercicesPage",
     }
   ]
 
-  return (<div> {loading && <div>Loading</div>}
-  {!loading && (
-    <Container>
-      <Content>
-        <HeadingWithControl>
-          <Heading>Sub-Sections</Heading>
-        </HeadingWithControl>
-        <CardSlider ref={setSliderRef} {...sliderSettings}>
-        {data.slice(0).map((card, index) => (
-          <Card key={index} featured={card.subject}>
-              <CardImage imageSrc={card.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title}</Title>
-                  <RatingsInfo>
-                    <StarIcon />
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  
-                </SecondaryInfoContainer>
-                <Description>{card.description}</Description>
-              </TextInfo>
-              <PrimaryButton>Check Now</PrimaryButton>
-              </Card>
-          
-          ))}
-        </CardSlider>
-      </Content>
-      </Container>
-      )}</div>);};
+  return (  <Container>
+    <Content>
+      <HeadingWithControl>
+        <Heading>Sub-Sections</Heading>
+      </HeadingWithControl>
+      <CardSlider ref={setSliderRef} {...sliderSettings}>
+        {cards.map((card, index) => (
+          <Card key={index}>
+            <CardImage imageSrc={card.imageSrc} />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>{card.title}</Title>
+                <RatingsInfo>
+                  <StarIcon />
+                </RatingsInfo>
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                
+              </SecondaryInfoContainer>
+              <Description>{card.description}</Description>
+            </TextInfo>
+            <Link href={card.url}>Check Now</Link>            </Card>
+        ))}
+      </CardSlider>
+    </Content>
+  </Container>
+);};
