@@ -58,7 +58,7 @@ export const get_parents_valider = () => async (dispatch) => {
 export const get_kid_requests = () => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
-    const result = await axios.get("/admin//listk"); //myList
+    const result = await axios.get("/kid//listk"); //myList
 
     dispatch({ type: GET_KIDS, payload: result.data });
   } catch (error) {
@@ -69,7 +69,7 @@ export const get_kid_requests = () => async (dispatch) => {
 export const get_kid_valider = () => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
-    const result = await axios.get("/admin/listKV"); //myList
+    const result = await axios.get("/kid/listKids"); //myList
 
     dispatch({ type: GET_KIDS_VALIDER, payload: result.data });
   } catch (error) {
@@ -108,6 +108,53 @@ export const deny_teacher = (id) => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
     await axios.delete(`/admin/deleteT/${id}`);
+  } catch (error) {
+    dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
+  }
+
+};
+export const delete_teacher = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_ADMIN });
+  try {
+    await axios.delete(`/admin/deleteTeacher/${id}`);
+  } catch (error) {
+    dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
+  }
+
+};
+
+export const delete_parent = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_ADMIN });
+  try {
+    await axios.delete(`/admin/deleteParent/${id}`);
+  } catch (error) {
+    dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
+  }
+
+};
+
+export const validate_kid = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_ADMIN });
+  try {
+    await axios.get(`/admin/validateK/${id}`); //myList
+  } catch (error) {
+    dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
+  }
+};
+
+export const deny_kid = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_ADMIN });
+  try {
+    await axios.delete(`/admin/deleteK/${id}`);
+  } catch (error) {
+    dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
+  }
+};
+
+export const delete_kid = (id) => async (dispatch) => {
+  dispatch({ type: LOAD_ADMIN });
+  try {
+    await axios.delete(`/admin/deleteKid/${id}`);
   } catch (error) {
     dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
   }

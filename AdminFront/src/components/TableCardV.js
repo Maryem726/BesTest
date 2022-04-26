@@ -11,6 +11,7 @@ import Team3 from 'assets/img/team-3-800x800.jpg';
 import Team4 from 'assets/img/team-4-470x470.png';
 import Button from '@material-tailwind/react/Button';
 import { get_teachers_valider } from "JS/Actions/admin";
+import { delete_teacher } from "JS/Actions/admin";
 
 
 export default function CardTable() {
@@ -54,12 +55,12 @@ export default function CardTable() {
                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Matricule
                                 </th>
-                                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Address
-                                </th> */}
-                                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                </th> 
+                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     RIB
-                                </th> */}
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,6 +86,23 @@ export default function CardTable() {
                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                        {el.matricule}
                                    </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.address}
+                                   </th>
+                                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                       {el.rib}
+                                   </th>
+                                   <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      <Button
+                        color="deepOrange"
+                        onClick={() => {
+                            dispatch(delete_teacher(el._id));
+                            dispatch(get_teachers_valider());
+                        }}
+                      >
+                        Deny
+                      </Button>
+                    </th>
                             </tr>) : null}
                         </tbody>
                         {/* <tbody>

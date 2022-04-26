@@ -12,6 +12,7 @@ import TeacherLandingPage from "demos/TeacherLandingPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "store";
+import ForgotPassword from "pages/ForgotPassword";
 
 export default function App() {
 
@@ -34,6 +35,9 @@ export default function App() {
         </Route>
         <Route path="/TeacherLandingPage">
           <TeacherLandingPage />
+        </Route>
+        <Route path="/ForgotPassword">
+          <ForgotPassword/>
         </Route>
         <Route path="/">
           <MainLandingPage />

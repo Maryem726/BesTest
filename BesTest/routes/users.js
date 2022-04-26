@@ -6,10 +6,46 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const User = require("../models/User");
 const { check, validationResult } = require("express-validator");
-// const normalize = require('normalize-url');
-// @route post api/user
-// @desc Test route
-//@acess Public
+const SecretCode = require("../models/SecretCode");
+const nodemailer = require("nodemailer");
+
+async function SendMail(user, code) {
+  // Create a SMTP transporter object
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "BesTest2022@gmail.com",
+      pass: "BT24042022",
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  // Message object
+  let message = {
+    from: "BesTest2022@gmail.com",
+    to: user.email,
+    // Subject of the message
+    subject: "Password reset",
+    // plaintext body
+    // text: msg,
+    html: `<div>
+            <p>Hello ${user.lastname}</p>\
+             <br>
+             <p> Here is your Secret Code to reset password : <span style="font-weight:500"> ${code} </span> </p>
+             </div>`,
+  };
+
+  await transporter.sendMail(message, (error, success) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent successfully!");
+    }
+  });
+  transporter.close();
+}
 
 router.post(
   "/signup",
@@ -35,7 +71,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .send({ errors: [{ msg: "Useral ready exists" }] });
+          .send({ errors: [{ msg: "User already exists" }] });
       }
       const avatar = gravatar.url(email, {
         s: "200",
@@ -59,21 +95,19 @@ router.post(
       };
 
       // create a token using json webtoken
-      const token = jwt.sign(
-        payload,
-        process.env.SECRET_KEY,
-        { expiresIn: "2h" }
-      );
-      res.status(200).send({user,token})
+      const token = jwt.sign(payload, process.env.SECRET_KEY, {
+        expiresIn: "2h",
+      });
+      res.status(200).send({ user, token });
     } catch (err) {
       console.error(err.message);
-      res.status(400).send({ errors: [{ msg: "Cannot Login",error:err }] });
+      res.status(400).send({ errors: [{ msg: "Cannot Login", error: err }] });
     }
   }
 );
 
 router.post(
-  "/signin", 
+  "/signin",
   [
     check("email", "Please include a valid email").isEmail(),
     check(
@@ -91,19 +125,17 @@ router.post(
 
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .send({ errors: [{ msg: "Bad Credential" }] });
+        return res.status(400).send({ errors: [{ msg: "Bad credentials" }] });
       }
 
       // Check password
-    const result = await bcrypt.compare(password, user.password);
+      const result = await bcrypt.compare(password, user.password);
 
-    if (!result) {
-      res.status(400).send({ errors: [{ msg: "Bad Credential" }] });
-      return;
-    }
-     
+      if (!result) {
+        res.status(400).send({ errors: [{ msg: "Bad credentials" }] });
+        return;
+      }
+
       // create a token using json webtoken
       const token = jwt.sign(
         {
@@ -112,11 +144,82 @@ router.post(
         process.env.SECRET_KEY,
         { expiresIn: "2h" }
       );
-      res.status(200).send({user,token})
+      res.status(200).send({ user, token });
     } catch (err) {
       console.error(err.message);
-      res.status(400).send({ errors: [{ msg: "Cannot Login",error:err }] });
+      res.status(400).send({ errors: [{ msg: "Cannot Login", error: err }] });
     }
-  } 
+  }
 );
+
+router.post("/resetPassword", async (req, res) => {
+  try {
+    // Get email from req.body
+    const { email } = req.body;
+
+    // Check user
+    const finduser = await User.findOne({ email });
+    if (!finduser) {
+      return res.status(400).send({ msg: "Couldn't find account" });
+    }
+
+    // Generate Secret Code
+    const code = Math.floor(100000 + Math.random() * 900000);
+
+    // Save code in DB with user id
+    const newcode = new SecretCode({ user: finduser, code });
+    await newcode.save();
+    // Send Email to user
+    SendMail(finduser, code);
+    res
+      .status(200)
+      .send({ msg: "Please check your Email to get the secret key" });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ msg: "Cannot reset password", error });
+  }
+});
+
+router.post("/CheckSecretCode", async (req, res) => {
+  try {
+    // Get secret code from req.body
+    const { code } = req.body;
+    // find secret code
+    const findcode = await SecretCode.findOne({ code })
+      .populate("user")
+      .sort({ _id: -1 })
+      .limit(1);
+    if (!findcode) {
+      return res.status(400).send({ msg: "Invalid code !" });
+    }
+    // send ok
+    res.status(200).send({ msg: "Secret Key is valid", findcode });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ msg: "Cannot Check Secret Code", error });
+  }
+});
+
+router.put("/resetNewPassword/:id", async (req, res) => {
+  try {
+    // Get new and confirm password from req.body
+    const { newpass, confirmpass } = req.body;
+    // Get user id from req.params
+    const { id } = req.params;
+    // Check if 2 password is equal
+    if (newpass !== confirmpass) {
+      return res.status(400).send({ msg: "Check passwords" });
+    }
+    // replace password
+    const salt = await bcrypt.genSalt(10);
+    const hashedpassword = await bcrypt.hash(newpass, salt);
+    await User.updateOne({ _id: id }, { $set: { password: hashedpassword } });
+
+    res.status(200).send({ msg: "Password updated successfully!"});
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ msg: "Cannot set new password", error });
+  }
+});
+
 module.exports = router;

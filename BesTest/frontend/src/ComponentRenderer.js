@@ -33,6 +33,7 @@ import HotelTravelLandingPageImageSrc from "images/demo/HotelTravelLandingPage.j
 import AgencyLandingPageImageSrc from "images/demo/AgencyLandingPage.jpeg";
 import SaaSProductLandingPageImageSrc from "images/demo/SaaSProductLandingPage.jpeg";
 
+import LessonExercicePage from"pages/LessonExercice.js";
 import SocialLessonsPage from "pages/SocialLessons.js";
 import SciencesPage from "pages/Sciences.js"
 import EnglishPage from "pages/English.js";
@@ -158,6 +159,7 @@ import FiveColumnWithInputFormFooter from "components/footers/FiveColumnWithInpu
 import FiveColumnWithBackgroundFooter from "components/footers/FiveColumnWithBackground.js";
 import FiveColumnDarkFooter from "components/footers/FiveColumnDark.js";
 import MiniCenteredFooter from "components/footers/MiniCenteredFooter.js";
+import ForgotPassword from 'pages/ForgotPassword';
 
 
 export const components = {
@@ -255,6 +257,10 @@ export const components = {
       component: SignupPage,
       url: `/components/innerPages/SignupPage`,
     },
+    // ForgotPasswordPage: {
+    //   component: ForgotPassword,
+    //   url: `/components/innerPages/ForgotPassword`,
+    // },
     TeacherLoginPage: {
       component: TeacherLoginPage,
       imageSrc: TeacherLoginPageImageSrc,
@@ -461,6 +467,11 @@ export const components = {
           component: StudentListPage,
           imageSrc: HotelTravelLandingPageImageSrc,
           url: "/components/innerPages/StudentListPage",
+        },
+        LessonExercicePage: {
+          component: LessonExercicePage,
+          imageSrc: HotelTravelLandingPageImageSrc,
+          url: "/components/innerPages/LessonExercicePage",
         },
   },
 

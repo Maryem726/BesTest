@@ -1,45 +1,41 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-var bodyParser = require('body-parser');  
+var bodyParser = require("body-parser");
 
-const lessonModel=require('../models/lesson.model');
-const exerciceModel=require('../models/exercice.model');
-const multer = require('multer')
-
+const lessonModel = require("../models/lesson.model");
+const exerciceModel = require("../models/exercice.model");
+const multer = require("multer");
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 //const upload = require('../middleware/upload')
- 
+
 const storage = multer.diskStorage({
-    //destination for files
-    destination: function (request, file, callback) {
-      callback(null, 'uploads/exercices/');
-    },
-  
-    //add back the extension
-    filename: function (request, file, callback) {
-      callback(null, Date.now() + file.originalname);
-    },
-  });
-  
-  //upload parameters for multer
-  const upload = multer({
-    storage: storage,
-    limits: {
-      fieldSize: 1024 * 1024 * 3,
-    },
-  });
+  //destination for files
+  destination: function (request, file, callback) {
+    callback(null, "uploads/exercices/");
+  },
 
+  //add back the extension
+  filename: function (request, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  },
+});
 
+//upload parameters for multer
+const upload = multer({
+  storage: storage,
+  limits: {
+    fieldSize: 1024 * 1024 * 3,
+  },
+});
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('exercice', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("exercice", { title: "Express" });
 });
 
 module.exports = router;
- 
 
 /*
 router.post('/add', uplaod.single('type'), async (request, response)  =>{
@@ -71,71 +67,66 @@ router.post('/add', uplaod.single('type'), async (request, response)  =>{
 
 */
 //modifier
-router.put("/update/:id",async (req, res) => {
-    try {
+router.put("/update/:id", async (req, res) => {
+  try {
+    const { title, typeR, description, subject, correction } = req.body;
+    let exerciceFields = {};
+    if (title) exerciceFields.title = title;
+    if (typeR) exerciceFields.typeR = typeR;
+    if (description) exerciceFields.description = description;
+    if (subject) exerciceFields.subject = subject;
+    if (correction) exerciceFields.subject = correction;
 
-      const {
-        title,
-        typeR,
-        description,
-        subject,
-        correction,
-        
-      } = req.body;
-      let exerciceFields = {};
-      if (title) exerciceFields.title = title;
-      if (typeR) exerciceFields.typeR = typeR;
-      if (description) exerciceFields.description = description;
-      if (subject) exerciceFields.subject = subject;
-      if (correction) exerciceFields.subject = correction;
-
-      exercice.findByIdAndUpdate(req.params.id, {
+    exercice
+      .findByIdAndUpdate(req.params.id, {
         $set: exerciceFields,
       })
-        .then((result) => {
-          res.status(200).json("updated successfully !");
-        })
-        .catch((error) => {
-          return res.status(500).json(error.message);
-        });
-    }
-
-    catch (error) {
-      return res.status(500).json("error !");
-    }
+      .then((result) => {
+        res.status(200).json("updated successfully !");
+      })
+      .catch((error) => {
+        return res.status(500).json(error.message);
+      });
+  } catch (error) {
+    return res.status(500).json("error !");
   }
-);
+});
 
-
-router.get('/list' , async(request,res)=>{
- const myList = await exerciceModel.find().populate({path: 'lesson', select: 'title type level Exercices'});  
- res.json(myList);
+router.get("/list", async (request, res) => {
+  const myList = await exerciceModel
+    .find()
+    .populate({ path: "lesson", select: "title type level Exercices" });
+  res.json(myList);
 });
 
 //affifer un exercice
-router.get('/:id', (req, res) => {
-  exerciceModel.findOne({_id:req.params.id}).populate("lesson")
-  .then(function(exercice){
-    res.json(exercice);
-  })
-.catch(function(err){
-  res.json(err);
-});
+router.get("/:id", (req, res) => {
+  exerciceModel
+    .findOne({ _id: req.params.id })
+    .populate("lesson")
+    .then(function (exercice) {
+      res.json(exercice);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 });
 
 //delete
-router.delete('/delete/:id/:idLesson', async(req, res) => {
-  try{
- await exerciceModel.findByIdAndRemove(req.params.id);
-  const lesson = await lessonModel.findOneAndUpdate(req.params.idLesson, {$pull :{Exercices: {
-    _id:req.params.id
-  }} })
-  res.send(lesson)
-  }
-  catch(error){
-    console.log(error)
-    res.send(error)
-    
+router.delete("/delete/:id/:idLesson", async (req, res) => {
+  try {
+    await exerciceModel.findByIdAndRemove(req.params.id);
+    const lesson = await lessonModel.findOneAndUpdate(req.params.idLesson, {
+      $pull: {
+        Exercices: {
+          _id: req.params.id,
+        },
+      },
+    });
+    res.send(lesson);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
   }
 });
 
@@ -171,76 +162,79 @@ router.post("/lesson/:id", upload.single('type'), async (req, res)=>{
 */
 
 //this
-router.post("/addExercice",upload.single('type'), async (req, res)=>{
-  
+router.post("/addExercice/:user", upload.single("type"), async (req, res) => {
   try {
-    const exercice = new exerciceModel({ 
+    const exercice = new exerciceModel({
       title: req.body.title,
-          subject:req.body.subject,
-          level:req.body.level, 
-          price:req.body.price , 
-          description:req.body.description,
-          type:req.file.filename,
-          createdAt:Date.now(), 
-          modifiedAt:Date.now(),
-
-       });
-     console.log(req.body);
-     // exercice.lesson = lesson._id; <=== Assign user id from signed in publisher to publisher key
-      exercice.lesson = req.body.lesson
-     await exercice.save();
-     const lesson = await lessonModel.findOneAndUpdate({_id: exercice.lesson},{$push:{Exercices:exercice}});  
+      subject: req.body.subject,
+      level: req.body.level,
+      price: req.body.price,
+      description: req.body.description,
+      type: req.file.filename,
+      createdAt: Date.now(),
+      modifiedAt: Date.now(),
+      teacher:req.params.user._id
+    });
+    console.log(req.body);
+    // exercice.lesson = lesson._id; <=== Assign user id from signed in publisher to publisher key
+    exercice.lesson = req.body.lesson;
+    await exercice.save();
+    const lesson = await lessonModel.findOneAndUpdate(
+      { _id: exercice.lesson },
+      { $push: { Exercices: exercice } }
+    );
     // await lessonModel.findOneAndUpdate({_id:lesson._id},{$push:{Exercices:exercice}})
 
     // lesson.Exercices.push(exercice);
-     console.log(lesson);
-     //await lesson.save();
-     
-     //return new exercice object, after saving it to lesson
-     res.status(200).json({success:true, data: lesson })
+    console.log(lesson);
+    //await lesson.save();
 
-
+    //return new exercice object, after saving it to lesson
+    res.status(200).json({ success: true, data: lesson });
   } catch (err) {
-     res.status(400).json({success: false, message:err.message})
-     console.log(err)
+    res.status(400).json({ success: false, message: err.message });
+    console.log(err);
   }
 });
 
-router.get('/bysubject' , async(request,res)=>{
-  const listsubject = await exerciceModel.find({subject:"arabic"})  
+router.get("/bysubject", async (request, res) => {
+  const listsubject = await exerciceModel.find({ subject: "arabic" });
   res.json(listsubject);
- });
+});
 
- router.get('/french' , async(request,res)=>{
-  const list = await exerciceModel.find({subject:"french"})  
+router.get("/french", async (request, res) => {
+  const list = await exerciceModel.find({ subject: "french" });
   res.json(list);
- });
+});
 
- router.get('/english' , async(request,res)=>{
-  const liste = await exerciceModel.find({subject:"english"})  
+router.get("/english", async (request, res) => {
+  const liste = await exerciceModel.find({ subject: "english" });
   res.json(liste);
- });
+});
 
- router.get('/mathematic' , async(request,res)=>{
-  const listm = await exerciceModel.find({subject:"mathematic"})  
+router.get("/mathematic", async (request, res) => {
+  const listm = await exerciceModel.find({ subject: "mathematic" });
   res.json(listm);
- });
+});
 
- router.get('/science' , async(request,res)=>{
-  const lists = await exerciceModel.find({subject:"science"})  
+router.get("/science", async (request, res) => {
+  const lists = await exerciceModel.find({ subject: "science" });
   res.json(lists);
- });
+});
 
- router.get('/social' , async(request,res)=>{
-  const listss = await exerciceModel.find({subject:"social"})  
+router.get("/social", async (request, res) => {
+  const listss = await exerciceModel.find({ subject: "social" });
   res.json(listss);
- });
+});
 
-   
- router.get('/filterlevelsubject/arabic/3eme' , async(request,res)=>{
-  const listsubject = await exerciceModel.find({subject:"Arabic",level:"3 class"})  
+router.get("/filterlevelsubject/arabic/:user", async (request, res) => {
+  const listsubject = await exerciceModel.find({
+    subject: "Arabic",
+    level: request.params.user.level,
+    teacher: request.params.user._id,
+  });
   res.json(listsubject);
- });
+});
 
 /*
 

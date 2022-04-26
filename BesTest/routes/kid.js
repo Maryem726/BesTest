@@ -7,6 +7,8 @@ const User = require("../models/User")
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
+var mongoose = require('mongoose');
+
 
 router.get('/', async(req, res, next) =>{
     res.render('kid');
@@ -22,7 +24,7 @@ router.post("/:id", async(req, res) =>{
     if(!findparent){
       return res.status(400).send({msg:"Cannot find parent"})
     }
-    const kid = new User({ 
+    const kid = new KidModel({ 
     lastname: req.body.lastname,
     firstname:req.body.firstname,
     password:req.body.password, 
@@ -60,11 +62,29 @@ router.get('/listk', async(request,res)=>{
 });
 
 //afficher liste des kids validé
-router.get('/listKV', async(request,res)=>{
-  const myList = await User.find({typeuser:"STUDENT"}).populate({path: 'parent'});  
+router.get('/listKVvvvvv/:user', async(request,res)=>{
+  
+  // let id = mongoose.Types.ObjectId(request.params.user);
+
+  // const us= await User.findOne({_id:request.params.user},{ "level.$": 1,"_id": 0 });
+  const myList = await User.find({typeuser:"STUDENT", level:request.params.user.level});  
+res.json(myList);
+// console.log(us)
+});
+
+//list kids validés
+router.get('/listKids', async(request,res)=>{
+  const myList = await User.find({typeuser:"STUDENT"});  
 res.json(myList);
 });
 
+//list kids par parent
+router.get('/listKids/:user', async(request,res)=>{
+  const myList = await User.find({typeuser:"STUDENT",
+parent:request.params.user
+});  
+res.json(myList);
+});
 
 router.get('/:id', (req, res) => {
     KidModel.findOne({_id:req.params.id}).populate("parent")
@@ -76,7 +96,8 @@ router.get('/:id', (req, res) => {
   });
   });
 
-  router.delete('/delete/:id/:idP', async(req, res) => {
+  
+  router.delete('/deletekidrequest/:id/:idP', async(req, res) => {
     try{
    await KidModel.findByIdAndRemove(req.params.id);
     const parent = await ParentModel.findOneAndUpdate(req.params.idP, {$pull :{kids: {

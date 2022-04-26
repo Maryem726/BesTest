@@ -85,11 +85,11 @@ export default () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-
+  const user = localStorage.getItem("user")
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/lesson/filterlevelsubject/arabic/3eme")
+        const {data: response} = await  Axios.get(`/lesson/filterlevelsubject/arabic/${user.level}`)
         setData(response);
       } catch (error) {
         console.error(error.message);

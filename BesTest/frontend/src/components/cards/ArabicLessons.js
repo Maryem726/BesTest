@@ -70,6 +70,8 @@ const PrimaryButton = tw(PrimaryButtonBase)`sm:w-96 mt-auto sm:text-lg rounded-n
 const PrimaryButton1 = tw.button`sm:w-96 bg-transparent text-gray-900 hocus:text-gray-700 mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-6xl py-3 sm:py-4`;
 
 export default function ArabicLessons({
+  PrimaryButton1Text = "تمارين",
+  PrimaryButton1Url = "/components/innerPages/LessonExercicePage",
 }){
 
   const [lessons, setLessons] = useState([]);
@@ -207,14 +209,13 @@ export default function ArabicLessons({
               <Description>{card.description}</Description>
             </TextInfo>
             <PrimaryButton url= "/components/innerPages/SocialExercicePage">إنطلق</PrimaryButton>
-            <PrimaryButton1  url= "/components/innerPages/ArabicExercicePage">تمارين</PrimaryButton1>
-          </Card>
+            <PrimaryButton1 as="a" href={PrimaryButton1Url}>
+              {PrimaryButton1Text}
+            </PrimaryButton1>          </Card>
           
         ))}
       </CardSlider>
-      <div className="pdf_container">
-      <h2>h</h2>
-    </div>
+     
     </Content>
 
     

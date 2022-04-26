@@ -11,6 +11,7 @@ import Team3 from "assets/img/team-3-800x800.jpg";
 import Team4 from "assets/img/team-4-470x470.png";
 import Button from "@material-tailwind/react/Button";
 import { get_parents_valider } from "JS/Actions/admin";
+import { delete_parent } from "JS/Actions/admin";
 
 export default function Parent() {
   const dispatch = useDispatch();
@@ -48,13 +49,13 @@ export default function Parent() {
                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   Password
                 </th>
-                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   Address
                 </th>
 
                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   RIB
-                </th> */}
+                </th>
               </tr>
             </thead>
            {ParentValid.length !==0 ? 
@@ -71,18 +72,29 @@ export default function Parent() {
                   {el.lastname}
                 </th>
                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                  {el.firstname}
-                </th>
-                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                   {el.email}
                 </th>
                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                  {el.firstname}
-                </th>
+                                       *****
+                                   </th>
                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                  *******
-                </th>
-                
+                 {el.address}
+                 </th>
+                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                 {el.rib}
+                 </th>
+                              
+                 <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      <Button
+                        color="deepOrange"
+                        onClick={() => {
+                            dispatch(delete_parent(el._id));
+                            dispatch(get_parents_valider());
+                        }}
+                      >
+                        Deny
+                      </Button>
+                    </th>
                </tr>)}
            </tbody> 
            : null}

@@ -69,9 +69,9 @@ function ParentSignup({
     email: "",
     password: "",
     typeuser: "TEACHER",
-    level: "3 class",
-    adress: "",
-    RIB: "",
+    level: "",
+    address: "",
+    rib: "",
   });
   const [parent, setParent] = useState(null);
   const [idParent, setIdParent] = useState("");
@@ -83,8 +83,8 @@ function ParentSignup({
     email,
     password,
     typeuser,
-    adress,
-    RIB,
+    address,
+    rib,
   } = fromData;
   const hundelchange = (e) =>
     setFormData({ ...fromData, [e.target.name]: e.target.value });
@@ -237,17 +237,17 @@ function ParentSignup({
                   <Input
                     className="myinput"
                     type="text"
-                    placeholder="Adress"
-                    name="adress"
-                    value={adress}
+                    placeholder="Address"
+                    name="address"
+                    value={address}
                     onChange={(e) => hundelchange(e)}
                   />
                   {fromData.typeuser != "STUDENT" ? (
                     <Input
                       type="number"
-                      name="RIB"
+                      name="rib"
                       placeholder="RIB"
-                      value={RIB}
+                      value={rib}
                       onChange={(e) => hundelchange(e)}
                     />
                   ) : null}

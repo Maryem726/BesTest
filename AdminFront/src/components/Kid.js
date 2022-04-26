@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
@@ -8,15 +10,35 @@ import Team2 from 'assets/img/team-2-800x800.jpg';
 import Team3 from 'assets/img/team-3-800x800.jpg';
 import Team4 from 'assets/img/team-4-470x470.png';
 import Button from '@material-tailwind/react/Button';
+import { get_kid_requests} from "JS/Actions/admin";
+import { validate_kid } from "JS/Actions/admin";
+import { deny_kid } from "JS/Actions/admin";
 
 
 export default function Kid() {
+    const dispatch = useDispatch();
+  const errors = useSelector((state) => state.adminReducer.errors);
+  const KidRequests = useSelector(
+    (state) => state.adminReducer.KidRequests
+  );
+  useEffect(() => {
+    dispatch(get_kid_requests());
+  }, [dispatch]);
+
     return (
         <Card>
             <CardHeader color="purple" contentPosition="left">
                 <h2 className="text-white text-2xl">Kids List</h2>
             </CardHeader>
             <CardBody>
+            <a
+          href="/KidP"
+          target="_blank"
+          rel="noreferrer"
+          className="text-purple-500 "
+        >
+          Kids Validated
+        </a>
                 <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
                         <thead>
@@ -30,9 +52,7 @@ export default function Kid() {
                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     LastName
                                 </th>
-                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                                    Birthday
-                                </th>
+                            
                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Email
                                 </th>
@@ -47,95 +67,71 @@ export default function Kid() {
                                 </th>
                             
                                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                                    Score
-                                </th>
-                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                                     Level
                                 </th>
-                            </tr>
+                          
+                                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                    Score
+                                </th>
+                                </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    08-03-2022
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                 Salma
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <i className="fas fa-circle fa-sm text-orange-500 mr-2"></i>{' '}
-                                   Armaoui
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <i className="fas fa-circle fa-sm text-orange-500 mr-2"></i>{' '}
-                                   04/05/2015
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                             salma.armaoui@esprit.tn
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                pass
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                MatriculeSalma
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                La petite Ariana
-                                </th>
-                               
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                200
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                3A2
-                                </th>
-                                
-                                </tr>
-
-                                <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    08-03-2022
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                 Maram
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <i className="fas fa-circle fa-sm text-orange-500 mr-2"></i>{' '}
-                                   Ben Ameur
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <i className="fas fa-circle fa-sm text-orange-500 mr-2"></i>{' '}
-                                   20/05/2015
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                             maram.benameur@esprit.tn
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                pass
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                MatriculeMaram
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                Tunis
-                                </th>
-                               
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                340
-                                </th>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                3A2
-                                </th>
-                                
-                                </tr>
-                             
-
-                            
-                            
-                            
-                           
-                           
-                        </tbody>
+                        {KidRequests.length !== 0 ? (
+              <tbody>
+                {KidRequests.map((el, i) => (
+                  <tr key={i}>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.createdAt.substr(0, 10)}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.firstname}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.lastname}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.email}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      ******
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.matricule}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.address}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.level}
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      {el.score}
+                    </th>
+                    {/* <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">{el.rib}</th> */}
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      <Button
+                        onClick={() => {
+                          dispatch(validate_kid(el._id));
+                          dispatch(get_kid_requests());
+                        }}
+                      >
+                        Accept
+                      </Button>
+                    </th>
+                    <th className="px-2 text-black-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                      <Button
+                        color="deepOrange"
+                        onClick={() => {
+                          dispatch(deny_kid(el._id));
+                          dispatch(get_kid_requests());
+                        }}
+                      >
+                        Deny
+                      </Button>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            ) : null}
                     </table>
                 </div>
             </CardBody>

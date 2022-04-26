@@ -4,7 +4,7 @@ var admin = require("../models/admin.model");
 var teacherR = require("../models/teacherRequest.model");
 var teacher = require("../models/teacher.model");
 var parentR = require("../models/parentRequest.model");
-var parent = require("../models/parent.model");
+var kidModel = require("../models/kid.model");
 const User = require("../models/User");
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -12,129 +12,49 @@ const nodemailer = require("nodemailer");
 // const nodemailer = require('../lib/nodemailer');
 
 async function main(mail,msg) {
-    // Generate SMTP service account from ethereal.email
-    let account = await nodemailer.createTestAccount();
-
-    console.log('Credentials obtained, sending message...');
-
-    // NB! Store the account object values somewhere if you want
-    // to re-use the same account for future mail deliveries
-
     // Create a SMTP transporter object
     let transporter = nodemailer.createTransport(
-        {
-            host: account.smtp.host,
-            port: account.smtp.port,
-            secure: account.smtp.secure,
-            auth: {
-                user: account.user,
-                pass: account.pass
-            },
-            logger: false,
-            debug: false // include SMTP traffic in the logs
-        },
-        {
-            // default message fields
-
-            // sender info
-            from: 'Pangalink <no-reply@pangalink.net>',
-            headers: {
-                'X-Laziness-level': 1000 // just an example header, no need to use this
-            }
-        }
+  {
+    service:"gmail",
+    auth:{
+      user:"BesTest2022@gmail.com",
+      pass:"BT24042022"
+    },
+    tls:{
+      rejectUnauthorized:false,
+    }
+  }
     );
 
     // Message object
     let message = {
-        // Comma separated list of recipients
+        from:"BesTest2022@gmail.com",
         to: mail,
-
         // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔',
-
+        subject: 'BestTest Validation',
         // plaintext body
-        text: 'BestTest Validation',
+        text: msg,
+        }
 
-        // HTML body
-        html:
-            '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-            '<p>'+msg+'</p>',
-        // An array of attachments
-        attachments: [
-            // String attachment
-            {
-                filename: 'notes.txt',
-                content: 'Some notes about this e-mail',
-                contentType: 'text/plain' // optional, would be detected from the filename
-            },
 
-            // Binary Buffer attachment
-            {
-                filename: 'image.png',
-                content: Buffer.from(
-                    'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                        '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                        'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-                    'base64'
-                ),
-
-                cid: 'note@example.com' // should be as unique as possible
-            },
-
-            // // File Stream attachment
-            // {
-            //     filename: 'nyan cat ✔.gif',
-            //     path: __dirname + '/assets/nyan.gif',
-            //     cid: 'nyan@example.com' // should be as unique as possible
-            // }
-        ]
-    };
-
-    let info = await transporter.sendMail(message);
-
-    console.log('Message sent successfully!');
-    console.log(nodemailer.getTestMessageUrl(info));
-
-    // only needed when using pooled connections
+    await transporter.sendMail(message,(error,success)=>{
+    if(error){
+      console.log(error)
+    }else{
+      console.log("Email sent successfully!")
+    }
+    });
     transporter.close();
 }
-
 
 router.get("/", function (req, res, next) {
   res.render("admin");
 });
 
-/* liste requettes teachers. */
-
-router.get("/listrequestTeachers", async (req, res) => {
-  try {
-    const findteachers = await teacherR.find();
-    res.status(200).send({ teachers: findteachers });
-  } catch (error) {
-    res.status(400).send({ errors: [{ msg: "cannaot get teachers" }] });
-  }
-});
-
-/* liste requettes parents. */
-
-router.get("/listrequestP", async (req, res) => {
-  try {
-    const findparents = await parentR.find();
-    res.status(200).send({ parents: findparents });
-  } catch (error) {
-    res.status(400).send({ errors: [{ msg: "Cannot get parents" }] });
-  }
-});
-
-router.get("/listTV", async (request, res) => {
-  const myList = await User.find({ typeuser: "TEACHER" });
-  res.send(myList);
-});
-
 /* Ajouter admin. */
 router.post("/", (req, res, next) => {
   //    ajout(req, res);
-  console.log(req.body);
+  // console.log(req.body);
   new admin({
     matricule: req.body.matricule,
     password: req.body.password,
@@ -180,118 +100,7 @@ router.get("/delete/:id", (req, res) => {
   });
 });
 
-/* validate teacher. */
-router.get("/validateT/:id", async (req, res, next) => {
-  teacherR.findById(req.params.id, (err, doc) => {
-    if (!err) {
-      console.log(doc);
-      new User({
-        lastname: doc.lastname,
-        firstname: doc.firstname,
-        password: doc.password,
-        matricule: doc.matricule,
-        email: doc.email,
-        createdAt: doc.createdAt,
-        address: doc.address,
-        typeuser: "TEACHER",
-        rib: doc.rib,
-      }).save(function (err, msg) {
-        teacherR.findByIdAndRemove(req.params.id, (err, doc) => {
-          if (!err) {
-            console.log("success :" + err);
-          } else {
-            console.log("Error in teacher delete :" + err);
-          }
-        });
-      });
-      console.log(doc.email)
-      main(doc.email,"Your request has been aproved, you have access to BesTest").catch(err => {
-        console.error(err.message);
-        process.exit(1);
-    });
-      
-    }
-  });
-});
-
-
-
-router.get("/getT/:id", function (req, res) {
-  teacher
-    .findOne({ _id: req.params.id })
-    .populate("Exercices", "Lessons")
-    .then(function (teacher) {
-      res.json(teacher);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
-});
-
-router.delete("/deleteT/:id", (req, res) => {
-  teacherR.findByIdAndRemove(req.params.id, (err, doc) => {
-    if (!err) {
-      // res.redirect("/admin/listrequestT");
-      main(doc.email,"Your request has been denied").catch(err => {
-        console.error(err.message);
-        process.exit(1);
-    });
-    } else {
-      console.log("Error in teacher delete :" + err);
-    }
-  });
-});
-
-/* validate parent. */
-router.get("/validateP/:id", (req, res, next) => {
-  console.log(req.body);
-  parentR.findById(req.params.id, (err, doc) => {
-    if (!err) {
-      new User({
-        lastname: doc.lastname,
-        firstname: doc.firstname,
-        password: doc.password,
-        email: doc.email,
-        createdAt: doc.createdAt,
-        typeuser: "PARENT",
-        address: doc.address,
-        rib: doc.rib,
-      }).save(function (err, msg) {
-        console.log(err)
-        parentR.findByIdAndRemove(req.params.id, (err, doc) => {
-          if (!err) {
-            console.log("success :" + err);
-          } else {
-            console.log("Error in parent delete :" + err);
-          }
-        });
-      });
-      main(doc.email,"Your request has been aproved, you have access to BesTest").catch(err => {
-        console.error(err.message);
-        process.exit(1);
-    });
-    }
-  });
-});
-
-router.get("/listPV/valider", async (request, res) => {
-  const myList = await User.find({ typeuser: "PARENT" }).populate("kid");
-  res.send(myList);
-});
-
-router.delete("/deleteP/:id", (req, res) => {
-  parentR.findByIdAndRemove(req.params.id, (err, doc) => {
-    if (!err) {
-      main(doc.email,"Your request has been denied").catch(err => {
-        console.error(err.message);
-        process.exit(1);
-    });
-    } else {
-      console.log("Error in parent delete :" + err);
-    }
-  });
-});
-
+//update admin
 router.get("/update/:id", (req, res) => {
   admin.findOneAndUpdate(
     { _id: req.body._id },
@@ -311,6 +120,237 @@ router.get("/update/:id", (req, res) => {
       }
     }
   );
+});
+
+
+/* liste requettes teachers. */
+router.get("/listrequestTeachers", async (req, res) => {
+  try {
+    const findteachers = await teacherR.find();
+    res.status(200).send({ teachers: findteachers });
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "cannaot get teachers" }] });
+  }
+});
+
+
+/* liste teachers validés. */
+
+router.get("/listTV", async (request, res) => {
+  const myList = await User.find({ typeuser: "TEACHER" });
+  res.send(myList);
+});
+
+
+
+/* validate teacher. */
+router.get("/validateT/:id", async (req, res, next) => {
+  teacherR.findById(req.params.id, (err, doc) => {
+    if (!err) {
+      // console.log(doc);
+      new User({
+        lastname: doc.lastname,
+        firstname: doc.firstname,
+        password: doc.password,
+        matricule: doc.matricule,
+        email: doc.email,
+        createdAt: doc.createdAt,
+        address: doc.address,
+        typeuser: "TEACHER",
+        rib: doc.rib,
+        level:doc.level,
+      }).save(function (err, msg) {
+        teacherR.findByIdAndRemove(req.params.id, (err, doc) => {
+          if (!err) {
+            console.log("success :" + err);
+          } else {
+            console.log("Error in teacher delete :" + err);
+          }
+        });
+      });
+      // console.log(doc.email)
+      main(doc.email,"Your request has been aproved, you have access to BesTest").catch(err => {
+        console.error(err.message);
+        process.exit(1);
+    });
+      
+    }
+  });
+});
+
+
+router.get("/getT/:id", function (req, res) {
+  teacherR
+    .findOne({ _id: req.params.id })
+    .populate("Exercices", "Lessons")
+    .then(function (teacher) {
+      res.json(teacher);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+// delete teacher request
+router.delete("/deleteT/:id", (req, res) => {
+  teacherR.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+      // res.redirect("/admin/listrequestT");
+      main(doc.email,"Your request has been denied").catch(err => {
+        console.error(err.message);
+        process.exit(1);
+    });
+    } else {
+      console.log("Error in teacher delete :" + err);
+    }
+  });
+});
+
+// delete teacher validé
+router.delete("/deleteTeacher/:id", (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+
+    } else {
+      console.log("Error in teacher delete :" + err);
+    }
+  });
+});
+
+
+/* liste requettes parents. */
+router.get("/listrequestP", async (req, res) => {
+  try {
+    const findparents = await parentR.find();
+    res.status(200).send({ parents: findparents });
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot get parents" }] });
+  }
+});
+
+
+/* validate parent. */
+router.get("/validateP/:id", (req, res, next) => {
+  // console.log(req.body);
+  parentR.findById(req.params.id, (err, doc) => {
+    if (!err) {
+      new User({
+        lastname: doc.lastname,
+        firstname: doc.firstname,
+        password: doc.password,
+        email: doc.email,
+        createdAt: doc.createdAt,
+        typeuser: "PARENT",
+        address: doc.address,
+        rib: doc.rib,
+      }).save(function (err, msg) {
+        // console.log(err)
+        parentR.findByIdAndRemove(req.params.id, (err, doc) => {
+          if (!err) {
+            console.log("success :" + err);
+          } else {
+            console.log("Error in parent delete :" + err);
+          }
+        });
+      });
+      main(doc.email,"Your request has been aproved, you have access to BesTest").catch(err => {
+        console.error(err.message);
+        process.exit(1);
+    });
+    }
+  });
+});
+
+//liste parents validés
+router.get("/listPV/valider", async (request, res) => {
+  const myList = await User.find({ typeuser: "PARENT" }).populate("kid");
+  res.send(myList);
+});
+
+
+//delete parent request
+router.delete("/deleteP/:id", (req, res) => {
+  parentR.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+      main(doc.email,"Your request has been denied").catch(err => {
+        console.error(err.message);
+        process.exit(1);
+    });
+    } else {
+      console.log("Error in parent delete :" + err);
+    }
+  });
+});
+
+
+//delete parent validés
+router.delete("/deleteParent/:id", (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+
+    } else {
+      console.log("Error in teacher delete :" + err);
+    }
+  });
+});
+
+
+/* validate Kid. */
+router.get("/validateK/:id", (req, res, next) => {
+  console.log(req.body);
+  kidModel.findById(req.params.id, (err, doc) => {
+    if (!err) {
+      new User({
+        lastname: doc.lastname,
+        firstname:doc.firstname,
+        password:doc.password, 
+        matricule:doc.matricule, 
+        email:doc.email, 
+        typeuser:"STUDENT",
+        createdAt:Date.now(),
+        address:doc.address, 
+        birthday:doc.birthday, 
+        level:doc.level,
+        parent:doc.parent
+      }).save(function (err, msg) {
+        console.log(err)
+        kidModel.findByIdAndRemove(req.params.id, (err, doc) => {
+          if (!err) {
+            console.log("success :" + err);
+          } else {
+            console.log("Error in kid delete :" + err);
+          }
+        });
+      });
+      main(doc.email,"Your request has been aproved, you have access to BesTest").catch(err => {
+        console.error(err.message);
+        process.exit(1);
+    });
+    }
+  });
+});
+
+
+//delete kid request
+router.delete('/deletek/:id', async(req, res) => {
+  kidModel.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+
+    } else {
+      console.log("Error in kid delete :" + err);
+    }
+  });
+});
+
+//delete kid validé
+router.delete("/deleteKid/:id", (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+
+    } else {
+      console.log("Error in kid delete :" + err);
+    }
+  });
 });
 
 module.exports = router;

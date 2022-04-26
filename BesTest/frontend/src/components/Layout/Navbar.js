@@ -11,6 +11,8 @@ function Navbar({ auth: { isAuthenticated, loading, user }, logout }) {
   const loggout = (e) => {
     e.preventDefault();
     logout();
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
   };
    const authLinks = (
     <div className='navbarlogin'>

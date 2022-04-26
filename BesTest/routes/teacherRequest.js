@@ -15,7 +15,16 @@ router.get("/", function (req, res, next) {
 router.post("/addTeacher", async (req, res, next) => {
   try {
     console.log(req.body.adress);
-    const newteacher = new teacherR({ ...req.body });
+    const newteacher = new teacherR({ firstname:req.body.firstname,
+      lastname:req.body.lastname, 
+      typeuser:req.body.typeuser,
+      password:req.body.password,
+      matricule:req.body.matricule,
+      level:req.body.level,
+      address:req.body.address,
+      email:req.body.email,
+      rib:req.body.rib,
+      createdAt:Date.now()});
     // Hash password
     const hashedpassword = bcrypt.hashSync(newteacher.password, salt);
     newteacher.password = hashedpassword;

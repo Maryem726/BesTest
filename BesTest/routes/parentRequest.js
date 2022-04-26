@@ -16,7 +16,14 @@ router.get('/', function(req, res, next) {
 router.post('/AddParent', async(req, res,next) =>{
     try {
         console.log(req.body)
-        const newparent = new parentR({...req.body
+        const newparent = new parentR({firstname:req.body.firstname,
+            lastname:req.body.lastname, 
+            typeuser:req.body.typeuser,
+            password:req.body.password,
+            address:req.body.address,
+            email:req.body.email,
+            rib:req.body.rib,
+            createdAt:Date.now()
         })
         // Hash password
     const hashedpassword = bcrypt.hashSync(newparent.password, salt);

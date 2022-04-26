@@ -10,6 +10,9 @@ export const GET_TEACHERS_V = "GET_TEACHERS_V";
 export const GET_PARENTS_V = "GET_PARENTS_V";
 export const GET_KIDS = "GET_KIDS";
 export const GET_KIDS_VALIDER = "GET_KIDS_VALIDER";
+export const DELETE_TEACHER = "DELETE_TEACHER";
+export const DELETE_PARENT = "DELETE_PARENT";
+
 
 
 

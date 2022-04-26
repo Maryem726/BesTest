@@ -64,10 +64,10 @@ export const GetAllLessons = () => async (dispatch) => {
 // };
 
 // Add post
-export const AddExercices = (formData) => async (dispatch) => {
+export const AddExercices = ({formData,user}) => async (dispatch) => {
 
   try {
-    const res = await axios.post('/exercice/addExercice', formData);
+    const res = await axios.post(`/exercice/addExercice/${user}`, formData);
 
     dispatch({
       type: ADD_EXERCICE,
