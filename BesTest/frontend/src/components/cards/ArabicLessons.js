@@ -88,9 +88,13 @@ export default function ArabicLessons({
     }
 
 
-  const [data, setData] = useState([]);
+
+    const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
 
     const fetchData = async () =>{
       setLoading(true);

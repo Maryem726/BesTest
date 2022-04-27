@@ -14,7 +14,7 @@ import {
 export const get_parents_requests = () => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
-    const result = await axios.get("/admin/listrequestP"); //parents
+    const result = await axios.get("/admin/listrequestP/parent"); //parents
     // console.log(result)
     dispatch({ type: GET_PARENTS, payload: result.data.parents });
   } catch (error) {
@@ -26,7 +26,7 @@ export const get_parents_requests = () => async (dispatch) => {
 export const get_teachers_requests = () => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
-    const result = await axios.get("/admin/listrequestTeachers"); //teachers
+    const result = await axios.get("/admin/listreq/teacher"); //teachers
     dispatch({ type: GET_TEACHERS, payload: result.data.teachers });
   } catch (error) {
     dispatch({ type: FAIL_ADMIN, payload: error.response.data.errors });
@@ -36,7 +36,7 @@ export const get_teachers_requests = () => async (dispatch) => {
 export const get_teachers_valider = () => async (dispatch) => {
   dispatch({ type: LOAD_ADMIN });
   try {
-    const result = await axios.get("/admin/listTV"); //myList
+    const result = await axios.get("/admin/listT/valides"); //myList
     console.log(result);
     dispatch({ type: GET_TEACHERS_V, payload: result.data });
   } catch (error) {

@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
-import {css} from "styled-components/macro"; //eslint-disable-line
+import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "images/apple-icon.png";
 import logo from "images/logoBestest.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
@@ -50,8 +50,8 @@ const IllustrationImage = styled.div`
 `;
 
 
-export default  function AddLesson ({
-  
+export default function AddLesson({
+
 
   logoLinkUrl = "/",
   illustrationImageSrc = illustration,
@@ -61,66 +61,72 @@ export default  function AddLesson ({
   forgotPasswordUrl = "#",
   ParentsigninUrl = components.innerPages.AddLessonPage,
 
-  
-  
+
+
 }) {
-  
-const [title, setTitle] = useState("");
-const [description, setDescription] = useState("");
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
 
-const [level, setLevel] = useState("4eme");
-const [subject, setSubject] = useState("gtgtr");
-const [price, setPrice] = useState(0);
-const [images,setimages]=useState("")
-const onChangeFile=e=>{
-  setimages(e.target.files[0]);
-}
-const [lessons, setLessons]=useState(null);
+  }, [])
 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-  const Add = () =>{
-    const formData=new FormData();
-        formData.append("title",title);
-        formData.append("subject",subject)
-        formData.append("level",level)
-        formData.append("price",price)
+  const [level, setLevel] = useState("4eme");
+  const [subject, setSubject] = useState("gtgtr");
+  const [price, setPrice] = useState(0);
+  const [images, setimages] = useState("");
+  const [user, setUser] = useState("");
 
-        formData.append("description",description)
-        formData.append("type",images)
+  const onChangeFile = e => {
 
-       
+    setimages(e.target.files[0]);
+    console.log(e.target.files[0])
+  }
+  const [lessons, setLessons] = useState(null);
 
+  const Add = () => {
+    // const formData = new FormData();
+    // formData.append("title", title);
+    // formData.append("subject", subject)
+    // formData.append("level", level)
+    // formData.append("price", price)
 
-Axios.post("http://localhost:3006/lesson", formData);
+    // formData.append("description", description)
+    // formData.append("type", images)
 
+    // console.log(formData)
+    
+    Axios.post(`http://localhost:3006/lesson`, { title, description, level, subject, price, images, user });
 
+ 
 
   };
 
   return (
-  
-  <AnimationRevealPage>
-    <Container >
-      <Content>
-        <MainContainer>
-          <LogoLink href={logoLinkUrl}>
-            <LogoImage src={logo} />
-          </LogoLink>
-          <MainContent>
-            <Heading>{headingText}</Heading>
-            <FormContainer>
-                <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to add a new lesson ! </p><br/>
-              <Form onSubmit={Add} enctype="multipart/form-data">
-              <Input type="text" placeholder="Title" 
-                           onChange={(event)=>{
-                            setTitle(event.target.value);
-                           }}
-                           />
-              <Input type="text" placeholder="Description" 
-              onChange={(event)=>{
-                setDescription(event.target.value);
-               }}
-               />
+
+    <AnimationRevealPage>
+      <Container >
+        <Content>
+          <MainContainer>
+            <LogoLink href={logoLinkUrl}>
+              <LogoImage src={logo} />
+            </LogoLink>
+            <MainContent>
+              <Heading>{headingText}</Heading>
+              <FormContainer>
+                <p tw="mt-6 text-xs text-gray-600 text-center">Fill up the following form to add a new lesson ! </p><br />
+                <Form onSubmit={(e) => { Add(); e.preventDefault(); }} enctype="multipart/form-data">
+                  <Input type="text" placeholder="Title"
+                    onChange={(event) => {
+                      setTitle(event.target.value);
+                    }}
+                  />
+                  <Input type="text" placeholder="Description"
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
+                  />
 
                   {/* <div className="u-s-m-b-30">
                   <select tw="  text-gray-500  w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='level'value={level}           onChange={(event)=>{
@@ -134,8 +140,8 @@ Axios.post("http://localhost:3006/lesson", formData);
 
 
                     </select></div> */}
-                
-                {/* <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
+
+                  {/* <Combobox  tw="w-full rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0">
                 <ComboboxInput tw="w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
                 placeholder="Level"
                 onChange={(event)=>{
@@ -195,49 +201,50 @@ Axios.post("http://localhost:3006/lesson", formData);
     </Combobox>     
                 */ }
 
-    <div className="u-s-m-b-30">
-                  <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" 
-                  className="select-box select-box--primary-style u-w-100" name='subject'value={subject}           
-                  onChange={(event)=>{
+                  <div className="u-s-m-b-30">
+                    <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0"
+                      className="select-box select-box--primary-style u-w-100" name='subject' value={subject}
+                      onChange={(event) => {
 
-                  setSubject(event.target.value)
-              
-                 }} id="subject">
-                    <option tw="text-gray-200">Subject</option>
-                    <option value="Mathematique">📙Mathematique</option>
-                   <option value="Arabic">📘 Arabic</option>
-                   <option value="French">📗 French</option>
-                   <option value="English">📒 English</option>
-                   <option value="Social science">📔 Social science</option>
-                   <option value="Sciences of life and earth">📙 Sciences of life and earth</option>
+                        setSubject(event.target.value)
+
+                      }} id="subject">
+                      <option tw="text-gray-200">Subject</option>
+                      <option value="Mathematique">📙Mathematique</option>
+                      <option value="Arabic">📘 Arabic</option>
+                      <option value="French">📗 French</option>
+                      <option value="English">📒 English</option>
+                      <option value="Social science">📔 Social science</option>
+                      <option value="Sciences of life and earth">📙 Sciences of life and earth</option>
 
                     </select></div>
 
-  
 
-    <Input type="number" placeholder="Price" onChange={(event)=>{
-                            setPrice(event.target.value);
-                           }}
-                           />
-    <Input type="file" placeholder="file" onChange={(e) =>onChangeFile(e)} name='type'
-     />
 
-                <SubmitButton type="submit" >
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text" >{submitButtonText}</span>
-                </SubmitButton>
-              </Form>
-              <p tw="mt-8 text-sm text-gray-600 text-center">
-                <a href={ParentsigninUrl.url} tw="border-b border-gray-500 border-dotted">
-                </a>
-              </p>
-            </FormContainer>
-          </MainContent>
-        </MainContainer>
-        <IllustrationContainer>
-          <IllustrationImage imageSrc="https://content.presentermedia.com/content/animsp/00022000/22513/scribbles_teaching_you_300_wht.gif"/>
-        </IllustrationContainer>
-      </Content>
-    </Container>
-  </AnimationRevealPage>
-)}
+                  <Input type="number" placeholder="Price" onChange={(event) => {
+                    setPrice(event.target.value);
+                  }}
+                  />
+                  <Input type="file" placeholder="file" onChange={(e) => onChangeFile(e)} name='type'
+                  />
+
+                  <SubmitButton type="submit" >
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text" >{submitButtonText}</span>
+                  </SubmitButton>
+                </Form>
+                <p tw="mt-8 text-sm text-gray-600 text-center">
+                  <a href={ParentsigninUrl.url} tw="border-b border-gray-500 border-dotted">
+                  </a>
+                </p>
+              </FormContainer>
+            </MainContent>
+          </MainContainer>
+          <IllustrationContainer>
+            <IllustrationImage imageSrc="https://content.presentermedia.com/content/animsp/00022000/22513/scribbles_teaching_you_300_wht.gif" />
+          </IllustrationContainer>
+        </Content>
+      </Container>
+    </AnimationRevealPage>
+  )
+}

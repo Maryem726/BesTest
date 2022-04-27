@@ -89,7 +89,7 @@ export default function ArabicExercice({
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/exercice/bysubject")
+        const {data: response} = await  Axios.get("/exercice/bysubject/ara")
         setData(response);
       } catch (error) {
         console.error(error.message);

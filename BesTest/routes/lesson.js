@@ -13,27 +13,22 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 //const upload = require('../middleware/upload')
  
 const storage = multer.diskStorage({
-    //destination for files
-    destination: function (request, file, callback) {
-      callback(null, 'uploads/lessons/');
-    },
+  //destination for files
+  destination: function (request, file, callback) {
+    callback(null, "uploads/exercices/");
+  },
+
+  //add back the extension
+  filename: function (request, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  },
+});
+
+//upload parameters for multer
+const upload = multer({
+  storage: storage,
   
-    //add back the extension
-    filename: function (request, file, callback) {
-      callback(null, Date.now() + file.originalname);
-    },
-  });
-  
-  //upload parameters for multer
-  const upload = multer({
-    storage: storage,
-    limits: {
-      fieldSize: 1024 * 1024 * 3,
-    },
-  });
-
-
-
+});
 router.get('/', function(req, res, next) {
    res.render('lesson', { title: 'Express' });
   });
@@ -41,7 +36,11 @@ router.get('/', function(req, res, next) {
 /* Ajouter lesson. */
 router.post('/',upload.single('type'),async(req, res,next) =>{
     //    ajout(req, res);
-        console.log(req.file);
+        // console.log(req.file);
+        // console.log(req.user);
+        console.log(req.body);
+        // console.log(req.body.user);
+
    const lesson = new lessonModel({ 
     title: req.body.title,
         subject:req.body.subject,
@@ -49,7 +48,8 @@ router.post('/',upload.single('type'),async(req, res,next) =>{
         price:req.body.price , 
         description:req.body.description,
         type:req.file.filename,
-        createdAt:Date.now(), 
+        createdAt:Date.now(),  
+        teacher:req.body.user._id,
      });
     try {
  await lesson.save();
@@ -150,17 +150,17 @@ router.get('/findlessonName', async(req, res) => {
     });
 
 
+    // router.get('/findlevelandsubject/:level/:subject', async(req, res) => {
   
-    router.get('/findlevelandsubject/:level/:subject', async(req, res) => {
-  
-      lessonModel.find({level: req.params.level, subject: req.params.subject}, function(err,lessons){   //tableau 
-        if(err){
-            console.error(err);
-            return; 
-        } res.json(lessons) // objet tableau pour l utiliser dans la for twig  
-    }).populate("Exercices");
+    //   lessonModel.find({level: req.params.level, subject: req.params.subject}, function(err,lessons){   //tableau 
+    //     if(err){
+    //         console.error(err);
+    //         return; 
+    //     } res.json(lessons) // objet tableau pour l utiliser dans la for twig  
+    // }).populate("Exercices");
     
-      });    
+    //   });    
+
 //get exercices by lesson
 router.get('/exbylesson/:id', async(req,res) =>{
   lessonModel.find({_id:req.params.id}, {Exercices: 1 },function(err,lessons){   //tableau 
@@ -173,6 +173,7 @@ router.get('/exbylesson/:id', async(req,res) =>{
   });
 
   router.get('/filtrbyname/bysubject' , async(request,res)=>{
+    console.log(request.params.user)
     const listsubject = await lessonModel.find({subject:"Arabic"})  
     res.json(listsubject);
    });
@@ -204,11 +205,17 @@ router.get('/exbylesson/:id', async(req,res) =>{
     res.json(listsubject);
    });
 
-   
-   router.get('/filterlevelsubject/arabic/3eme' , async(request,res)=>{
-    const listsubject = await lessonModel.find({subject:"Arabic",level:"3 class"})  
+   //get ressources by level for teacher
+   router.get('/filterlevelsubject/arabic' , async(request,res)=>{
+    const listsubject = await lessonModel.find({subject:"Arabic"})  
     res.json(listsubject);
    });
+
+   router.get('/filterlevelsubject/french/' , async(request,res)=>{
+    const listsubject = await lessonModel.find({subject:"French"})  
+    res.json(listsubject);
+   });
+
 
 
 module.exports = router;

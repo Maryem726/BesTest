@@ -19,7 +19,8 @@ import cutePic from "images/1.gif";
 import logo from "images/logoBestest.png";
 import Features from "components/features/DashedBorderSixFeatures";
 import Footer from "components/footers/MainMiniCenteredFooter.js";
-
+import Chat from"components/Chat";
+import './App.css';
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -133,6 +134,7 @@ export default ({
                  Login
               </PrimaryNavLink>
             </div>
+            
           </NavRow>
           <HeroRow>
             <TextColumn>
@@ -184,9 +186,11 @@ export default ({
               We hope you like our services and would very much appreciate your feedback ♥
             </SectionDescription>
             
+            <Chat/>
           </SectionContainer>
           
         </Content2Xl>
+      
         <Footer/>
       </Container>
       

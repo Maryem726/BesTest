@@ -197,13 +197,13 @@ router.post("/addExercice/:user", upload.single("type"), async (req, res) => {
   }
 });
 
-router.get("/bysubject", async (request, res) => {
-  const listsubject = await exerciceModel.find({ subject: "arabic" });
+router.get("/bysubject/ara", async (request, res) => {
+  const listsubject = await exerciceModel.find({ subject: "Arabic" });
   res.json(listsubject);
 });
 
 router.get("/french", async (request, res) => {
-  const list = await exerciceModel.find({ subject: "french" });
+  const list = await exerciceModel.find({ subject: "*French" });
   res.json(list);
 });
 

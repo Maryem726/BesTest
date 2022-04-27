@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(28, 18, 78);
+  color: white;
+  padding: 20px;
+}
+.bot {
+  bottom: 0;
+  right : 0;
+  position: fixed;
+  width: 350px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

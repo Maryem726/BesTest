@@ -54,11 +54,11 @@ export default function Listkid ({
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser(localStorage.getItem("user"));
+    setUser(JSON.parse(localStorage.getItem("user")));
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get(`/kid/listKids/${user}`)
+        const {data: response} = await  Axios.get(`/kid/listKids`,{user})
         setData(response);
       } catch (error) {
         console.error(error.message);

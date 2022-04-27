@@ -123,8 +123,19 @@ router.get("/update/:id", (req, res) => {
 });
 
 
+
+
+
+/* liste teachers validés. */
+
+router.get("/listT/valides", async (request, res) => {
+  const myList = await User.find({ typeuser: "TEACHER" });
+  res.send(myList);
+});
+
+
 /* liste requettes teachers. */
-router.get("/listrequestTeachers", async (req, res) => {
+router.get("/listreq/teacher", async (req, res) => {
   try {
     const findteachers = await teacherR.find();
     res.status(200).send({ teachers: findteachers });
@@ -132,17 +143,6 @@ router.get("/listrequestTeachers", async (req, res) => {
     res.status(400).send({ errors: [{ msg: "cannaot get teachers" }] });
   }
 });
-
-
-/* liste teachers validés. */
-
-router.get("/listTV", async (request, res) => {
-  const myList = await User.find({ typeuser: "TEACHER" });
-  res.send(myList);
-});
-
-
-
 /* validate teacher. */
 router.get("/validateT/:id", async (req, res, next) => {
   teacherR.findById(req.params.id, (err, doc) => {
@@ -219,7 +219,7 @@ router.delete("/deleteTeacher/:id", (req, res) => {
 
 
 /* liste requettes parents. */
-router.get("/listrequestP", async (req, res) => {
+router.get("/listrequestP/parent", async (req, res) => {
   try {
     const findparents = await parentR.find();
     res.status(200).send({ parents: findparents });

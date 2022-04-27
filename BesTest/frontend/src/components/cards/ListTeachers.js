@@ -95,7 +95,7 @@ export default function ListTeachers ({
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/teacherR/listTeacher")
+        const {data: response} = await  Axios.get("/admin/listT/valides")
         setData(response);
       } catch (error) {
         console.error(error.message);

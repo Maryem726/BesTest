@@ -16,7 +16,7 @@ var lesson = new Schema({
     }],
     teacher: {
         type: Schema.Types.ObjectId, 
-        ref:"teachers", 
+        ref:"user", 
     }
 });
 
