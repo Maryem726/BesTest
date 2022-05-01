@@ -75,7 +75,7 @@ export default () => {
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/exercice/filterlevelsubject/arabic/3eme")
+        const {data: response} = await  Axios.get("/exercice/Arabic/filtre")
         setData(response);
       } catch (error) {
         console.error(error.message);

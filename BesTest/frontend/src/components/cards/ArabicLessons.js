@@ -91,16 +91,18 @@ export default function ArabicLessons({
 
     const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
-
-    const fetchData = async () =>{
+    console.log(localStorage.getItem("user"))
+    const fetchData = async (user) =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/lesson/filtrbyname/bysubject")
+        const {data: response} = await  Axios.get(`/lesson/filtrbyname/bysubject/${user._id}`)
         setData(response);
+        setUser(JSON.parse(localStorage.getItem("user")));
+        
       } catch (error) {
         console.error(error.message);
       }
@@ -112,7 +114,7 @@ export default function ArabicLessons({
 
 
 
-  const [sliderRef, setSliderRef] = useState(null);
+  const [sliderRef, setSliderRef] = useState();
   const sliderSettings = {
     arrows: false,
     slidesToShow: 3,
@@ -183,7 +185,7 @@ export default function ArabicLessons({
    */
   
   return ( <div> {loading && <div>Loading</div>}
-  {!loading && (
+  {!loading &&  (
     <Content>
       <HeadingWithControl>
         <Heading></Heading>

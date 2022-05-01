@@ -64,13 +64,28 @@ router.get('/listk', async(request,res)=>{
 //afficher liste des kids validé
 router.get('/listKVvvvvv/:user', async(request,res)=>{
   
-  // let id = mongoose.Types.ObjectId(request.params.user);
+      id = mongoose.Types.ObjectId(request.params.user);
 
-  // const us= await User.findOne({_id:request.params.user},{ "level.$": 1,"_id": 0 });
-  const myList = await User.find({typeuser:"STUDENT", level:request.params.user.level});  
+  const us= await User.findOne({_id:id});
+  const myList = await User.find({typeuser:"STUDENT"
+, level:us.level
+});  
 res.json(myList);
-// console.log(us)
+ console.log(us)
+ console.log(myList)
 });
+
+
+
+// router.get('/listKVvvvvv/:user', async(request,res)=>{
+  
+//  const myList = await User.find({typeuser:"STUDENT"
+//  , level:request.params.user.level
+// });  
+// res.json(myList);
+// console.log(myList)
+// });
+
 
 //list kids validés
 router.get('/listKids', async(request,res)=>{

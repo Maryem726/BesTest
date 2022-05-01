@@ -79,18 +79,20 @@ export default function StudentListSingleCol({
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState("null");
+  const [user, setUser] = useState();
 
   useEffect(() => {
     setUser(localStorage.getItem("user"));
     console.log(localStorage.getItem("user"))
+    //  setUser(JSON.parse(localStorage.getItem("user")));
 
     const fetchData = async () =>{
 
       setLoading(true);
 
       try {
-        const {data: response} = await  Axios.get(`/kid/listKVvvvvv/${user}`)
+        const {data: response} = await  Axios.get(`/kid/listKVvvvvv/${user._id}`)
+
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -111,6 +113,7 @@ export default function StudentListSingleCol({
             {description && <Description>{description}</Description>}
           </HeaderContent>
           <FAQSContainer>
+            
             {data.map((faq, index) => (
               <FAQ
                 key={index}

@@ -2,6 +2,7 @@ const express = require('express');
 var router = express.Router();
 const lessonModel=require('../models/lesson.model');
 const exerciceModel=require('../models/exercice.model');
+const User = require("../models/User")
 
 var bodyParser = require('body-parser'); 
 const multer = require('multer');
@@ -52,6 +53,7 @@ router.post('/',upload.single('type'),async(req, res,next) =>{
         teacher:req.body.user._id,
      });
     try {
+      
  await lesson.save();
     res.json(lesson)
         // response.redirect('/');
@@ -172,9 +174,13 @@ router.get('/exbylesson/:id', async(req,res) =>{
 
   });
 
-  router.get('/filtrbyname/bysubject' , async(request,res)=>{
-    console.log(request.params.user)
-    const listsubject = await lessonModel.find({subject:"Arabic"})  
+  router.get('/filtrbyname/bysubject/:user' , async(request,res)=>{
+    id = mongoose.Types.ObjectId(request.params.user);
+
+    console.log(id)
+    const us= await User.findOne({_id:id});
+    console.log(us)
+    const listsubject = await lessonModel.find({subject:"Arabic", level:us.level})  
     res.json(listsubject);
    });
 
