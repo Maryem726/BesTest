@@ -100,7 +100,7 @@ export default function AddLesson({
    
     formData.append("lesson", lesson)
 
-    Axios.post("http://localhost:3006/exercice/addExercice", formData);
+    Axios.post("http://localhost:3001/exercice/addExercice", formData);
 
    
 
@@ -109,7 +109,7 @@ export default function AddLesson({
   useEffect(() => {
     try {
       //I will send request to the textQuery ROUTE 
-      Axios.get('http://localhost:3006/exercice/listLessons').then((response) => {
+      Axios.get('http://localhost:3001/exercice/listLessons').then((response) => {
         setAllLessons(response.data);
     })
 
@@ -198,6 +198,7 @@ if(!AllLessons)return null
                         {AllLessons.map((x,i)=><option value={x._id}>{x.title}</option>)}
                       
                       
+
                     </select>
                   </div>
 

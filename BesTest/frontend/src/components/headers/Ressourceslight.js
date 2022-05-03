@@ -72,6 +72,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    */
   const defaultLinks = [
     <NavLinks key={1}>
+       <NavLink href="/components/innerPages/quizHomePage">Quiz</NavLink>
       <NavLink href="/#">Lessons</NavLink>
       <NavLink href="/#">Exercices</NavLink>
       <NavLink href="/#">Exams</NavLink>

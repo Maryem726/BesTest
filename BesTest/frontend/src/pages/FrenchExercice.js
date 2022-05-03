@@ -80,7 +80,7 @@ export default function FrenchExercice ({
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/exercice/french/filtre")
+        const {data: response} = await  Axios.get("http://localhost:3001/exercice/French")
         setData(response);
       } catch (error) {
         console.error(error.message);

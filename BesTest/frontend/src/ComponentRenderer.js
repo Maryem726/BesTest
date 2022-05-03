@@ -161,6 +161,14 @@ import FiveColumnDarkFooter from "components/footers/FiveColumnDark.js";
 import MiniCenteredFooter from "components/footers/MiniCenteredFooter.js";
 import ForgotPassword from 'pages/ForgotPassword';
 
+import quiz3Page from "pages/quiz3";
+import quiz4Page from 'pages/quiz4';
+import quiz5Page from 'pages/quiz5';
+import quiz6Page from 'pages/quiz6';
+import quizHomePage from'demos/quizHome';
+import StorePage from'pages/Store';
+import QRCodePage from'pages/QRCode';
+
 
 export const components = {
   landingPages: {
@@ -212,6 +220,11 @@ export const components = {
       component: ArabicLevelsPage,
       imageSrc: HotelTravelLandingPageImageSrc,
       url: "/components/innerPages/ArabicLevelsPage",
+    },
+    quizHomePage: {
+      component: quizHomePage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/quizHomePage",
     },
     ArabicLandingPage: {
       component: ArabicLandingPage,
@@ -302,6 +315,38 @@ export const components = {
       component: AboutUsPage,
       url: `/components/innerPages/AboutUsPage`,
       imageSrc: AboutUsPageImageSrc,
+    },
+    quiz3Page: {
+      component: quiz3Page,
+      url: `/components/innerPages/quiz3Page`,
+      
+    },
+
+    quiz4Page: {
+      component: quiz4Page,
+      url: `/components/innerPages/quiz4Page`,
+      
+    },
+    quiz5Page: {
+      component: quiz5Page,
+      url: `/components/innerPages/quiz5Page`,
+      
+    },
+
+    quiz6Page: {
+      component: quiz6Page,
+      url: `/components/innerPages/quiz6Page`,
+      
+    },
+    StorePage: {
+      component: StorePage,
+      url: `/components/innerPages/StorePage`,
+      
+    },
+    QRCodePage: {
+      component: QRCodePage,
+      url: `/components/innerPages/QRCodePage`,
+      
     },
     ContactUsPage: {
       component: ContactUsPage,

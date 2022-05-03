@@ -81,7 +81,7 @@ export default function MathematicExercice ({
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/exercice/Mathematique/filtre")
+        const {data: response} = await  Axios.get("http://localhost:3001/exercice/Mathematique")
         setData(response);
       } catch (error) {
         console.error(error.message);
