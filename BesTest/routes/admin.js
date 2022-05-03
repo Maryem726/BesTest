@@ -9,6 +9,8 @@ const User = require("../models/User");
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const nodemailer = require("nodemailer");
+var mongoose = require('mongoose');
+
 // const nodemailer = require('../lib/nodemailer');
 
 async function main(mail,msg) {
@@ -129,8 +131,24 @@ router.get("/update/:id", (req, res) => {
 /* liste teachers validés. */
 
 router.get("/listT/valides", async (request, res) => {
-  const myList = await User.find({ typeuser: "TEACHER" });
+  const myList = await User.find({ typeuser: "TEACHER" }).populate("kid");
   res.send(myList);
+});
+
+router.get("/listT/forparent/:user", async (request, res) => {
+
+  id = mongoose.Types.ObjectId(request.params.user);
+  const us= await User.findOne({_id:id});
+  // const idkid=us.kid;
+  let kids= await User.find({parent:us._id});
+
+console.log(kids)
+
+console.log(kids[0].level);
+const myList = await User.find({ typeuser: "TEACHER", level:kids[0].level})
+
+  res.send(myList);
+  console.log(myList)
 });
 
 

@@ -3,7 +3,8 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import Header, { LogoLink, NavLinks, NavLink as NavLinkBase } from "../headers/light.js";
+import { LogoLink, NavLinks, NavLink as NavLinkBase } from "../headers/light.js";
+import Header from "../headers/Teacherlight.js";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -41,26 +42,14 @@ const Actions = styled.div`
   }
 `;
 
-export default ({
-  navLinks = [
-    <NavLinks key={1}>
-      <NavLink href="/">Logout</NavLink>
-    </NavLinks>
-  ],
-  heading = (
-    <>
-      Welcome to the
-      <wbr />
-      <br />
-      <span tw="text-primary-500">Arabic Subject.</span>
-    </>
-  ),
-  description = "Here you can find the list of different lessons, exercices and exams available in the Arabic subject."
-}) => {
+export default 
+  ({ roundedHeaderButton }) => {
   return (
+    <>
+         <Header roundedHeaderButton={roundedHeaderButton} />
     <Container>
-          <StyledHeader links={navLinks} collapseBreakpointClass="sm" />
           
     </Container>
+    </>
   );
 };

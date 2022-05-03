@@ -95,8 +95,13 @@ res.json(myList);
 
 //list kids par parent
 router.get('/listKids/:user', async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+
   const myList = await User.find({typeuser:"STUDENT",
-parent:request.params.user
+parent:us._id
 });  
 res.json(myList);
 });

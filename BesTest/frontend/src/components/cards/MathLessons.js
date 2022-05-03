@@ -75,14 +75,23 @@ export default ()=> {
   
 
   
+  const [user, setUser] = useState();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
 
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
+
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/lesson/filtrbyname/math")
+        const {data: response} = await  Axios.get(`/lesson/filtrbyname/math/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);

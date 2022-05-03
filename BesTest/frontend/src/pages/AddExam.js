@@ -9,6 +9,9 @@ import logo from "images/logoBestest.png";
 import illustration from "images/logoBestest.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { components } from "ComponentRenderer";
+import Header from "components/headers/Teacherlight.js";
+
+
 import {
   Combobox,
   ComboboxInput,
@@ -58,13 +61,26 @@ export default function AddExam ({
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   ParentsigninUrl = components.innerPages.AddLessonPage,
+  roundedHeaderButton,
+  
 
 })  { 
+  useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+
+  }, [])
+
 const [title, setTitle] = useState("");
-const [level, setLevel] = useState("4eme");
+const [level, setLevel] = useState();
 const [subject, setSubject] = useState("gtgtr");
 const [price, setPrice] = useState(0);
 const [description, setDescription] = useState("gtgtr");
+  const [user, setUser] = useState();
 
 const [images,setimages]=useState("")
 const onChangeFile=e=>{
@@ -73,24 +89,28 @@ const onChangeFile=e=>{
   const Add = (e) =>{
     e.preventDefault();
     const formData=new FormData();
-        formData.append("type",images);
         formData.append("subject",subject);
-        formData.append("level",level);       
+        // formData.append("level",level);       
 
         formData.append("title",title);
         formData.append("price",price);
         formData.append("description",description);
+        formData.append("type", images)
 
-        setSubject("")
-        setLevel("")
-        setTitle("")
-        setPrice("")
-        setDescription("")
+        // setSubject("")
+        // setLevel("")
+        // setTitle("")
+        // setPrice("")
+        // setDescription("")
 
-Axios.post("http://localhost:3006/examen", formData);
+Axios.post(`/examen/${user._id}`,formData);
        alert("Exam added successfully")
 };
 return (
+  <>
+<Header roundedHeaderButton={roundedHeaderButton} 
+
+/>
   <AnimationRevealPage>
     <Container >
       <Content>
@@ -165,7 +185,7 @@ return (
       </ComboboxPopover>
     </Combobox>      */}
 
-            <div className="u-s-m-b-30">
+            {/* <div className="u-s-m-b-30">
                   <select tw="  text-gray-500  w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='level'value={level}           onChange={(event)=>{
                        setLevel(event.target.value);
                        }}
@@ -180,7 +200,7 @@ return (
                   </select>
           
             </div>
-    
+     */}
             <div className="u-s-m-b-30">
                   <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0" className="select-box select-box--primary-style u-w-100" name='subject'value={subject}           onChange={(event)=>{
                   setSubject(event.target.value);
@@ -224,4 +244,5 @@ return (
       </Content>
     </Container>
   </AnimationRevealPage>
+  </>
 )}

@@ -14,6 +14,7 @@ import Blog from "components/blogs/StoreBlog.js";
 import one from "images/one.png";
 import two from "images/two.png";
 import Footer from "components/footers/MiniCenteredFooter.js";
+import Header from "components/headers/Ressourceslight.js";
 
 
 import ReactDOM from 'react-dom';
@@ -122,7 +123,11 @@ export default ({
 
 
     return (
+        <>
+
         <Container tw="bg-gradient-to-b from-pink-200  via-white to-pink-200 relative -mx-8 -mt-8 pt-8 px-8">
+        <Header/>
+
             <Content>
                 <Testimonial
                     subheading="Hello"
@@ -200,5 +205,6 @@ export default ({
             </Content>
             <Footer />
         </Container>
+        </>
     );
 };

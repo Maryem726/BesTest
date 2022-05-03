@@ -14,10 +14,12 @@ import FAQ from "components/faqs/quiz3.js";
 import ContactUsForm from "components/forms/quizform3";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
+import Header from "components/headers/Ressourceslight.js";
 
 export default () => (
   <AnimationRevealPage >
-    
+          <Header/>
+
   <FAQ
       imageSrc="https://us.123rf.com/450wm/yusufdemirci/yusufdemirci2004/yusufdemirci200400225/145119514-concept-drawing-for-creative-thinking.jpg?ver=6"
       imageContain={true}

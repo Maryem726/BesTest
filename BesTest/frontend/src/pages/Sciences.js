@@ -14,7 +14,7 @@ import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js"
 import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import styled from "styled-components";
-import Header from "components/headers/light.js";
+import Header from "components/headers/Ressourceslight.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 import chefIconImageSrc from "images/chef-icon.svg";

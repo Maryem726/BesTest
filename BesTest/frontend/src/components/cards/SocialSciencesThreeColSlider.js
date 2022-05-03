@@ -143,7 +143,15 @@ export default () => {
           <Card key={index}>
             <CardImage imageSrc={card.imageSrc} />
             <TextInfo>
+              <TitleReviewContainer>
                 <Title>{card.title}</Title>
+                <RatingsInfo>
+                  <StarIcon />
+                </RatingsInfo>
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                
+              </SecondaryInfoContainer>
               <Description>{card.description}</Description>
             </TextInfo>
             <Link href={card.url}>Check Now</Link>            </Card>

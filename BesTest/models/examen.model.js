@@ -11,7 +11,7 @@ var examen = new Schema({
     createdAt: Date, 
     teacher: {
         type: Schema.Types.ObjectId, 
-        ref:"teachers", 
+        ref:"user", 
     }
 
 });

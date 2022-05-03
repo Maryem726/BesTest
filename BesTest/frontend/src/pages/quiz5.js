@@ -14,10 +14,12 @@ import FAQ from "components/faqs/quiz5.js";
 import ContactUsForm from "components/forms/quizform5";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
+import Header from "components/headers/Ressourceslight.js";
 
 export default () => (
   <AnimationRevealPage>
-    
+          <Header/>
+
   <FAQ
       imageSrc="https://thumbs.dreamstime.com/b/enfant-mignon-et-heureux-%C3%A9tudie-les-devoirs-avec-id%C3%A9e-le-vecteur-d-livre-gar%C3%A7on-cerveau-caract%C3%A8re-l-bureau-%C3%A9ducation-examen-164179886.jpg"
       imageContain={true}

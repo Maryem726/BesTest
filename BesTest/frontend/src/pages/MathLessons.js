@@ -8,8 +8,8 @@ import MathLessons from "components/cards/MathLessons.js";
 import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import styled from "styled-components";
-import Header from "components/headers/light.js";
 import Extra from "components/features/TwoColSingleFeatureWithStatMath";
+import Header from "components/headers/Ressourceslight.js";
 
 
 export default () => {
@@ -56,9 +56,9 @@ const Actions = styled.div`
   return (
     
     <AnimationRevealPage>
+      <Header/>
         <Container>
-    
-        <Header  />
+  
 
         <TwoColumn>
           <LeftColumn>

@@ -82,16 +82,19 @@ export default function StudentListSingleCol({
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser(localStorage.getItem("user"));
-    console.log(localStorage.getItem("user"))
-    //  setUser(JSON.parse(localStorage.getItem("user")));
+    var user = JSON.parse(localStorage.getItem('user'));
 
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
     const fetchData = async () =>{
 
       setLoading(true);
 
       try {
-        const {data: response} = await  Axios.get(`/kid/listK`)
+        const {data: response} = await  Axios.get(`/kid/listKVvvvvv/${user._id}`)
 
         setData(response);
       } catch (error) {
@@ -146,19 +149,9 @@ export default function StudentListSingleCol({
                   animate={activeQuestionIndex === index ? "open" : "collapsed"}
                   transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                 >
-                  Matricule : {faq.matricule}
-                </Answer>
-                <Answer
-                  variants={{
-                    open: { opacity: 1, height: "auto", marginTop: "16px" },
-                    collapsed: { opacity: 0, height: 0, marginTop: "0px" }
-                  }}
-                  initial="collapsed"
-                  animate={activeQuestionIndex === index ? "open" : "collapsed"}
-                  transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-                >
                   Email : {faq.email}
                 </Answer>
+                
                 <Answer
                   variants={{
                     open: { opacity: 1, height: "auto", marginTop: "16px" },
@@ -168,7 +161,29 @@ export default function StudentListSingleCol({
                   animate={activeQuestionIndex === index ? "open" : "collapsed"}
                   transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                 >
-                  Birthday : {faq.birthday}
+                  Matricule : {faq.matricule}
+                </Answer>
+             
+                <Answer
+                  variants={{
+                    open: { opacity: 1, height: "auto", marginTop: "16px" },
+                    collapsed: { opacity: 0, height: 0, marginTop: "0px" }
+                  }}
+                  initial="collapsed"
+                  animate={activeQuestionIndex === index ? "open" : "collapsed"}
+                  transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                >
+                  Level : {faq.level}
+                </Answer>
+                <Answer
+                  variants={{
+                    open: { opacity: 1, height: "auto", marginTop: "16px" },
+                    collapsed: { opacity: 0, height: 0, marginTop: "0px" }
+                  }}
+                  initial="collapsed"
+                  animate={activeQuestionIndex === index ? "open" : "collapsed"}
+                  transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                >
                 </Answer>
               </FAQ>
             ))}

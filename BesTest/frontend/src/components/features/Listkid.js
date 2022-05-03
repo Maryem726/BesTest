@@ -58,7 +58,7 @@ export default function Listkid ({
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get(`/kid/listKids`,{user})
+        const {data: response} = await  Axios.get(`/kid/listKids/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);

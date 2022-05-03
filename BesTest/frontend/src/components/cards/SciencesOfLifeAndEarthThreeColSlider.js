@@ -73,12 +73,19 @@ export default () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [user, setUser] = useState();
 
+  useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));  
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/lesson/filtrbyname/sciences")
+        const {data: response} = await  Axios.get(`/lesson/filtrbyname/sciences/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -146,7 +153,15 @@ export default () => {
           <Card key={index}>
             <CardImage imageSrc={card.imageSrc} />
             <TextInfo>
+              <TitleReviewContainer>
                 <Title>{card.title}</Title>
+                <RatingsInfo>
+                  <StarIcon />
+                </RatingsInfo>
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                
+              </SecondaryInfoContainer>
               <Description>{card.description}</Description>
             </TextInfo>
             <Link href={card.url}>Check Now</Link>            </Card>

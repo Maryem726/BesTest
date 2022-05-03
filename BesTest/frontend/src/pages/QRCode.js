@@ -13,6 +13,7 @@ import Testimonial from "components/testimonials/TwoColumnWithImageAndProfilePic
 import Blog from "components/blogs/StoreBlog.js";
 
 import Footer from "components/footers/MiniCenteredFooter.js";
+import Header from "components/headers/Ressourceslight.js";
 
 
 
@@ -102,13 +103,17 @@ export default ({
 
 
     return (
+        <>
         <Container tw="bg-gradient-to-b from-pink-200  via-white to-pink-200 relative -mx-8 -mt-8 pt-8 px-8">
+        <Header/>
+
             <Content >
 
 
                 <ThreeColumn>
                     <HeadingColumn textOnLeft={textOnLeft}>
                         <HeadingInfoContainer>
+
                             <Subheading>{subheading}</Subheading>
                             <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
                             <HeadingDescription>{description}</HeadingDescription>
@@ -128,5 +133,6 @@ export default ({
             </Content>
             <Footer />
         </Container>
+        </>
     );
 };

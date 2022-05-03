@@ -5,7 +5,7 @@ import tw from "twin.macro";
 import Axios from "axios";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import Header from "components/headers/light.js";
+import Header from "components/headers/Ressourceslight.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
@@ -92,12 +92,22 @@ function MathExams ({
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
+
   useEffect(() => {
 
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
+    
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/examen/examsBymathematics")
+        const {data: response} = await  Axios.get(`/examen/examsBymathematics/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -111,6 +121,7 @@ function MathExams ({
   return ( <div> {loading && <div>Loading</div>}
   {!loading && (
     <AnimationRevealPage>
+      
       <Container tw="bg-gradient-to-b from-white  via-gray-300 to-gray-600 relative -mx-8 -mt-8 pt-8 px-8">        
 
      <Hero

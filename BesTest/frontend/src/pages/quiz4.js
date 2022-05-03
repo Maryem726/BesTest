@@ -14,10 +14,12 @@ import FAQ from "components/faqs/quiz4.js";
 import ContactUsForm from "components/forms/quizform4";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
+import Header from "components/headers/Ressourceslight.js";
 
 export default () => (
   <AnimationRevealPage>
-    
+          <Header/>
+
   <FAQ
       imageSrc="https://img.freepik.com/free-vector/cute-little-kid-boy-think-with-question-mark_97632-2809.jpg"
       imageContain={true}

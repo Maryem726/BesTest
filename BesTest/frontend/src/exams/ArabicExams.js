@@ -80,6 +80,7 @@ function ArabicExams({
 
 { 
   const [Search, setSearch] = useState('');
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -90,12 +91,21 @@ function ArabicExams({
   };
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
+
   useEffect(() => {
 
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/examen/examsByarabic")
+        const {data: response} = await  Axios.get(`/examen/examsByarabic/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);

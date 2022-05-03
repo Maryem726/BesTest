@@ -94,15 +94,19 @@ export default function ArabicLessons({
   const [user, setUser] = useState();
 
   useEffect(() => {
+
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
     setUser(JSON.parse(localStorage.getItem("user")));
-    console.log(localStorage.getItem("user"))
-    const fetchData = async (user) =>{
+    // console.log(localStorage.getItem("user"))
+    const fetchData = async () =>{
       setLoading(true);
       try {
         const {data: response} = await  Axios.get(`/lesson/filtrbyname/bysubject/${user._id}`)
         setData(response);
-        setUser(JSON.parse(localStorage.getItem("user")));
-        
       } catch (error) {
         console.error(error.message);
       }
@@ -185,7 +189,7 @@ export default function ArabicLessons({
    */
   
   return ( <div> {loading && <div>Loading</div>}
-  {!loading &&  (
+  {!loading && (
     <Content>
       <HeadingWithControl>
         <Heading></Heading>
@@ -225,4 +229,6 @@ export default function ArabicLessons({
     </Content>
 
     
-  )}</div>);};
+  )}</div>
+  );
+};

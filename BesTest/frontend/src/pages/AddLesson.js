@@ -8,6 +8,9 @@ import illustration from "images/apple-icon.png";
 import logo from "images/logoBestest.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { components } from "ComponentRenderer";
+import Header from "components/headers/Teacherlight.js";
+
+
 import {
   Combobox,
   ComboboxInput,
@@ -60,11 +63,16 @@ export default function AddLesson({
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   ParentsigninUrl = components.innerPages.AddLessonPage,
-
+  roundedHeaderButton
 
 
 }) {
   useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
     setUser(JSON.parse(localStorage.getItem("user")));
 
   }, [])
@@ -72,39 +80,41 @@ export default function AddLesson({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const [level, setLevel] = useState("4eme");
+  const [level, setLevel] = useState();
   const [subject, setSubject] = useState("gtgtr");
   const [price, setPrice] = useState(0);
   const [images, setimages] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
 
   const onChangeFile = e => {
 
     setimages(e.target.files[0]);
     console.log(e.target.files[0])
   }
+  // setLevel(user.level)
   const [lessons, setLessons] = useState(null);
 
   const Add = () => {
-    // const formData = new FormData();
-    // formData.append("title", title);
-    // formData.append("subject", subject)
+     const formData = new FormData();
+    formData.append("title", title);
+    formData.append("subject", subject)
     // formData.append("level", level)
-    // formData.append("price", price)
+    formData.append("price", price)
 
-    // formData.append("description", description)
-    // formData.append("type", images)
+    formData.append("description", description)
+    formData.append("type", images)
 
-    // console.log(formData)
+    console.log(formData)
     
-    Axios.post(`http://localhost:3006/lesson`, { title, description, level, subject, price, images, user });
+    Axios.post(`/lesson/${user._id}`,formData);
 
  
 
   };
 
   return (
-
+<>
+<Header roundedHeaderButton={roundedHeaderButton} />
     <AnimationRevealPage>
       <Container >
         <Content>
@@ -246,5 +256,6 @@ export default function AddLesson({
         </Content>
       </Container>
     </AnimationRevealPage>
+    </>
   )
 }
