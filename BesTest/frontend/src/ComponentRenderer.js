@@ -1,9 +1,29 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import AnimationRevealPage from "helpers/AnimationRevealPage.js"
-import TeacherLessonsPage from"demos/TeacherLessonsPage.js";
-import TeacherExercicesPage from"demos/TeacherExercicesPage.js";
-import TeacherExamsPage from"demos/TeacherExamsPage.js";
+import TeacherLessonsPage from"demos/TeacherLessonsPageArabic.js";
+import TeacherExercicesPage from"demos/TeacherExercicesPageArabic.js";
+import TeacherExamsPage from"demos/TeacherExamsPageArabic.js";
+
+import TeacherLessonsPageMaths from"demos/TeacherLessonsPageMaths";
+import TeacherExercicesPageMaths from"demos/TeacherExercicesPageMaths";
+import TeacherExamsPageMaths from"demos/TeacherExamsPageMaths.js";
+
+import TeacherLessonsPageFrench from"demos/TeacherLessonsPageFrench";
+import TeacherExercicesPageFrench from"demos/TeacherExercicesPageFrench";
+import TeacherExamsPageFrench from"demos/TeacherExamsPageFrench";
+
+import TeacherLessonsPageEnglish from"demos/TeacherLessonsPageEnglish";
+import TeacherExercicesPageEnglish from"demos/TeacherExercicesPageEnglish";
+import TeacherExamsPageEnglish from"demos/TeacherExamsPageEnglish";
+
+import TeacherLessonsPageSLE from"demos/TeacherLessonsPageSLE";
+import TeacherExercicesPageSLE from"demos/TeacherExercicesPageSLE";
+import TeacherExamsPageSLE from"demos/TeacherExamsPageSLE";
+
+import TeacherLessonsPageSS from"demos/TeacherLessonsPageSS";
+import TeacherExercicesPageSS from"demos/TeacherExercicesPageSS";
+import TeacherExamsPageSS from"demos/TeacherExamsPageSS";
 
 import StudentListPage from"demos/StudentListForTeacher.js";
 
@@ -191,6 +211,101 @@ export const components = {
   },
 
   innerPages: {
+    TeacherLessonsPage: {
+      component: TeacherLessonsPage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPage",
+    },
+    TeacherExercicesPage: {
+      component: TeacherExercicesPage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPage",
+    },
+    TeacherExamsPage: {
+      component: TeacherExamsPage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPage",
+    },
+    TeacherLessonsPageMaths: {
+      component: TeacherLessonsPageMaths,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPageMaths",
+    },
+    TeacherExercicesPageMaths: {
+      component: TeacherExercicesPageMaths,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPageMaths",
+    },
+    TeacherExamsPageMaths: {
+      component: TeacherExamsPageMaths,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPageMaths",
+    },
+    
+    TeacherLessonsPageFrench: {
+      component: TeacherLessonsPageFrench,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPageFrench",
+    },
+    TeacherExercicesPageFrench: {
+      component: TeacherExercicesPageFrench,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPageFrench",
+    },
+    TeacherExamsPageFrench: {
+      component: TeacherExamsPageFrench,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPageFrench",
+    },
+
+    TeacherLessonsPageEnglish: {
+      component: TeacherLessonsPageEnglish,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPageEnglish",
+    },
+    TeacherExercicesPageEnglish: {
+      component: TeacherExercicesPageEnglish,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPageEnglish",
+    },
+    TeacherExamsPageEnglish: {
+      component: TeacherExamsPageEnglish,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPageEnglish",
+    },
+
+    TeacherLessonsPageSLE: {
+      component: TeacherLessonsPageSLE,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPageSLE",
+    },
+    TeacherExercicesPageSLE: {
+      component: TeacherExercicesPageSLE,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPageSLE",
+    },
+    TeacherExamsPageSLE: {
+      component: TeacherExamsPageSLE,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPageSLE",
+    },
+
+    TeacherLessonsPageSS: {
+      component: TeacherLessonsPageSS,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherLessonsPageSS",
+    },
+    TeacherExercicesPageSS: {
+      component: TeacherExercicesPageSS,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExercicesPageSS",
+    },
+    TeacherExamsPageSS: {
+      component: TeacherExamsPageSS,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/TeacherExamsPageSS",
+    },
+
     SocialSciencesLevelsPage: {
       component: SocialSciencesLevelsPage,
       imageSrc: HotelTravelLandingPageImageSrc,
@@ -482,21 +597,6 @@ export const components = {
       url: `/components/innerPages/addExercicePage`,
       imageSrc: PrivacyPolicyPageImageSrc,
     },
-    TeacherLessonsPage: {
-          component: TeacherLessonsPage,
-          imageSrc: HotelTravelLandingPageImageSrc,
-          url: "/components/innerPages/TeacherLessonsPage",
-        },
-        TeacherExercicesPage: {
-          component: TeacherExercicesPage,
-          imageSrc: HotelTravelLandingPageImageSrc,
-          url: "/components/innerPages/TeacherExercicesPage",
-        },
-        TeacherExamsPage: {
-          component: TeacherExamsPage,
-          imageSrc: HotelTravelLandingPageImageSrc,
-          url: "/components/innerPages/TeacherExamsPage",
-        },
         ListOfTeachers: {
           component: ListOfTeachers,
           url: `/components/innerPages/ListOfTeachers`,

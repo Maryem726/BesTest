@@ -96,21 +96,21 @@ export default () => {
       imageSrc: "https://static.vecteezy.com/ti/vecteur-libre/t2/4251244-apprentissage-mathematiques-de-education-et-connaissance-fond-cartoon-vector-illustration-science-technologie-ingenierie-formule-ou-math-de-base-vectoriel.jpg",
       title: "Mathematics Lessons",
       description: "Check the Mathematics Lessons available in the platform.",
-      url: "/components/innerPages/TeacherLessonsPage",
+      url: "/components/innerPages/TeacherLessonsPageMaths",
 
     },
     {
       imageSrc: "https://img.freepik.com/free-vector/mathematics-concept-illustration_114360-6490.jpg",
       title: "Mathematics Exams",
       description: "Check the Mathematics Exams available in the platform.",
-      url: "/components/innerPages/TeacherExamsPage",
+      url: "/components/innerPages/TeacherExamsPageMaths",
 
     },
     {
       imageSrc: "https://thumbs.dreamstime.com/b/mati%C3%A8re-d-enseignement-de-maths-%C3%A9tude-des-math%C3%A9matiques-id%C3%A9e-%C3%A9ducation-l-et-la-connaissance-illustration-plate-isolement-155126255.jpg",
       title: "Mathematics Exercices",
       description: "Check the Mathematics Exercices available in the platform.",
-      url: "/components/innerPages/TeacherExercicesPage",
+      url: "/components/innerPages/TeacherExercicesPageMaths",
 
     }
   ]
@@ -126,15 +126,7 @@ export default () => {
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
               <TextInfo>
-                <TitleReviewContainer>
                   <Title>{card.title}</Title>
-                  <RatingsInfo>
-                    <StarIcon />
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  
-                </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
               <Link href={card.url}>Check Now</Link>            </Card>

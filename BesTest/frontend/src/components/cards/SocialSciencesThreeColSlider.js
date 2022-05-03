@@ -115,21 +115,21 @@ export default () => {
       imageSrc: "https://media.istockphoto.com/vectors/earth-day-man-save-green-planet-environment-people-of-world-water-vector-id1127279984?b=1&k=20&m=1127279984&s=612x612&w=0&h=yrW9SSNrQaofEPMiYI5Upum-2Pf5ovS91agYJ0z8Ct0=",
       title: "Social Sciences Lessons",
       description: "Check the Social Sciences Lessons available in the platform.",
-      url: "/components/innerPages/TeacherLessonsPage",
+      url: "/components/innerPages/TeacherLessonsPageSS",
 
     },
     {
       imageSrc: "https://img.freepik.com/free-vector/social-science-isometric-concept_1995-361.jpg",
       title: "Social Sciences Exams",
       description: "Check the Social Sciences Exams available in the platform.",
-      url: "/components/innerPages/TeacherExamsPage",
+      url: "/components/innerPages/TeacherExamsPageSS",
 
     },
     {
       imageSrc: "https://www.siliconchips-services.com/wp-content/uploads/2020/05/business-people-looking-book_52683-28612.jpg",
       title: "Social Sciences Exercices",
       description: "Check the Social Sciences Exercices available in the platform.",
-      url: "/components/innerPages/TeacherExercicesPage",
+      url: "/components/innerPages/TeacherExercicesPageSS",
     }
   ]
 
@@ -143,15 +143,7 @@ export default () => {
           <Card key={index}>
             <CardImage imageSrc={card.imageSrc} />
             <TextInfo>
-              <TitleReviewContainer>
                 <Title>{card.title}</Title>
-                <RatingsInfo>
-                  <StarIcon />
-                </RatingsInfo>
-              </TitleReviewContainer>
-              <SecondaryInfoContainer>
-                
-              </SecondaryInfoContainer>
               <Description>{card.description}</Description>
             </TextInfo>
             <Link href={card.url}>Check Now</Link>            </Card>

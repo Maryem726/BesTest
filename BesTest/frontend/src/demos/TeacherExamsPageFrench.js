@@ -1,7 +1,7 @@
 import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import Hero from "components/hero/TeacherExercicesArabicFullWidthWithImage.js";
-import SliderCard from "components/cards/TeacherExercicesThreeColSliderArabic.js";
+import Hero from "components/hero/TeacherExamsFrenchFullWidthWithImage.js";
+import SliderCard from "components/cards/TeacherExamsThreeColSliderFrench";
 import Footer from "components/footers/MiniCenteredFooter.js";
 
 export default () => (

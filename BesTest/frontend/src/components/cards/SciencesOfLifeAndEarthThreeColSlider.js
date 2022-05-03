@@ -116,20 +116,20 @@ export default () => {
       imageSrc: "https://thumbs.dreamstime.com/z/childrens-colored-drawings-space-theme-science-emergence-life-earth-style-doodle-vector-ufo-s-planets-technique-135196925.jpg",
       title: "Sciences of Life and Earth Lessons",
       description: "Check the Sciences of Life and Earth Lessons available in the platform.",
-      url: "/components/innerPages/TeacherLessonsPage",
+      url: "/components/innerPages/TeacherLessonsPageSLE",
     },
     {
       imageSrc: "https://previews.123rf.com/images/svarog19801/svarog198011812/svarog19801181200061/114660263-dessins-d-enfants-de-couleur-vectorielle-sur-le-thème-de-l-espace-de-la-science-et-de-l-émergence-de.jpg",
       title: "Sciences of Life and Earth Exams",
       description: "Check the Sciences of Life and Earth Exams available in the platform.",
-      url: "/components/innerPages/TeacherExamsPage",
+      url: "/components/innerPages/TeacherExamsPageSLE",
 
     },
     {
       imageSrc: "https://thumbs.dreamstime.com/z/childrens-colored-drawings-space-theme-science-emergence-life-earth-style-doodle-vector-ufo-s-planets-technique-135196941.jpg",
       title: "Sciences of Life and Earth Exercices",
       description: "Check the Sciences of Life and Earth Exercices available in the platform.",
-      url: "/components/innerPages/TeacherExercicesPage",
+      url: "/components/innerPages/TeacherExercicesPageSLE",
 
     }
   ]
@@ -146,15 +146,7 @@ export default () => {
           <Card key={index}>
             <CardImage imageSrc={card.imageSrc} />
             <TextInfo>
-              <TitleReviewContainer>
                 <Title>{card.title}</Title>
-                <RatingsInfo>
-                  <StarIcon />
-                </RatingsInfo>
-              </TitleReviewContainer>
-              <SecondaryInfoContainer>
-                
-              </SecondaryInfoContainer>
               <Description>{card.description}</Description>
             </TextInfo>
             <Link href={card.url}>Check Now</Link>            </Card>

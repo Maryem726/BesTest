@@ -96,21 +96,21 @@ export default () => {
       imageSrc: "https://thumbs.dreamstime.com/b/language-school-adult-kids-english-courses-class-146540582.jpg",
       title: "English Lessons",
       description: "Check the English Lessons available in the platform.",
-      url: "/components/innerPages/TeacherLessonsPage",
+      url: "/components/innerPages/TeacherLessonsPageEnglish",
 
     },
     {
       imageSrc: "https://comps.gograph.com/anglaise-école-pour-children-apprendre-language-education-vecteur-illustration-gosses-dessin-griffonnage-style-image_gg118587949.jpg",
       title: "English Exams",
       description: "Check the English Exams available in the platform.",
-      url: "/components/innerPages/TeacherExamsPage",
+      url: "/components/innerPages/TeacherExamsPageEnglish",
 
     },
     {
       imageSrc: "https://cdn.w600.comps.canstockphoto.fr/class-école-cours-langue-anglaise-vecteur-eps_csp68985642.jpg",
       title: "English Exercices",
       description: "Check the English Exercices available in the platform.",
-      url: "/components/innerPages/TeacherExercicesPage",
+      url: "/components/innerPages/TeacherExercicesPageEnglish",
 
     }
   ]
@@ -126,15 +126,7 @@ export default () => {
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
               <TextInfo>
-                <TitleReviewContainer>
                   <Title>{card.title}</Title>
-                  <RatingsInfo>
-                    <StarIcon />
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  
-                </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
               <Link href={card.url}>Check Now</Link>

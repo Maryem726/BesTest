@@ -91,7 +91,7 @@ export default function StudentListSingleCol({
       setLoading(true);
 
       try {
-        const {data: response} = await  Axios.get(`/kid/listKVvvvvv/${user._id}`)
+        const {data: response} = await  Axios.get(`/kid/listK`)
 
         setData(response);
       } catch (error) {

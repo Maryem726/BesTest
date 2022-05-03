@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -9,8 +9,9 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
+import Axios from"axios";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative bg-gradient-to-b from-white via-yellow-400 to-white`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
 const HeadingWithControl = tw.div`flex flex-col items-center sm:items-stretch sm:flex-row justify-between`;
@@ -39,9 +40,7 @@ const CardImage = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`
 ]);
-const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
-  ${tw`inline-block mt-4 text-sm font-semibold`}
-`
+
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
 const TitleReviewContainer = tw.div`flex flex-col sm:flex-row sm:justify-between sm:items-center`;
 const Title = tw.h5`text-2xl font-bold`;
@@ -90,26 +89,40 @@ export default () => {
     ]
   };
 
+
+  
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: response} = await  Axios.get("/examen/filterlevelsubject/arabic/3eme")
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
   /* Change this according to your needs */
   const cards = [
     {
-      imageSrc: "https://media.istockphoto.com/vectors/french-vector-id1329695738?k=20&m=1329695738&s=612x612&w=0&h=n3vPTONj3Fx5f8bhSq6-k3DK_2Jmum-H_R_x8EvhdW4=",
-      title: "French Lessons",
-      description: "Check the French Lessons available in the platform.",
-      url: "/components/innerPages/TeacherLessonsPageFrench",
+      imageSrc: "https://static.vecteezy.com/system/resources/previews/002/779/585/non_2x/online-learning-concept-online-class-teacher-at-chalkboard-video-lesson-distance-study-at-school-illustration-flat-style-vector.jpg",
+      title: "Exam 1",
+      description: "Here is the description of Exam 1",
     },
     {
-      imageSrc: "https://cdn9.ouedkniss.com/medias/announcements/images/M8yXwB/1fdrxlgjeivU8VW32PUEzncCZld42c8LIMlCGhkq.jpg",
-      title: "French Exams",
-      description: "Check the French Exams available in the platform.",
-      url: "/components/innerPages/TeacherExamsPageFrench",
+      imageSrc: "https://static.vecteezy.com/system/resources/previews/002/779/585/non_2x/online-learning-concept-online-class-teacher-at-chalkboard-video-lesson-distance-study-at-school-illustration-flat-style-vector.jpg",
+      title: "Exam 2",
+      description: "Here is the description of Exam 2",
     },
     {
-      imageSrc: "https://media.istockphoto.com/vectors/french-vector-id1054778952?k=20&m=1054778952&s=612x612&w=0&h=sf5vHRi2zH-A_ZSxrJcRYbs8MMdL47H2heKx25EG4ps=",
-      title: "French Exercices",
-      description: "Check the French Exercices available in the platform.",
-      url: "/components/innerPages/TeacherExercicesPageFrench",
-
+      imageSrc: "https://static.vecteezy.com/system/resources/previews/002/779/585/non_2x/online-learning-concept-online-class-teacher-at-chalkboard-video-lesson-distance-study-at-school-illustration-flat-style-vector.jpg",
+      title: "Exam 3",
+      description: "Here is the description of Exam 3",
     }
   ]
 
@@ -117,17 +130,17 @@ export default () => {
     <Container>
       <Content>
         <HeadingWithControl>
-          <Heading>Sub-Sections</Heading>
+          <Heading>Exams List</Heading>
         </HeadingWithControl>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
+        {data.slice(0).map((card, index) => (
+          <Card key={index} featured={card.subject}>
+              <CardImage imageSrc="https://static.vecteezy.com/system/resources/previews/002/779/585/non_2x/online-learning-concept-online-class-teacher-at-chalkboard-video-lesson-distance-study-at-school-illustration-flat-style-vector.jpg" />
               <TextInfo>
                   <Title>{card.title}</Title>
                 <Description>{card.description}</Description>
               </TextInfo>
-              <Link href={card.url}>Check Now</Link>
+              <PrimaryButton>Check Now</PrimaryButton>
             </Card>
           ))}
         </CardSlider>
