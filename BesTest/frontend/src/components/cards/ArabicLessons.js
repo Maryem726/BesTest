@@ -73,6 +73,10 @@ export default function ArabicLessons({
   PrimaryButton1Text = "تمارين",
   PrimaryButton1Url = "/components/innerPages/LessonExercicePage",
 }){
+  const [Search, setSearch] = useState('');
+const handleChange = (e) => {
+  setSearch(e.target.value);
+};
 
   const [lessons, setLessons] = useState([]);
   const getEx =async(name) =>{
@@ -192,6 +196,10 @@ export default function ArabicLessons({
   {!loading && (
     <Content>
       <HeadingWithControl>
+      <div className="search-box" >
+              <label htmlFor="main-search" />
+              <input className="search-text"  type="text" onChange={(e)=>handleChange(e)} id="main-search" placeholder="Search" />
+              <button className="search-btn" type="submit" /></div>
         <Heading></Heading>
         <Controls>
           <PrevButton onClick={sliderRef?.slickPrev}><ChevronLeftIcon/></PrevButton>
@@ -199,7 +207,7 @@ export default function ArabicLessons({
         </Controls>
       </HeadingWithControl>
       <CardSlider ref={setSliderRef} {...sliderSettings}>
-        {data.slice(0).map((card, index) => (
+        {data.slice(0).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((card, index) => (
           <Card key={index} featured={card.subject}>
             <CardImage  imageSrc=
        "https://alifarabic.com/wp-content/uploads/2020/10/Learn-to-Speak-Arabic-1060x596.png" />

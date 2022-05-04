@@ -173,6 +173,8 @@ PrimaryButton1Url = "/components/innerPages/LessonExercicePage",}) => {
                   <Title>{card.title}</Title>
                 <Description>{card.description}</Description>
               </TextInfo>
+              <a  href={`assets/uploads/${card.type}`}download >PDF </a>
+
               <PrimaryButton>Check Now</PrimaryButton>
               <button as="a"
                onClick={() => {

@@ -155,6 +155,8 @@ export default () => {
                   <Title>{card.title}</Title>
                 <Description>{card.description}</Description>
               </TextInfo>
+              <a  href={`assets/uploads/${card.type}`}download >PDF </a>
+
               <PrimaryButton>Check Now</PrimaryButton>
             </Card>
           ))}

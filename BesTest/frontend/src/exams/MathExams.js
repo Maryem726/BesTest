@@ -10,9 +10,7 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Hero from "components/hero/TwoColumnWithPrimaryBackgroundM";
-import { Document, Page,pdfjs } from 'react-pdf';
-const url = 
-"https://cors-anywhere.herokuapp.com/http://www.pdf995.com/samples/pdf.pdf"
+
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -76,14 +74,10 @@ function MathExams ({
   ]
 }) 
 
-{pdfjs.GlobalWorkerOptions.workerSrc = 
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
+{const [Search, setSearch] = useState('');
+const handleChange = (e) => {
+  setSearch(e.target.value);
+};
   const HighlightedText = tw.span` text-gray-700 px-4 transform -skew-x-12 inline-block`;
   const [visible, setVisible] = useState(7);
   const onLoadMoreClick = () => {
@@ -133,26 +127,22 @@ function MathExams ({
         />
       
       <ContentWithPaddingXl>
+      <div className="search-box" >
+              <label htmlFor="main-search" />
+              <input className="search-text"  type="text" onChange={(e)=>handleChange(e)} id="main-search" placeholder="Search" />
+              <button className="search-btn" type="submit" /></div>
           <HeadingRow>
             <Heading>{headingText}</Heading>
           </HeadingRow>
           <Posts className="custompost">
-            {data.slice(0, visible).map((post, index) => (
+          {data.slice(0, visible).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((post, index) => (
               <PostContainer key={index} featured={post.subject}>
                 <Post className="group" as="a" >
-                  <Image imageSrc= "https://classroomclipart.com/images/gallery/Animations/Education_School/math-at-board-teacher-animated-clipart-2.gif" />
+                <td><a href={`assets/uploads/${post.type}`}download ><Image imageSrc= "https://classroomclipart.com/images/gallery/Animations/Education_School/math-at-board-teacher-animated-clipart-2.gif" /></a></td>
                   <Info>
                     <Category>{post.level}</Category>
                     
-                    <div>
-                    {/* `assets/uploads/${post.type}` */}
-                    <Document
-        file={url}
-        onLoadSuccess={onDocumentLoadSuccess}
-        >
-        {/* <Page pageNumber={pageNumber} /> */}
-      </Document>
-                    </div>
+                  
                     <CreationDate>{post.date}</CreationDate>
                     <Title>{post.title}</Title>
                     { post.description && <Description>{post.description}</Description>}

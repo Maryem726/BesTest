@@ -8,6 +8,7 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 
+const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -83,51 +84,42 @@ const DecoratorBlob = styled(SvgDecoratorBlob)`
 
 
 export default ({
-  subheading = "Pricing",
+  subheading = "Subscription",
   heading = "Flexible Plans.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "Subscribe now to get access to more content on our platform, including exclusive store items",
   plans = null,
   primaryButtonText = "Buy Now"
 }) => {
   const defaultPlans = [
     {
-      name: "Personal",
-      price: "$17.99",
+      name: "Gold",
+      price: "$9.99",
       duration: "Monthly",
-      mainFeature: "Suited for Personal Blogs",
-      features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"],
+      mainFeature: "Suited for Eeveryone",
+      features: ["Correction Exams", "Store"],
     },
     {
-      name: "Business",
-      price: "$37.99",
+      name: "Diamond",
+      price: "$19.99",
       duration: "Monthly",
-      mainFeature: "Suited for Production Websites",
-      features: ["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance"],
-      featured: true,
+      mainFeature: "Suited for Everyone",
+      features: ["Correction Exams", "Store", "Catch-up session"],
     },
-    {
-      name: "Enterprise",
-      price: "$57.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Big Companies",
-      features: ["90 Templates", "9 Landing Pages", "37 Internal Pages", "Personal Assistance"],
-    },
+    
   ];
 
   if (!plans) plans = defaultPlans;
 
   const highlightGradientsCss = [
+    
+    css`
+      
+background: rgb(255,211,0);
+background: linear-gradient(90deg, rgba(255,211,0,1) 0%, rgba(255,216,0,1) 49%, rgba(0,255,237,0) 100%);
+    `,
     css`
       background: rgb(56, 178, 172);
       background: linear-gradient(115deg, rgba(56, 178, 172, 1) 0%, rgba(129, 230, 217, 1) 100%);
-    `,
-    css`
-      background: rgb(56, 178, 172);
-      background-image: linear-gradient(115deg, #6415ff, #7431ff, #8244ff, #8e56ff, #9a66ff);
-    `,
-    css`
-      background: rgb(245, 101, 101);
-      background: linear-gradient(115deg, rgba(245, 101, 101, 1) 0%, rgba(254, 178, 178, 1) 100%);
     `
   ];
 
@@ -157,7 +149,7 @@ export default ({
                 ))}
               </PlanFeatures>
               <PlanAction>
-                <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
+                <NavLink href="/PlaceOrderGold" css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</NavLink>
               </PlanAction>
             </Plan>
           ))}

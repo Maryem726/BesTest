@@ -12,6 +12,7 @@ const PORT = 3001;
 //import database 
 var mongoose = require('mongoose');
 
+var Order= require('./routes/Order');
 var adminRouter= require('./routes/admin');
 var lessonRouter= require('./routes/lesson');
 var indexRouter = require('./routes/index');
@@ -60,6 +61,7 @@ app.use('/examen', examenRouter);
 app.use('/exrecice', exerciceRouter);
 app.use('/lesson', lessonRouter);
 app.use('/auth', auth);
+app.use('/order', Order);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from

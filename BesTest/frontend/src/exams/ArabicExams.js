@@ -78,12 +78,10 @@ function ArabicExams({
   ]
 }) 
 
-{ 
-  const [Search, setSearch] = useState('');
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
+{const [Search, setSearch] = useState('');
+const handleChange = (e) => {
+  setSearch(e.target.value);
+};
   const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
   const [visible, setVisible] = useState(7);
   const onLoadMoreClick = () => {

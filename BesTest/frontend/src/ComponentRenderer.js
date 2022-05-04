@@ -4,6 +4,7 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js"
 import TeacherLessonsPage from"demos/TeacherLessonsPageArabic.js";
 import TeacherExercicesPage from"demos/TeacherExercicesPageArabic.js";
 import TeacherExamsPage from"demos/TeacherExamsPageArabic.js";
+import SubscriptionPage from"demos/Subscription.js";
 
 import TeacherLessonsPageMaths from"demos/TeacherLessonsPageMaths";
 import TeacherExercicesPageMaths from"demos/TeacherExercicesPageMaths";
@@ -211,6 +212,11 @@ export const components = {
   },
 
   innerPages: {
+    SubscriptionPage: {
+      component: SubscriptionPage,
+      imageSrc: HotelTravelLandingPageImageSrc,
+      url: "/components/innerPages/SubscriptionPage",
+    },
     TeacherLessonsPage: {
       component: TeacherLessonsPage,
       imageSrc: HotelTravelLandingPageImageSrc,

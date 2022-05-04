@@ -70,7 +70,7 @@ export default ({
         "https://res0.grays.com/handlers/imagehandler.ashx?t=sh&id=21674545&s=gl&index=0&ts=636966404840000000",
       title: "Game : Discount 20%",
       authorName: "Carrefour",
-      url: "https://reddit.com"
+      url: "/components/innerPages/SubscriptionPage"
     },
     {
       
@@ -78,7 +78,7 @@ export default ({
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5DnngUTuXi7hn_Wl8UWIU_oB30FTmyr6cSQ&usqp=CAU",
       title: "Book Collection : Discount 50%",
       authorName: "Library Zefir La Marsa",
-      url: "https://reddit.com"
+      url:  "/components/innerPages/SubscriptionPage"
     },
     {
       
@@ -86,28 +86,28 @@ export default ({
       "https://img5.findglocal.com/548/511/950368495485114.jpg",
       title: "Discount 20%",
       authorName: "Geek Ennaser",
-      url: "https://reddit.com"
+      url:  "/components/innerPages/SubscriptionPage"
     },
     {
       postImageSrc:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIGBWYbScnVmlPFTKPAiblXTBTNFWOlI_ABA&usqp=CAU",
       title: "Kids Collection : Discount 10%",
       authorName: "Zara Tunisia",
-      url: "https://reddit.com"
+      url:  "/components/innerPages/SubscriptionPage"
     },
     {
       postImageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwu23ZSyYS8UfEtWUZuvAtptEmA9G0Z8atWEdphb2OF_YCBFLWy6_5CsGA1GT09IW9yqw&usqp=CAU",
       title: "Free access to Bardo Museum",
       authorName: "Bardo ",
-      url: "https://timerse.com"
+      url:  "/components/innerPages/SubscriptionPage"
     },
     {
       postImageSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdNRw4xd_34wBxWlMMeKrt8_8rGu9Sfapynw&usqp=CAU",
       title: "Summer Camp : Discount 50% avec TravelTodo ",
       authorName: "Bizerte ",
-      url: "https://timerse.com"
+      url:  "/components/innerPages/SubscriptionPage"
     }
   ]
 }) => {
