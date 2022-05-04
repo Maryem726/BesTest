@@ -4,8 +4,9 @@ import {
   GET_EXERCICES,
   GET_EXERCICE,
   GET_LESSONS,
-  EXERCICE_ERROR,
   DELETE_EXERCICE,
+  EXERCICE_ERROR,
+  DELETE_LESSON,
   ADD_EXERCICE,
 
 } from './Types';
@@ -63,6 +64,16 @@ export const GetAllLessons = () => async (dispatch) => {
 //   }
 // };
 
+// Delete post
+export const DeleteLesson = (id) => async (dispatch) => {
+  dispatch({ type: DELETE_LESSON });
+  try {
+    await axios.delete(`/lesson/deleteL/${id}`);
+  } catch (error) {
+    dispatch({ type: EXERCICE_ERROR, payload: error.response.data.errors });
+  }
+};
+
 // Add post
 export const AddExercices = ({formData,user}) => async (dispatch) => {
 
@@ -82,3 +93,4 @@ export const AddExercices = ({formData,user}) => async (dispatch) => {
     });
   }
 };
+

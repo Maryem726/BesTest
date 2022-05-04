@@ -10,6 +10,10 @@ import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import Axios from"axios";
+import { useDispatch, useSelector } from "react-redux";
+import { GetAllLessons } from "Actions/Exercice";
+
+import { DeleteLesson } from "Actions/Exercice";
 
 const Container = tw.div`relative bg-gradient-to-b from-white via-indigo-400 to-white`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
@@ -65,8 +69,11 @@ const IconContainer = styled.div`
 `;
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
 
+const PrimaryButton1 = tw.button`sm:w-96 bg-transparent text-gray-900 hocus:text-gray-700 mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-6xl py-3 sm:py-4`;
+
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
-export default () => {
+export default ({ PrimaryButton1Text = "Delete",
+PrimaryButton1Url = "/components/innerPages/LessonExercicePage",}) => {
   // useState is used instead of useRef below beca
   const [lessons, setLessons] = useState([]);
   const getEx =async(name) =>{
@@ -105,9 +112,15 @@ export default () => {
       }
       setLoading(false);
     }
+
     fetchData();
   }, []);
 
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(GetAllLessons());
+    }, [dispatch]);
 
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
@@ -165,9 +178,21 @@ export default () => {
                 <Description>{card.description}</Description>
               </TextInfo>
               <PrimaryButton>Check Now</PrimaryButton>
+              <button as="a"
+               onClick={() => {
+                dispatch(DeleteLesson(card._id));
+                 dispatch(GetAllLessons());
+              }}
+              >
+              {PrimaryButton1Text}
+            </button>   
             </Card>
-          ))}
+            
+          )
+          )
+        }
         </CardSlider>
+        
       </Content>
     </Container>
   )}</div>);};

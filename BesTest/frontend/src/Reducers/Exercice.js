@@ -2,6 +2,7 @@ import {
     GET_EXERCICES,
     GET_EXERCICE,
     EXERCICE_ERROR,
+    DELETE_LESSON,
     DELETE_EXERCICE,
     ADD_EXERCICE,
     GET_LESSONS
@@ -44,6 +45,12 @@ import {
           exercices: state.exercices.filter((exercice) => exercice._id !== payload),
           loading: false,
         };
+        case DELETE_LESSON:
+          return {
+            ...state,
+            exercices: state.exercices.filter((exercice) => exercice._id !== payload),
+            loading: false,
+          };
       case EXERCICE_ERROR:
         return {
           ...state,

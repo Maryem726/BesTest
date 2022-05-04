@@ -92,15 +92,13 @@ router.get('/listE' , async(request,res)=>{
   res.json(myList);
  });
 
-router.get('/deleteL/:id', (req, res) => {
-    lesson.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) {
-            res.redirect('/lesson/listL');
-        }
-        else { console.log('Error in lesson delete :' + err); }
-    });
-});
+router.delete('/deleteL/:id', (req, res) => {
+  lessonModel.findByIdAndRemove(req.params.id, (err, doc) => {
 
+      console.log("Error in teacher delete :" + err);
+    
+  });
+});
 
 //afficher liste des lessons
 var config = {
