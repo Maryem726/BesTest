@@ -14,6 +14,7 @@ var exerciceRouter= require('./routes/exercice');
 var examenRouter= require('./routes/examen');
 var exerciceRouter= require('./routes/exercice');
 var lessonRouter= require('./routes/lesson');
+var complaintRouter = require('./routes/complaint');
 var auth= require('./routes/auth');
 
 app.use(
@@ -46,6 +47,7 @@ app.use('/examen', examenRouter);
 app.use('/exrecice', exerciceRouter);
 app.use('/lesson', lessonRouter);
 app.use('/auth', auth);
+app.use('/complaint', complaintRouter);
 
 // Start server
 // PORT
