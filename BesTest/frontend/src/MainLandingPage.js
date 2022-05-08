@@ -81,7 +81,6 @@ export default ({
   parentLogin = components.innerPages.ParentLoginPage,
   kidLogin = components.innerPages.KidLoginPage,
   blocks = components.blocks,
-  complaint = components.complaint,
   heading = "Whatever the problems, Be part of BesTest",
   description = "Our new innovative approach for a better online education including teachers, kids and also parents.",
   role ="Let us know who you are !"

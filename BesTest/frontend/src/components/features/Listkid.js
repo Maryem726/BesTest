@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
@@ -54,7 +55,15 @@ export default function Listkid ({
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+
+    
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
     setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
     const fetchData = async () =>{
       setLoading(true);
       try {

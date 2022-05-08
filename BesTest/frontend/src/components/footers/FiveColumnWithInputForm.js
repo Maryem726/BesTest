@@ -56,12 +56,9 @@ export default () => {
             <SubscribeNewsletterContainer>
               <ColumnHeading>Subscribe to our WebSite</ColumnHeading>
               <SubscribeText>
-                Have any feedback ? Pease contact us...
+               contact us...
               </SubscribeText>
-              <SubscribeForm method="get" action="#">
-               
-                <SubscribeButton type="submit">Send Feedback</SubscribeButton>
-              </SubscribeForm>
+             
             </SubscribeNewsletterContainer>
           </SubscribeNewsletterColumn>
         </SixColumns>

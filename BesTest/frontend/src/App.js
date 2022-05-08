@@ -10,12 +10,12 @@ import ThankYouPage from "ThankYouPage.js";
 import ParentLandingPage from "demos/ParentLandingPage";
 import TeacherLandingPage from "demos/TeacherLandingPage";
 import PlaceOrderGold from "components/pricing/PlaceOrderGold";
-import Complaint from "pages/Complaint";
-import MyComplaints from "pages/myComplaints";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "store";
 import ForgotPassword from "pages/ForgotPassword";
+import Payment from "components/pricing/Payment";
 const promise = loadStripe(
   "pk_test_51KsTWMGmgWtFO5XORc4DANOKfzWd5zwEk7F69ReipWfzFyf81FRo2yGbAp0ibr0WjL9QXJfl5VQOkb7Yhj0D96Hs00Rj7mITpV"
 );
@@ -45,19 +45,11 @@ export default function App() {
         <Route path="/ForgotPassword">
           <ForgotPassword/>
         </Route>
-        <Route path="/PlaceOrderGold">
-        <Elements stripe={promise}>
-
-          <PlaceOrderGold/></Elements>
+        <Route path="/paynow">
+        <Payment/>
         </Route>
         <Route path="/">
           <MainLandingPage />
-        </Route>
-        <Route path="/complaint">
-          <Complaint />
-        </Route>
-        <Route path="/mycomplaints">
-          <MyComplaints />
         </Route>
         
       </Switch>

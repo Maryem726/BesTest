@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var claims = new Schema({
+var claim = new Schema({
     description: String,
     topic: String,
     createdAt: Date, 
@@ -11,4 +11,4 @@ var claims = new Schema({
 
 });
 
-module.exports= mongoose.model('claims',claims);
+module.exports= mongoose.model('claim',claim);

@@ -10,6 +10,7 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Hero from "components/hero/TwoColumnWithPrimaryBackgroundArabic";
+import MyPdf from "../uploads/1649119437273Examen_SOA-QCM-Etude-Cas.pdf"
 
 
 
@@ -103,7 +104,7 @@ const handleChange = (e) => {
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get(`/examen/examsByarabic/${user._id}`)
+        const {data: response} = await  Axios.get(`/examen/getbyname/byArabic/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -140,7 +141,7 @@ const handleChange = (e) => {
             {data.slice(0, visible).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((post, index) => (
               <PostContainer key={index} featured={post.subject}>
                 <Post className="group" as="a" >
-                <td><a href={`assets/uploads/${post.type}`}download ><Image imageSrc= "https://xxicolloquiummodernlanguagesdepartment.files.wordpress.com/2017/11/1b20ff16113319-562a59211c973.gif" /></a></td>
+                <td><a href={MyPdf}download ><Image imageSrc= "https://xxicolloquiummodernlanguagesdepartment.files.wordpress.com/2017/11/1b20ff16113319-562a59211c973.gif" /></a></td>
                   <Info>
                     <Category>{post.level}</Category>                 
                     <CreationDate>{post.createdAt}</CreationDate>

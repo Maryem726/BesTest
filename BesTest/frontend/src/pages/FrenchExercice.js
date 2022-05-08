@@ -75,12 +75,21 @@ export default function FrenchExercice ({
 })  {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
   useEffect(() => {
 
     const fetchData = async () =>{
+      var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
+
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("http://localhost:3001/exercice/French")
+        const {data: response} = await  Axios.get(`/exercice/get/french/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);

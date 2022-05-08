@@ -10,6 +10,9 @@ import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import Axios from"axios";
+import { DeleteExercice } from "Actions/Exercice";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const Container = tw.div`relative bg-gradient-to-b from-white via-green-400 to-white`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
@@ -66,16 +69,25 @@ const IconContainer = styled.div`
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
 
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
-export default () => {
+export default ({ PrimaryButton1Text = "Delete"}) => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
   useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
+
 
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("/exercice/Arabic/filtre")
+        const {data: response} = await  Axios.get(`/exercice/get/math/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -84,6 +96,7 @@ export default () => {
     }
     fetchData();
   }, []);
+  const dispatch = useDispatch();
 
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
@@ -141,6 +154,14 @@ export default () => {
                 <Description>{card.description}</Description>
               </TextInfo>
               <PrimaryButton>Check Now</PrimaryButton>
+              <button as="a"
+               onClick={() => {
+                dispatch(DeleteExercice(card._id));
+                 
+              }}
+              >
+              {PrimaryButton1Text}
+            </button>
             </Card>
           ))}
         </CardSlider>

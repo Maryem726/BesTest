@@ -75,12 +75,20 @@ export default function EnglishExercice ({
 })  {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
   useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
+    // console.log(localStorage.getItem("user"))
 
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get("http://localhost:3001/exercice/English")
+        const {data: response} = await  Axios.get(`/exercice/get/english/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -107,7 +115,7 @@ export default function EnglishExercice ({
     
       
       <Container tw="bg-gradient-to-b from-white  via-orange-300 to-orange-500 relative -mx-8 -mt-8 pt-8 px-8">
-      <Header  />
+      
 
       <Hero
         heading={<> <HighlightedText>English exercises</HighlightedText></>}

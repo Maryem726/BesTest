@@ -6,7 +6,9 @@ import {
   GET_LESSONS,
   DELETE_EXERCICE,
   EXERCICE_ERROR,
+  DELETE_Exam,
   DELETE_LESSON,
+
   ADD_EXERCICE,
 
 } from './Types';
@@ -74,6 +76,16 @@ export const DeleteLesson = (id) => async (dispatch) => {
   }
 };
 
+// Delete post
+export const DeleteExam = (id) => async (dispatch) => {
+  dispatch({ type: DELETE_Exam });
+  try {
+    await axios.delete(`/examen/deleteExm/${id}`);
+  } catch (error) {
+    dispatch({ type: EXERCICE_ERROR, payload: error.response.data.errors });
+  }
+};
+
 // Add post
 export const AddExercices = ({formData,user}) => async (dispatch) => {
 
@@ -91,6 +103,15 @@ export const AddExercices = ({formData,user}) => async (dispatch) => {
       type: EXERCICE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
+  }
+};
+
+export const DeleteExercice = (id) => async (dispatch) => {
+  dispatch({ type: DELETE_EXERCICE });
+  try {
+    await axios.delete(`/exercice/deleteExercice/${id}`);
+  } catch (error) {
+    dispatch({ type: EXERCICE_ERROR, payload: error.response.data.errors });
   }
 };
 

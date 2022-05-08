@@ -4,6 +4,7 @@ export const EXERCICE_ERROR = 'EXERCICE_ERROR';
 
 export const DELETE_EXERCICE = 'DELETE_EXERCICE';
 export const DELETE_LESSON = 'DELETE_LESSON';
+export const DELETE_Exam = 'DELETE_Exam';
 
 export const ADD_EXERCICE = 'ADD_EXERCICE';
 export const SET_ALERT = 'SET_ALERT';

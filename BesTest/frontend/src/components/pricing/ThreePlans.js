@@ -16,7 +16,7 @@ const Description = tw(SectionDescription)`w-full text-center`;
 
 const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
-  ${tw`w-full max-w-sm mt-16 lg:mr-8 lg:last:mr-0 text-center px-8 rounded-lg shadow relative pt-2 text-gray-900 bg-white flex flex-col`}
+  ${tw`w-full  max-w-sm mt-16 lg:mr-8 lg:last:mr-0 text-center px-8 rounded-lg shadow relative pt-2 text-gray-900  bg-white flex flex-col`}
   .planHighlight {
     ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2`}
   }
@@ -84,26 +84,20 @@ const DecoratorBlob = styled(SvgDecoratorBlob)`
 
 
 export default ({
-  subheading = "Subscription",
-  heading = "Flexible Plans.",
+  subheading = "Welcome",
+  heading = "To get your gift you need to get your pack.",
   description = "Subscribe now to get access to more content on our platform, including exclusive store items",
   plans = null,
   primaryButtonText = "Buy Now"
 }) => {
   const defaultPlans = [
-    {
-      name: "Gold",
-      price: "$9.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Eeveryone",
-      features: ["Correction Exams", "Store"],
-    },
+    
     {
       name: "Diamond",
       price: "$19.99",
       duration: "Monthly",
       mainFeature: "Suited for Everyone",
-      features: ["Correction Exams", "Store", "Catch-up session"],
+      features: [ "Store"],
     },
     
   ];
@@ -131,7 +125,7 @@ background: linear-gradient(90deg, rgba(255,211,0,1) 0%, rgba(255,216,0,1) 49%, 
           <Heading>{heading}</Heading>
           {description && <Description>{description}</Description>}
         </HeaderContainer>
-        <PlansContainer>
+        <PlansContainer >
           {plans.map((plan, index) => (
             <Plan key={index} featured={plan.featured}>
               {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index % highlightGradientsCss.length]} />}
@@ -149,7 +143,7 @@ background: linear-gradient(90deg, rgba(255,211,0,1) 0%, rgba(255,216,0,1) 49%, 
                 ))}
               </PlanFeatures>
               <PlanAction>
-                <NavLink href="/PlaceOrderGold" css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</NavLink>
+                <NavLink href="/paynow" css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</NavLink>
               </PlanAction>
             </Plan>
           ))}

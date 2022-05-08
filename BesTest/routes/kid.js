@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
 var mongoose = require('mongoose');
 
+const stripe = require('stripe')("sk_test_51KsTWMGmgWtFO5XOFXCXZXTIswmhHCfRlqMkY40z69dS6w235pZbHyIatHWWTMz9BUDzETcMwGJ76FT2drdzNWtk00tAFT4NCu");
 
 router.get('/', async(req, res, next) =>{
     res.render('kid');
@@ -130,6 +131,26 @@ router.get('/:id', (req, res) => {
       res.send(error)
       
     }
+  });
+
+
+  router.post("/create-payment-intent/payment", async (req, res) => {
+     const { amount } = req.body;
+    console.log("amount")
+    console.log(amount)
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "eur",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+  
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+    
   });
 
 module.exports = router;

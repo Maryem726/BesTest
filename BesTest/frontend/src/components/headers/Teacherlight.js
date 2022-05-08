@@ -78,10 +78,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const defaultLinks = [
     <NavLinks key={3}>
       <NavLink href="/components/innerPages/StudentListPage">Students</NavLink>
-      <NavLink href="#stats">Statistics</NavLink>
       <NavLink href="#ressources">Ressources</NavLink>
       <NavLink href="#subjects">Subjects</NavLink>
-      <NavLink href="/#">Catch-up Sessions</NavLink>
 
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/">Log Out</PrimaryLink>
     </NavLinks>

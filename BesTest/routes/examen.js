@@ -49,13 +49,27 @@ router.post('/:user', upload.single('type'), async (request, response) => {
   });
 
   try {
-     await exam.save();
+    
+ await exam.save().then(function(Exams){
+  return User.findByIdAndUpdate({_id:id}, 
+    {$push: 
+    {Exams:Exams._id}}, {new:true});
+    })
+    res.json(exam)
+        // response.redirect('/');
+      } catch (error) {
+        console.log(error);
+      }
 
-     response.json(exam);
-  } 
-  catch (error) {
-    console.log(error);
-  }
+     
+});
+
+router.delete('/deleteExm/:id', (req, res) => {
+  examModel.findByIdAndRemove(req.params.id, (err, doc) => {
+
+      console.log("Error in exam delete :" + err);
+    
+  });
 });
 
 router.get('/read', async (request, res) => {
@@ -94,180 +108,180 @@ router.get('/examsByLevel', async (request, res) => {
 });
 
 //afficher par subject
-router.get('/examsByarabic/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
+// router.get('/examsByarabic/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
 
-  console.log(id)
-  const us= await User.findOne({_id:id});
-  console.log(us.typeuser)
- // console.log(kids[0].level)
- try {
-  let kids= await User.find({parent:us._id});
-  console.log(kids);
+//   console.log(id)
+//   const us= await User.findOne({_id:id});
+//   console.log(us.typeuser)
+//  // console.log(kids[0].level)
+//  try {
+//   let kids= await User.find({parent:us._id});
+//   console.log(kids);
 
-if(us.typeuser=="STUDENT"){
-  console.log(us.typeuser)
-const listsubject = await examModel.find({subject:"Arabic", level:us.level})  
-res.json(listsubject);
-}
-else if(us.typeuser=="PARENT"){ 
-  console.log(us.typeuser)
- const listsubject = await examModel.find({subject:"Arabic", level:kids[0].level}) 
-res.json(listsubject);
-}
-} catch (err) {
-console.error(err.message);
- res.status(500).send('Server error');
-}
+// if(us.typeuser=="STUDENT"){
+//   console.log(us.typeuser)
+// const listsubject = await examModel.find({subject:"Arabic", level:us.level})  
+// res.json(listsubject);
+// }
+// else if(us.typeuser=="PARENT"){ 
+//   console.log(us.typeuser)
+//  const listsubject = await examModel.find({subject:"Arabic", level:kids[0].level}) 
+// res.json(listsubject);
+// }
+// } catch (err) {
+// console.error(err.message);
+//  res.status(500).send('Server error');
+// }
 
-});
+// });
 
-router.get('/examsBymathematics/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
+// router.get('/examsBymathematics/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
 
-    console.log(id)
-    const us= await User.findOne({_id:id});
-    console.log(us.typeuser)
+//     console.log(id)
+//     const us= await User.findOne({_id:id});
+//     console.log(us.typeuser)
   
-    // console.log(kids[0].level)
-    try {
-      let kids= await User.find({parent:us._id});
-      console.log(kids);
+//     // console.log(kids[0].level)
+//     try {
+//       let kids= await User.find({parent:us._id});
+//       console.log(kids);
 
-    if(us.typeuser=="STUDENT"){
-      console.log(us.typeuser)
-    const listsubject = await examModel.find({subject:"Mathematique", level:us.level})  
-    res.json(listsubject);
-    }
-    else if(us.typeuser=="PARENT"){ 
-      console.log(us.typeuser)
-     const listsubject = await examModel.find({subject:"Mathematique", level:kids[0].level}) 
-   res.json(listsubject);
-  }
-} catch (err) {
-  console.error(err.message);
-     res.status(500).send('Server error');
-   }
-   });
+//     if(us.typeuser=="STUDENT"){
+//       console.log(us.typeuser)
+//     const listsubject = await examModel.find({subject:"Mathematique", level:us.level})  
+//     res.json(listsubject);
+//     }
+//     else if(us.typeuser=="PARENT"){ 
+//       console.log(us.typeuser)
+//      const listsubject = await examModel.find({subject:"Mathematique", level:kids[0].level}) 
+//    res.json(listsubject);
+//   }
+// } catch (err) {
+//   console.error(err.message);
+//      res.status(500).send('Server error');
+//    }
+//    });
 
 
-router.get('/examsByfrench/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
+// router.get('/examsByfrench/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
 
-    console.log(id)
-    const us= await User.findOne({_id:id});
-    console.log(us.typeuser)
+//     console.log(id)
+//     const us= await User.findOne({_id:id});
+//     console.log(us.typeuser)
 
   
-    // console.log(kids[0].level)
-    try {
-      let kids= await User.find({parent:us._id});
-      console.log(kids);
+//     // console.log(kids[0].level)
+//     try {
+//       let kids= await User.find({parent:us._id});
+//       console.log(kids);
 
-    if(us.typeuser=="STUDENT"){
-      console.log(us.typeuser)
-    const listsubject = await examModel.find({subject:"French", level:us.level})  
-    res.json(listsubject);
-    }
-    else if(us.typeuser=="PARENT"){ 
-      console.log(us.typeuser)
-     const listsubject = await examModel.find({subject:"French", level:kids[0].level}) 
-   res.json(listsubject);
-  }
-} catch (err) {
-  console.error(err.message);
-     res.status(500).send('Server error');
-   }
-   });
+//     if(us.typeuser=="STUDENT"){
+//       console.log(us.typeuser)
+//     const listsubject = await examModel.find({subject:"French", level:us.level})  
+//     res.json(listsubject);
+//     }
+//     else if(us.typeuser=="PARENT"){ 
+//       console.log(us.typeuser)
+//      const listsubject = await examModel.find({subject:"French", level:kids[0].level}) 
+//    res.json(listsubject);
+//   }
+// } catch (err) {
+//   console.error(err.message);
+//      res.status(500).send('Server error');
+//    }
+//    });
 
-router.get('/examsByenglish/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
+// router.get('/examsByenglish/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
 
-  console.log(id)
-  const us= await User.findOne({_id:id});
-  console.log(us.typeuser)
-
-
-  // console.log(kids[0].level)
-  try {
-    let kids= await User.find({parent:us._id});
-    console.log(kids);
-
-  if(us.typeuser=="STUDENT"){
-    console.log(us.typeuser)
-  const listsubject = await examModel.find({subject:"English", level:us.level})  
-  res.json(listsubject);
-  }
-  else if(us.typeuser=="PARENT"){ 
-    console.log(us.typeuser)
-   const listsubject = await examModel.find({subject:"English", level:kids[0].level}) 
- res.json(listsubject);
-}
-} catch (err) {
-console.error(err.message);
-   res.status(500).send('Server error');
- }
+//   console.log(id)
+//   const us= await User.findOne({_id:id});
+//   console.log(us.typeuser)
 
 
- });
+//   // console.log(kids[0].level)
+//   try {
+//     let kids= await User.find({parent:us._id});
+//     console.log(kids);
 
-router.get('/examsBysciences/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
-
-  console.log(id)
-  const us= await User.findOne({_id:id});
-  console.log(us.typeuser)
-
-  // console.log(kids[0].level)
-  try {
-    let kids= await User.find({parent:us._id});
-    console.log(kids);
-
-  if(us.typeuser=="STUDENT"){
-    console.log(us.typeuser)
-  const listsubject = await examModel.find({subject:"Sciences of life and earth", level:us.level})  
-  res.json(listsubject);
-  }
-  else if(us.typeuser=="PARENT"){ 
-    console.log(us.typeuser)
-   const listsubject = await examModel.find({subject:"Sciences of life and earth", level:kids[0].level}) 
- res.json(listsubject);
-}
-} catch (err) {
-console.error(err.message);
-   res.status(500).send('Server error');
- }
- });
+//   if(us.typeuser=="STUDENT"){
+//     console.log(us.typeuser)
+//   const listsubject = await examModel.find({subject:"English", level:us.level})  
+//   res.json(listsubject);
+//   }
+//   else if(us.typeuser=="PARENT"){ 
+//     console.log(us.typeuser)
+//    const listsubject = await examModel.find({subject:"English", level:kids[0].level}) 
+//  res.json(listsubject);
+// }
+// } catch (err) {
+// console.error(err.message);
+//    res.status(500).send('Server error');
+//  }
 
 
-router.get('/examsBysocials/:user', async (request, res) => {
-  id = mongoose.Types.ObjectId(request.params.user);
+//  });
 
-    console.log(id)
-    const us= await User.findOne({_id:id});
-    console.log(us.typeuser)
+// router.get('/examsBysciences/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
+
+//   console.log(id)
+//   const us= await User.findOne({_id:id});
+//   console.log(us.typeuser)
+
+//   // console.log(kids[0].level)
+//   try {
+//     let kids= await User.find({parent:us._id});
+//     console.log(kids);
+
+//   if(us.typeuser=="STUDENT"){
+//     console.log(us.typeuser)
+//   const listsubject = await examModel.find({subject:"Sciences of life and earth", level:us.level})  
+//   res.json(listsubject);
+//   }
+//   else if(us.typeuser=="PARENT"){ 
+//     console.log(us.typeuser)
+//    const listsubject = await examModel.find({subject:"Sciences of life and earth", level:kids[0].level}) 
+//  res.json(listsubject);
+// }
+// } catch (err) {
+// console.error(err.message);
+//    res.status(500).send('Server error');
+//  }
+//  });
+
+
+// router.get('/examsBysocials/:user', async (request, res) => {
+//   id = mongoose.Types.ObjectId(request.params.user);
+
+//     console.log(id)
+//     const us= await User.findOne({_id:id});
+//     console.log(us.typeuser)
   
-    // console.log(kids[0].level)
-    try {
-      let kids= await User.find({parent:us._id});
-      console.log(kids);
+//     // console.log(kids[0].level)
+//     try {
+//       let kids= await User.find({parent:us._id});
+//       console.log(kids);
 
-    if(us.typeuser=="STUDENT"){
-      console.log(us.typeuser)
-    const listsubject = await examModel.find({subject:"Social Science", level:us.level})  
-    res.json(listsubject);
-    }
-    else if(us.typeuser=="PARENT"){ 
-      console.log(us.typeuser)
-     const listsubject = await examModel.find({subject:"Social Science", level:kids[0].level}) 
-   res.json(listsubject);
-  }
-} catch (err) {
-  console.error(err.message);
-     res.status(500).send('Server error');
-   }
+//     if(us.typeuser=="STUDENT"){
+//       console.log(us.typeuser)
+//     const listsubject = await examModel.find({subject:"Social Science", level:us.level})  
+//     res.json(listsubject);
+//     }
+//     else if(us.typeuser=="PARENT"){ 
+//       console.log(us.typeuser)
+//      const listsubject = await examModel.find({subject:"Social Science", level:kids[0].level}) 
+//    res.json(listsubject);
+//   }
+// } catch (err) {
+//   console.error(err.message);
+//      res.status(500).send('Server error');
+//    }
 
-   });
+//    });
 
 
 
@@ -340,5 +354,214 @@ router.get('/filterlevelsubject/arabic/3eme' , async(request,res)=>{
   res.json(listsubject);
  });
 
+ router.get('/getbyname/byArabic/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
 
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"Arabic", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"Arabic", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"Arabic", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
+
+ router.get('/getbyname/byFrench/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"French", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"French", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"French", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
+
+ router.get('/getbyname/byEnglish/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"English", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"English", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"English", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
+ 
+
+ router.get('/getbyname/bySocial/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"Social Science", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"Social Science", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"Social Science", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
+
+ router.get('/getbyname/bySciences/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"Sciences of life and earth", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"Sciences of life and earth", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"Sciences of life and earth", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
+
+ router.get('/getbyname/byMathematique/:user' , async(request,res)=>{
+  id = mongoose.Types.ObjectId(request.params.user);
+
+  console.log(id)
+  const us= await User.findOne({_id:id});
+  console.log(us.typeuser)
+
+
+  // console.log(kids[0].level)
+  try {
+    let kids= await User.find({parent:us._id});
+    console.log(kids);
+
+  if(us.typeuser=="STUDENT"){
+    console.log(us.typeuser)
+  const listsubject = await examModel.find({subject:"Mathematique", level:us.level})  
+  res.json(listsubject);
+  }
+  else if(us.typeuser=="PARENT"){ 
+    console.log(us.typeuser)
+   const listsubject = await examModel.find({subject:"Mathematique", level:kids[0].level}) 
+ res.json(listsubject);
+}
+else if(us.typeuser=="TEACHER"){ 
+  console.log(us.typeuser)
+ const listsubject = await examModel.find({subject:"Mathematique", level:us.level, teacher:us._id}, ) 
+res.json(listsubject);
+}
+} catch (err) {
+console.error(err.message);
+   res.status(500).send('Server error');
+ }
+
+ });
 module.exports = router;

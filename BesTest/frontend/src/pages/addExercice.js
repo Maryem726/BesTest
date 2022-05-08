@@ -8,6 +8,8 @@ import illustration from "images/apple-icon.png";
 import logo from "images/logoBestest.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { components } from "ComponentRenderer";
+import Header from "components/headers/Teacherlight.js";
+
 import {
   Combobox,
   ComboboxInput,
@@ -55,6 +57,7 @@ const IllustrationImage = styled.div`
 
 export default function AddLesson({
 
+  roundedHeaderButton,
 
   logoLinkUrl = "/",
   illustrationImageSrc = illustration,
@@ -67,12 +70,13 @@ export default function AddLesson({
 
 
 }) {
+  
 
   const [title, setTitle] = useState("");
 
   const [description, setDescription] = useState("");
 
-  const [level, setLevel] = useState("4eme");
+  const [level, setLevel] = useState();
 
   const [subject, setSubject] = useState("gtgtr");
 
@@ -86,13 +90,14 @@ export default function AddLesson({
 
   const [AllLessons, setAllLessons] = useState([]);
 
+  const [user, setUser] = useState();
 
   const Add = (e) => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("title", title);
     formData.append("subject", subject)
-    formData.append("level", level)
+    // formData.append("level", level)
     formData.append("price", price)
     formData.append("description", description)
     formData.append("type", images)
@@ -100,16 +105,22 @@ export default function AddLesson({
    
     formData.append("lesson", lesson)
 
-    Axios.post("http://localhost:3001/exercice/addExercice", formData);
+    Axios.post(`/exercice/addExercice/${user._id}`, formData);
 
    
 
   };
 
   useEffect(() => {
+    var user = JSON.parse(localStorage.getItem('user'));
+
+    console.log(user._id);
+
+    // setUser(user.id);
+    setUser(JSON.parse(localStorage.getItem("user")));
     try {
       //I will send request to the textQuery ROUTE 
-      Axios.get('http://localhost:3001/exercice/listLessons').then((response) => {
+      Axios.get('http://localhost:3006/exercice/listLessons').then((response) => {
         setAllLessons(response.data);
     })
 
@@ -119,7 +130,8 @@ export default function AddLesson({
 if(!AllLessons)return null
 
   return (
-
+<>
+<Header roundedHeaderButton={roundedHeaderButton} />
     <AnimationRevealPage>
       <Container >
         <Content>
@@ -167,7 +179,7 @@ if(!AllLessons)return null
 
                   </div>
                   <br />
-                  <div className="u-s-m-b-30">
+                  {/* <div className="u-s-m-b-30">
                     <select tw="text-gray-500 w-full px-8 py-4 rounded-lg font-medium bg-purple-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0"
                       className="select-box select-box--primary-style u-w-100" name='level' value={level}
                       onChange={(event) => {
@@ -183,7 +195,7 @@ if(!AllLessons)return null
 
 
                     </select>
-                  </div>
+                  </div> */}
 
                   <br />
                   <div className="u-s-m-b-30">
@@ -229,5 +241,7 @@ if(!AllLessons)return null
         </Content>
       </Container>
     </AnimationRevealPage>
+    </>
+
   )
 }

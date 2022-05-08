@@ -63,8 +63,7 @@ import FrenchLessonsPage from "pages/FrenchLessons.js"
 import MathLessonsPage from "pages/MathLessons.js"
 import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
-import Complaint from 'pages/Complaint';
-import MyComplaints from 'pages/myComplaints';
+
 import RestaurantLandingPageImageSrc from "images/demo/RestaurantLandingPage.jpg";
 import ServiceLandingPageImageSrc from "images/demo/ServiceLandingPage.jpeg";
 import HostingCloudLandingPageImageSrc from "images/demo/HostingCloudLandingPage.jpeg";
@@ -279,14 +278,6 @@ export const components = {
       component: TeacherExamsPageEnglish,
       imageSrc: HotelTravelLandingPageImageSrc,
       url: "/components/innerPages/TeacherExamsPageEnglish",
-    },
-    Complaint :{
-      component: Complaint,
-      url: "/complaint",
-    },
-    MyComplaints :{
-      component: MyComplaints,
-      url: "/MyComplaints",
     },
 
     TeacherLessonsPageSLE: {

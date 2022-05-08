@@ -10,6 +10,8 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Hero from "components/hero/TwoColumnWithPrimaryBackgroundM";
+import MyPdf from "../uploads/1649119437273Examen_SOA-QCM-Etude-Cas.pdf"
+
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -101,7 +103,7 @@ const handleChange = (e) => {
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get(`/examen/examsByenglish/${user._id}`)
+        const {data: response} = await  Axios.get(`/examen/getbyname/byEnglish/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -137,7 +139,7 @@ const handleChange = (e) => {
           {data.slice(0, visible).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((post, index) => (
               <PostContainer key={index} featured={post.subject}>
                 <Post className="group" as="a" >
-                <td><a href={`assets/uploads/${post.type}`}download ><Image imageSrc= "https://media.baamboozle.com/uploads/images/220206/1614662730_31585_gif-url.gif" /></a></td>
+                <td><a href={MyPdf}download ><Image imageSrc= "https://media.baamboozle.com/uploads/images/220206/1614662730_31585_gif-url.gif" /></a></td>
                   <Info>
                     <Category>{post.level}</Category>
                     

@@ -10,6 +10,7 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Hero from "components/hero/TwoColumnWithPrimaryBackgroundM";
+import MyPdf from "../uploads/1649119437273Examen_SOA-QCM-Etude-Cas.pdf"
 
 
 const HeadingRow = tw.div`flex`;
@@ -100,7 +101,7 @@ const handleChange = (e) => {
     const fetchData = async () =>{
       setLoading(true);
       try {
-        const {data: response} = await  Axios.get(`/examen/examsBysocials/${user._id}`)
+        const {data: response} = await  Axios.get(`/examen/getbyname/bySocial/${user._id}`)
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -136,7 +137,7 @@ const handleChange = (e) => {
           {data.slice(0, visible).filter(el=>el.title.toLowerCase().includes(Search.toLowerCase())).map((post, index) => (
               <PostContainer key={index} featured={post.subject}>
                 <Post className="group" as="a" >
-                <td><a href={`assets/uploads/${post.type}`}download ><Image imageSrc= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLLFA23OIo1dJn7VkC91fO0gbfsRWzTL8cowQwqPzuqfXRILOr22mrZz6t3CS2qEy1N3o&usqp=CAU" /></a></td>
+                <td><a href={MyPdf}download ><Image imageSrc= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLLFA23OIo1dJn7VkC91fO0gbfsRWzTL8cowQwqPzuqfXRILOr22mrZz6t3CS2qEy1N3o&usqp=CAU" /></a></td>
                   <Info>
                     <Category>{post.level}</Category>
                     
