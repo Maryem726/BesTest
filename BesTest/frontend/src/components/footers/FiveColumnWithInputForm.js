@@ -58,7 +58,11 @@ export default () => {
               <SubscribeText>
                contact us...
               </SubscribeText>
-             
+           
+              <SubscribeForm method="get" action="/components/innerPages/ComplaintPage">
+               
+                <SubscribeButton type="submit">Send Feedback</SubscribeButton>
+              </SubscribeForm>
             </SubscribeNewsletterContainer>
           </SubscribeNewsletterColumn>
         </SixColumns>

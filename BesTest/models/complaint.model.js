@@ -1,12 +1,15 @@
-var mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+const Complaint = new mongoose.Schema(
+    {
+        topic: { type: String, required: true },
+        description: { type: String, required: false },
+        status: { type: String, default: "Open" },
+        image: { type: String, required: false },
+        email: { type: String, required: false },
+        userId: { type: String, required: false },
+    },
+    { timestamps: true }
+);
 
-var claim = new Schema({
-    description: String,
-    topic: String,
-    createdAt: Date, 
-    teacher: String
-});
-
-module.exports= mongoose.model('claim',claim);
+module.exports = mongoose.model("Complaint", Complaint);

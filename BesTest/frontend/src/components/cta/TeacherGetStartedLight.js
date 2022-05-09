@@ -24,9 +24,9 @@ const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-500 opacity-5`
 export default ({
   subheading = "Need help with your first step ?",
-  heading = "Check the classes section now.",
-  primaryLinkText = "More Details",
-  primaryLinkUrl = "http://timerse.com",
+  heading = "Check the students section now.",
+  primaryLinkText = "Show",
+  primaryLinkUrl = "components/innerPages/StudentListPage",
   pushDownFooter = true
 }) => {
   return (

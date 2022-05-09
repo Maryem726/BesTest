@@ -59,8 +59,8 @@ export default ({ roundedHeaderButton }) => {
               Here you will be able to view and manage the lists of your students aswell as the list of ressources provided by yourself.
             </Paragraph>
             <Actions>
-              <input type="number" placeholder="Students Level" />
-              <button>Find Level</button>
+              {/* <input type="number" placeholder="Students Level" />
+              <button>Find Level</button> */}
             </Actions>
             <CustomersLogoStrip>
               <p>Our TRUSTED Partners</p>

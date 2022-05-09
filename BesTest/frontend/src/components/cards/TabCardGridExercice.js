@@ -10,6 +10,7 @@ import { ReactComponent as StarIcon } from "images/star-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 import Header from "components/headers/Ressourceslight.js";
+import Footer from "components/footers/FiveColumnWithInputForm.js";
 
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
@@ -192,6 +193,8 @@ export default ({
       </ContentWithPaddingXl>
       <DecoratorBlob1 />
       <DecoratorBlob2 />
+      <Footer />
+
     </Container>
   );
 };

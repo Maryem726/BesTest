@@ -59,7 +59,7 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default ({
-  kidAdd = components.innerPages.KidSignupPage
+  kidAdd = components.innerPages.ParentSignupPage
 }) => {
   const navLinks = [
     <NavLinks>
@@ -69,8 +69,8 @@ export default ({
       <NavLink href="components/landingPages/RestaurantLandingPage">
         Ressources
       </NavLink>
-      <NavLink href="/#">
-        Statistics
+      <NavLink href="/components/innerPages/SubscriptionPage">
+        Payment
       </NavLink>
       <NavLink href="/components/innerPages/ListOfTeachers">
         Teachers

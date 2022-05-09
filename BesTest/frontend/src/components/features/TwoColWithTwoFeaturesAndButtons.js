@@ -54,7 +54,7 @@ export default ({
   ),
   description = "The teachers working with us are some of the finest in their domain of speciality, always active delivering better education for your kids and available for your feedback and discussions.",
   primaryButtonText = "See Our Teachers",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/components/innerPages/ListOfTeachers",
   features = null,
   textOnLeft = true
 }) => {

@@ -38,9 +38,8 @@ export default () => {
           <LinksContainer>
             <Link href="/">Home</Link>
             <Link href="components/landingPages/RestaurantLandingPage">Ressources</Link>
-            <Link href="#">Statistics</Link>
-            <Link href="#">Teachers</Link>
-            <Link href="#">Kids</Link>
+            <Link href="/components/innerPages/ListOfTeachers">Teachers</Link>
+            <Link href="/components/innerPages/listkids">Kids</Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

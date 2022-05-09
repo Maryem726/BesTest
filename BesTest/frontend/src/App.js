@@ -10,6 +10,8 @@ import ThankYouPage from "ThankYouPage.js";
 import ParentLandingPage from "demos/ParentLandingPage";
 import TeacherLandingPage from "demos/TeacherLandingPage";
 import PlaceOrderGold from "components/pricing/PlaceOrderGold";
+import Complaint from "pages/Complaint";
+import MyComplaints from "pages/myComplaints";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -50,6 +52,13 @@ export default function App() {
         </Route>
         <Route path="/">
           <MainLandingPage />
+        </Route>
+        
+<Route path="/complaint">
+          <Complaint />
+        </Route>
+        <Route path="/mycomplaints">
+          <MyComplaints />
         </Route>
         
       </Switch>

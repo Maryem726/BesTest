@@ -39,7 +39,7 @@ export default () => {
         imageDecoratorBlob={true}
         decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
       />
-      <Stat/>
+      {/* <Stat/> */}
       <MainFeature/>
       {/* TabGrid Component also accepts a tabs prop to customize the tabs and its content directly. Please open the TabGrid component file to see the structure of the tabs props.*/}
       <TabGrid
@@ -50,7 +50,7 @@ export default () => {
         }
       />
       
-      <MainFeature2
+      {/* <MainFeature2
         subheading={<Subheading>CATCH-UP SESSIONS</Subheading>}
         heading={
           <>
@@ -74,7 +74,7 @@ export default () => {
           }
         ]}
       />
-      
+       */}
       <Testimonial
         subheading={<Subheading>Testimonials</Subheading>}
         heading={
@@ -89,7 +89,7 @@ export default () => {
               "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
             heading: "Amazing Teaching Experience",
             quote:
-              "The teaching experience in this platformm in splendid, always easy to share my lessons and exercices with my students at any time and having the ability to see and keep an eye on their progress and act accordingly.",
+              "The teaching experience in this platformm in splendid, always easy to share my lessons and exercices with my students at any time.",
             customerName: "Charlotte Hale",
             customerTitle: "English Teacher."
           },
@@ -99,7 +99,7 @@ export default () => {
               "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
             heading: "Love the Teacher to Parent communication !",
             quote:
-              "For us  teachers, it is always good and necessary to hear the parent's opinions about our methodolgies and exchange ideas with them and help guide them in their process of teaching their kids and organizing catch-up sessions with them is always great for the kid's progress.",
+              "For us  teachers, it is always good and necessary to hear the parent's opinions about our methodolgies and exchange ideas with them and help guide them in their process of teaching their kids.",
             customerName: "Adam Cuppy",
             customerTitle: "Mathematics Teacher"
           }
@@ -118,11 +118,7 @@ export default () => {
             answer:
               "Yes, they all are. In the ressrouces section, you will be able to check lessons, exercices and exams based on their subjects ."
           },
-          {
-            question: "How much will I get paid for a private catch-up session ?",
-            answer:
-              "Private catch-up sessions fees are included in the subscription fees in the pricing page, when you host a private catch-up session, a pourcentage of its fees will be awarded to you."
-          },
+         
           {
             question: "Can parents see the ressources I upload ?",
             answer:
@@ -131,13 +127,9 @@ export default () => {
           {
             question: "How will I be able to communicate with parents ?",
             answer:
-              "You will be able to answer the feedback sent from parents and you can also discuss with them in real time."
+              "You will be able to answer the feedback sent from parents and you can also answer them."
           },
-          {
-            question: "How can I measure the effectiveness of my ressources ?",
-            answer:
-              "Ressources uploaded by yourself will be rated by students and you will be able to see all the statistics you need in one place."
-          }
+         
         ]}
       />
       <GetStarted/>

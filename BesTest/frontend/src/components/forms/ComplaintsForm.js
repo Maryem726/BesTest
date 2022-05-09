@@ -6,8 +6,17 @@ import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.sv
 import * as api from '../../api/Api';
 import {useParams, useHistory, Link} from 'react-router-dom'
 
+import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 
-
+const StyledHeader = styled(Header)`
+  ${tw`pt-8 max-w-none`}
+  ${DesktopNavLinks} ${NavLink}, ${LogoLink} {
+    ${tw`text-gray-100 hover:border-gray-300 hover:text-gray-300`}
+  }
+  ${NavToggle}.closed {
+    ${tw`text-gray-100 hover:text-primary-500`}
+  }
+`;
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
@@ -47,7 +56,31 @@ export default () => {
 
     const history = useHistory()
 
-
+    const navLinks = [
+        <NavLinks>
+          <NavLink href="/">
+            Home
+          </NavLink>
+          <NavLink href="components/landingPages/RestaurantLandingPage">
+            Ressources
+          </NavLink>
+          <NavLink href="/components/innerPages/SubscriptionPage">
+            Payment
+          </NavLink>
+          <NavLink href="/components/innerPages/ListOfTeachers">
+            Teachers
+          </NavLink>
+          <NavLink href="/components/innerPages/listkids">
+            Kids
+          </NavLink>
+          
+        </NavLinks>,
+        <NavLinks>
+          <PrimaryLink href="/">
+            Log Out
+          </PrimaryLink>
+        </NavLinks>
+      ];
     const handleSubmite = () => {
         const credentials = { topic, description, image, email, userId };
         api.createComplaint(credentials)
@@ -79,7 +112,10 @@ export default () => {
 
     return (
         <Container>
+                        <StyledHeader links={navLinks} />
+
             <Content>
+
                 <FormContainer>
                     <div tw="mx-auto max-w-4xl">
                         <h2>Submit A Complaint</h2>

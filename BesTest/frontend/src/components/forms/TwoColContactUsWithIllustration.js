@@ -32,10 +32,10 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block lg:ml-6 mt-6 lg:mt-0`
 
 export default ({
   subheading = "Contact Us",
-  heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr/> with us.</>,
+  // heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr/> with us.</>,
   description = "Your feedback is beneficial and will always help us improve our platform to meet with your demands in order to deliver the best learning experience possible for your kids.",
   submitButtonText = "Contact Us",
-  formAction = "#",
+  formAction = "/components/innerPages/ComplaintPage",
   formMethod = "get",
   textOnLeft = true,
 }) => {
@@ -50,10 +50,10 @@ export default ({
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
             {subheading && <Subheading>{subheading}</Subheading>}
-            <Heading>{heading}</Heading>
+            {/* <Heading>{heading}</Heading> */}
             <Description>{description}</Description>
             <Form action={formAction} method={formMethod}>
-              <Input type="email" name="email" placeholder="Your Email Address" />
+              {/* <Input type="email" name="email" placeholder="Your Email Address" /> */}
               <SubmitButton type="submit">{submitButtonText}</SubmitButton>
             </Form>
           </TextContent>

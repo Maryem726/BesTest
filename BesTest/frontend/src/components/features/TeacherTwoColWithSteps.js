@@ -62,11 +62,11 @@ export default ({
     },
     {
       heading: "Supervise",
-      description: "Always keep a close eye on your student's progress by checking their work."
+      description: "Always keep a close eye on your student's progress by uploading more ressources and motivational exercices."
     },
     {
       heading: "Communicate",
-      description: "Send your notes directly to your students and communicate and provide feedback to their parents."
+      description: "Get in touch with their parents."
     }
   ];
 

@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 
 const {
-	getOneComplaint,
-	getComplaint,
-	addComplaint,
-	updateComplaint,
-	deleteComplaint,
-	getComplaintByUserId,
-	updateComplaintStatus,
-	sendMsgComplaint,
-	getComplaintByUserIdAndStatus,
-	getComplaintByStatus
+    getOneComplaint,
+    getComplaint,
+    addComplaint,
+    updateComplaint,
+    deleteComplaint,
+    getComplaintByUserId,
+    updateComplaintStatus,
+    sendMsgComplaint,
+    getComplaintByUserIdAndStatus,
+    getComplaintByStatus
 } = require("../controllers/complaintController");
 
 //send messages

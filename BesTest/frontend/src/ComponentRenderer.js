@@ -67,8 +67,8 @@ import SignupPage from "pages/Signup.js";
 import RestaurantLandingPageImageSrc from "images/demo/RestaurantLandingPage.jpg";
 import ServiceLandingPageImageSrc from "images/demo/ServiceLandingPage.jpeg";
 import HostingCloudLandingPageImageSrc from "images/demo/HostingCloudLandingPage.jpeg";
-
-
+import myComplaintsPage from "pages/myComplaints.js"
+import ComplaintPage from "pages/Complaint.js";
 import AdminLoginPage from "pages/AdminLogin.js";
 import TeacherLoginPage from "pages/TeacherLogin.js";
 import TeacherSignupPage from "pages/TeacherSignup.js";
@@ -107,8 +107,8 @@ import SciencesOfLifeAndEarthLevelsPage from"demos/SciencesOfLifeAndEarthLevelsP
 import SocialSciencesLevelsPage from"demos/SocialSciencesLevelsPage.js";
 
 import LoginPageImageSrc from "images/demo/LoginPage.jpeg";
-import ComingSoonImageSrc from"images/demo/ComingSoon.jpg";
-import ComingSoon1ImageSrc from"images/demo/ComingSoon.jpg";
+import ComingSoonImageSrc from"images/demo/subscription.jpg";
+import ComingSoon1ImageSrc from"images/demo/feedback.jpg";
 import AdminLoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import TeacherLoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import SignupPageImageSrc from "images/demo/SignupPage.jpeg";
@@ -201,12 +201,12 @@ export const components = {
     ComingSoonLandingPage: {
       component: ComingSoonLandingPage,
       imageSrc: ComingSoonImageSrc,
-      url: "/components/landingPages/ComingSoonLandingPage",
+      url: "/components/innerPages/SubscriptionPage",
     },
     ComingSoon1LandingPage: {
       component: ComingSoonLandingPage,
       imageSrc: ComingSoon1ImageSrc,
-      url: "/components/landingPages/ComingSoonLandingPage",
+      url: "/components/innerPages/ComplaintPage?",
     },
     
   },
@@ -623,6 +623,16 @@ export const components = {
           component: LessonExercicePage,
           imageSrc: HotelTravelLandingPageImageSrc,
           url: "/components/innerPages/LessonExercicePage",
+        },
+        ComplaintPage: {
+          component: ComplaintPage,
+          imageSrc: HotelTravelLandingPageImageSrc,
+          url: "/components/innerPages/ComplaintPage",
+        },
+        myComplaintsPage: {
+          component: myComplaintsPage,
+          imageSrc: HotelTravelLandingPageImageSrc,
+          url: "/components/innerPages/myComplaintsPage",
         },
   },
 

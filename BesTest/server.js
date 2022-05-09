@@ -16,6 +16,10 @@ var exerciceRouter= require('./routes/exercice');
 var lessonRouter= require('./routes/lesson');
 var auth= require('./routes/auth');
 
+
+var complaintRouter = require('./routes/complaint');
+
+
 app.use(
   cors({
     origin: "*",
@@ -46,6 +50,7 @@ app.use('/examen', examenRouter);
 app.use('/exrecice', exerciceRouter);
 app.use('/lesson', lessonRouter);
 app.use('/auth', auth);
+app.use('/complaint', complaintRouter);
 
 // Start server
 // PORT

@@ -53,55 +53,39 @@ export default () => {
       <Content>
         <FiveColumns>
           <Column>
-            <ColumnHeading>Kid</ColumnHeading>
+            <ColumnHeading></ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="components/innerPages/KidLoginPage">Ressources</Link>
+                <Link href="/components/innerPages/StudentListPage">Kid</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="components/innerPages/KidLoginPage">Store</Link>
-              </LinkListItem>
+      
             </LinkList>
           </Column>
           <Column>
-            <ColumnHeading>Parent</ColumnHeading>
+            <ColumnHeading></ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="components/innerPages/ParentLoginPage">Ressources</Link>
+                <Link href="#ressources">Ressources</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="components/innerPages/ParentLoginPage">Statistics</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="components/innerPages/ParentLoginPage">Teachers</Link>
-              </LinkListItem>
+              
+             
             </LinkList>
           </Column>
           <Column>
-            <ColumnHeading>Teacher</ColumnHeading>
+            <ColumnHeading></ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Classes</Link>
+                <Link href="#subjects">Subjects</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Statistics</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="components/landingPages/RestaurantLandingPage">Ressources</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Subjects</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Catch-up Sessions</Link>
-              </LinkListItem>
+             
+            
             </LinkList>
           </Column>
           <Column>
-            <ColumnHeading>Team</ColumnHeading>
+            <ColumnHeading></ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="/#aboutTeam">About Us</Link>
+                <Link href="/">About Us</Link>
               </LinkListItem>
             </LinkList>
           </Column>

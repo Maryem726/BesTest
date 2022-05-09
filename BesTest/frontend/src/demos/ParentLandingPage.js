@@ -52,7 +52,7 @@ return (
   
   <AnimationRevealPage>
     <Hero />
-    <MainFeature id="TrackRecord" />
+    {/* <MainFeature id="TrackRecord" /> */}
     <Container>
     <Content2Xl>
     <SectionContainer id="landingPageDemos">

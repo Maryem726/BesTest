@@ -1,12 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import HeaderBase, {
-  LogoLink as LogoLinkBase,
-  NavLinks,
-  NavLink as NavLinkBase,
-  PrimaryLink as PrimaryLinkBase
-} from "../headers/light.js";
+
 import { Container as ContainerBase, ContentWithVerticalPadding, Content2Xl } from "components/misc/Layouts.js";
 import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
@@ -15,10 +10,10 @@ import logoImageSrc from "images/logo-light.svg";
 import serverIllustrationImageSrc from "images/server-illustration-2.svg";
 
 const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 `;
-const Header = tw(HeaderBase)`max-w-none -mt-8 py-8 -mx-8 px-8`;
-const NavLink = tw(NavLinkBase)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`;
-const LogoLink = tw(LogoLinkBase)`text-gray-100 hocus:text-gray-300`;
-const PrimaryLink = tw(PrimaryLinkBase)`shadow-raised lg:bg-primary-400 lg:hocus:bg-primary-500`;
+// const Header = tw(HeaderBase)`max-w-none -mt-8 py-8 -mx-8 px-8`;
+// const NavLink = tw(NavLinkBase)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`;
+// const LogoLink = tw(LogoLinkBase)`text-gray-100 hocus:text-gray-300`;
+// const PrimaryLink = tw(PrimaryLinkBase)`shadow-raised lg:bg-primary-400 lg:hocus:bg-primary-500`;
 
 const Container = tw(ContainerBase)``;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
@@ -37,24 +32,24 @@ export default ({
   primaryButtonUrl = "#",
   imageSrc = serverIllustrationImageSrc,
 }) => {
-  const logoLink = (
-    <LogoLink href="/">
-      <img src={logoImageSrc} alt="Logo" />
-      Treact
-    </LogoLink>
-  );
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavLink href="#">Features</NavLink>
-      <NavLink href="#">Pricing</NavLink>
-      <NavLink href="#">Login</NavLink>
-      <PrimaryLink href="#">Signup</PrimaryLink>
-    </NavLinks>
-  ];
+  // const logoLink = (
+  //   <LogoLink href="/">
+  //     <img src={logoImageSrc} alt="Logo" />
+  //     Treact
+  //   </LogoLink>
+  // );
+  // const navLinks = [
+  //   <NavLinks key={1}>
+  //     <NavLink href="#">Features</NavLink>
+  //     <NavLink href="#">Pricing</NavLink>
+  //     <NavLink href="#">Login</NavLink>
+  //     <PrimaryLink href="#">Signup</PrimaryLink>
+  //   </NavLinks>
+  // ];
   return (
     <PrimaryBackgroundContainer>
       <Content2Xl>
-        <Header logoLink={logoLink} links={navLinks} />
+        {/* <Header logoLink={logoLink} links={navLinks} /> */}
         <Container>
           <ContentWithVerticalPadding>
             <Row>

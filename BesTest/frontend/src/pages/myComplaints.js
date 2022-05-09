@@ -1,13 +1,8 @@
 import React,{ useState,useEffect} from 'react'
-import * as api from '../api/Api';
-import tw from "twin.macro"; //eslint-disable-line
-import { css } from "styled-components/macro"; //eslint-disable-line
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
+import * as api from '../api/Api'; 
+import styled from "styled-components";
+import { css } from "styled-components/macro";
 
-import Hero from "components/hero/BackgroundAsImage.js";
-
-import Footer from "components/footers/MiniCenteredFooter.js";
-import Header from "components/headers/Ressourceslight.js";
 export default function MyComplaints() {
     const [Data, setData] = useState([]);
     const [userId, setUserId] = useState("User Not Connected");
@@ -52,10 +47,9 @@ export default function MyComplaints() {
 
       
   return (
-    <AnimationRevealPage >
-    <Header/>
+   
     <div className="overflow-x-auto">
-        <button onClick={getComplaintsByUser}>Refresh</button>
+        {/* <button onClick={getComplaintsByUser}>Refresh</button> */}
     <table className="items-center w-full bg-transparent border-collapse">
         <thead>
             <tr>
@@ -111,8 +105,6 @@ export default function MyComplaints() {
 </tbody>
 ) : null}
     </table>
-</div>   
-<Footer />
-  </AnimationRevealPage>
+</div>  
 )
 }
