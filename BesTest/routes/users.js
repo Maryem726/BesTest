@@ -107,7 +107,7 @@ router.post(
 );
 
 router.post(
-  "/signin",
+  "/",
   [
     check("email", "Please include a valid email").isEmail(),
     check(

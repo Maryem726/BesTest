@@ -72,7 +72,7 @@ function AdminLogin({
 
   const loginFetch = async (email, password) => {
     try {
-      const result = await axios.post("/users/signin", { email, password });
+      const result = await axios.post("/users", { email, password });
       console.log(result);
       localStorage.setItem("user", JSON.stringify(result.data.user));
       localStorage.setItem("token", result.data.token);

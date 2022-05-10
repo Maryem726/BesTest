@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 var adminRouter= require('./routes/admin');
 var lessonRouter= require('./routes/lesson');
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var teacherRouter= require('./routes/teacherRequest');
 var parentRouter= require('./routes/parentRequest');
@@ -18,7 +17,7 @@ var auth= require('./routes/auth');
 
 
 var complaintRouter = require('./routes/complaint');
-
+const path = require("path")
 
 app.use(
   cors({
@@ -31,12 +30,11 @@ require("dotenv").config();
 // Import DATABASE CONNEXION
 const connectDB = require("./config/connectDB");
 connectDB();
-
+app.use(express.static(path.join(__dirname, "frontend", "build")))
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 // Global Routes
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/lesson', lessonRouter);
@@ -56,6 +54,9 @@ app.use('/complaint', complaintRouter);
 // PORT
 const PORT = process.env.PORT;
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
 app.listen(PORT, (err) => {
   err ? console.log(err) : console.log(`Server is Running on PORT ${PORT}`);
 });
